@@ -1,0 +1,102 @@
+name: body_module_add
+purpose: |
+  End-to-end "add a body module to the vehicle bus" — what Tech2Win does
+  when you choose Diagnostic → Programming → Add Module. Per ECU:
+  level-$01 SecurityAccess unlock, then write the 4 identity DIDs (VIN +
+  3 copies of the security-code prefix).
+
+  Distinct from engine programming: this entire flow uses level $01,
+  which Tech2Win computes locally — no internet required, no SAS server.
+
+vehicle: SAAB 9-3 (T8/E78); likely most SAAB 9-3 / 9-5 platforms
+captured_from: cstech2win_shim_20260512-164253.log
+status: captured (5 ECUs paired in this session)
+
+# Canonical ECU walk order observed on the bench. Tech2Win iterates
+# through this list; per ECU it runs the unlock + write block, then moves
+# on. Per-ECU writes may vary by module type — see module_pair_write.yaml.
+target_ecus:
+  - $0248
+  - $0242
+  - $0246
+  - $0247
+  - $0245
+
+# Inputs the workflow needs before it can run:
+required_inputs:
+  vin:
+    type: string
+    length: 17
+    example: "YS3FD49YX41012017"
+    notes: "ASCII; will be written verbatim to DID 0x90."
+  security_code_prefix:
+    type: string
+    length: 4
+    example: "XJOU"
+    notes: |
+      First 4 characters of the SAAB security code. Same value goes to
+      DIDs 0x60, 0x62, 0x6D. Get the full 8-char code from the vehicle's
+      docs / dealer record; OpenSAAB doesn't ship a lookup.
+
+# Per-ECU flow (loop over target_ecus):
+per_ecu_steps:
+  - step: 1_request_seed_l01
+    delegate: commands/saab/security_access_l01_unlock.yaml#request_seed
+    can_id: ${ECU}
+    store: session_var.seed
+    timeout_ms: 500
+
+  - step: 2_compute_key_l01
+    type: offline
+    input: session_var.seed
+    algorithm:
+      family: saab_l01
+      reference: "NativeVM with public-tier algorithm_id (not shipped here)"
+    output: session_var.key
+
+  - step: 3_send_key_l01
+    delegate: commands/saab/security_access_l01_unlock.yaml#send_key
+    can_id: ${ECU}
+    template: [0x27, 0x02, "${key_hi}", "${key_lo}"]
+    expect: [0x67, 0x02]
+    timeout_ms: 500
+    on_NRC_35: "invalidKey — wrong tape index, do not retry; check ECU type"
+
+  - step: 4_write_seccode_a
+    delegate: commands/saab/module_pair_write.yaml#write_did_0x60
+    can_id: ${ECU}
+    data: "${security_code_prefix}"   # 4 ASCII bytes
+
+  - step: 5_write_seccode_b
+    delegate: commands/saab/module_pair_write.yaml#write_did_0x6D
+    can_id: ${ECU}
+    data: "${security_code_prefix}"
+    notes: "Some ECUs need a header-only $3B 6D probe first (ack), then
+            the data write. Implement as two writes if you see NRC 0x22."
+
+  - step: 6_write_vin
+    delegate: commands/saab/module_pair_write.yaml#write_did_0x90
+    can_id: ${ECU}
+    data: "${vin}"                    # 17 ASCII bytes; ISO-TP multi-frame
+
+  - step: 7_write_seccode_c
+    delegate: commands/saab/module_pair_write.yaml#write_did_0x62
+    can_id: ${ECU}
+    data: "${security_code_prefix}"
+    optional_for: [$0248]   # not always sent for some modules
+
+between_ecus:
+  notes: |
+    Tech2 emits paired $FE 3E TesterPresent broadcasts on $0101 between
+    per-ECU blocks to keep all sessions alive. Cadence ~2-2.5 sec.
+
+session_close:
+  notes: |
+    No explicit $20 (ReturnToNormalOperation) observed in this capture.
+    Tech2 leaves the session authenticated until P3C timeout via
+    TesterPresent absence.
+
+why_this_works_offline: |
+  Level $01 keys are derivable inside Tech2Win (and any client that has
+  the NativeVM + the level-1 algorithm_id table). The SAS-protected
+  level $0B isn't used here, so the SAAB online server is never queried.

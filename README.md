@@ -48,9 +48,16 @@ documentation is available elsewhere) or use Bojer's hosted service.
 |---|---|
 | `commands/saab/cim_info_read.yaml` | captured (9 ECU identification DIDs) |
 | `commands/saab/security_access_sweep_l01.yaml` | captured (9-ECU SKA tuple harvest, full canonical slot order) |
+| `commands/saab/security_access_l01_unlock.yaml` | captured (full seed/key/ack cycle for 5 ECUs — body-module unlock) |
 | `commands/saab/engine_sas_unlock.yaml` | captured to seed; send-key bench-validated externally |
+| `commands/saab/module_pair_write.yaml` | captured (4-DID write of VIN + security-code prefix per module) |
 | `commands/saab/vin_read_did_3f.yaml` | captured (SAAB-extended VIN read on engine-diag gateway) |
+| `workflows/saab/body_module_add.yaml` | end-to-end: unlock + pair-write loop for 5 ECUs (level $01, works offline) |
 | `workflows/saab/door_module_add_prerequisites.yaml` | end-to-end chain (1→7) for the SecurityAccess preflight that body-module operations require |
+
+**Key distinction:** SAAB has two SecurityAccess levels:
+- **Level $01** — body modules (door, VIN, HVAC). Keys computable offline. Used by `body_module_add`.
+- **Level $0B** — engine ECU (programming, SAS). Keys require dealer SAS server OR local NativeVM RE. See `engine_sas_unlock`.
 
 ## Quick start — read a captured command
 

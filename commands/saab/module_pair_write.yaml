@@ -1,0 +1,90 @@
+menu: "Diagnostic → Programming → (Body-module add / remove / pair flows)"
+target_ecu: any body-module ECU (multi; same flow per module)
+captured_from:
+  shim_log: cstech2win_shim_20260512-164253.log
+  range_ms: [14453, 45086]
+  vehicle_profile: SAAB 9-3 (bench, 2017)
+status: captured (full 4-DID write sequence on 5 ECUs)
+services:
+  - 0x3B  # WriteDataByIdentifier
+
+# After SecurityAccess level $01 succeeds (see security_access_l01_unlock.yaml),
+# Tech2Win programs each module with the vehicle's identity by writing four
+# DIDs in sequence. This is what "add module to bus" actually does at the
+# wire level — it tells the module "you belong to THIS vehicle with THIS
+# security code". Modules that don't have these fields filled in (or that
+# have stale values from a previous vehicle) won't participate.
+#
+# Once written, the module accepts subsequent commands as part of this
+# vehicle's bus.
+
+steps:
+  - step: write_did_0x60
+    tx_template: [0x3B, 0x60, ...4_bytes_seccode_prefix]
+    can_id: $024X
+    rx_pos: [0x7B, 0x60]
+    data_meaning: |
+      ASCII first 4 characters of the SAAB security code. On the bench,
+      "XJOU" (bytes 58 4A 4F 55) for security code "XJOUQVL7".
+    timeout_ms: 500
+
+  - step: write_did_0x6D
+    tx_template: [0x3B, 0x6D, ...4_bytes_seccode_prefix]
+    can_id: $024X
+    rx_pos: [0x7B, 0x6D]
+    data_meaning: |
+      Same 4-char security-code prefix as DID 0x60. Stored in a different
+      module-side field; purpose unclear but written redundantly.
+    timeout_ms: 500
+    notes: |
+      Sometimes Tech2 sends $3B 6D with no data first (header-only frame),
+      gets an ack, then re-sends with the 4-byte payload. The 2nd send is
+      the one that matters.
+
+  - step: write_did_0x90
+    tx_template: [0x3B, 0x90, ...17_bytes_vin_ascii]
+    can_id: $024X
+    rx_pos: [0x7B, 0x90]
+    iso_tp: multi_frame_FF_then_CF
+    data_meaning: |
+      17-character ASCII VIN. On the bench, "YS3FD49YX41012017"
+      (bytes 59 53 33 46 44 34 39 59 58 34 31 30 31 32 30 31 37).
+    timeout_ms: 1500
+
+  - step: write_did_0x62
+    tx_template: [0x3B, 0x62, ...4_bytes_seccode_prefix]
+    can_id: $024X
+    rx_pos: [0x7B, 0x62]
+    data_meaning: |
+      Same 4-char security-code prefix again. Third storage location for
+      the same value. Possibly redundancy for fail-safe; possibly
+      different module-local roles (theft-deterrent vs comfort vs HVAC).
+    timeout_ms: 500
+
+observed_per_ecu:
+  - ecu: $0248
+    writes: [0x60, 0x6D, 0x90]
+  - ecu: $0242
+    writes: [0x60, 0x6D, 0x90, 0x62]
+  - ecu: $0246
+    writes: [0x60, 0x6D, 0x90, 0x62]
+  - ecu: $0247
+    writes: [0x90, 0x62]
+  - ecu: $0245
+    writes: [0x60, 0x62]
+
+notes: |
+  - **No SAS level $0B required.** This entire flow works after a
+    level-$01 unlock (security_access_l01_unlock.yaml). That's why
+    "add module" succeeds on a bench with no internet, even though
+    "engine programming" (which requires level $0B) doesn't.
+  - The 4-char security-code prefix (XJOU on the bench) is the SAME
+    across all four DIDs. The remaining 4 characters of the 8-char SAAB
+    security code (XJOU**QVL7**) are NOT written here — they live
+    elsewhere (CIM / cluster / engine).
+  - DID 0x90 is the VIN — same value the OBD-II standardized VIN read
+    returns. Writing it via $3B 90 propagates the canonical VIN to every
+    paired module.
+  - Per-ECU variation in which DIDs get written: some modules need all
+    four (full pair), some only need a subset (already-known VIN +
+    rewrite of one identity field, common for "refresh" operations).

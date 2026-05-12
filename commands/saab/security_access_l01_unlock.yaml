@@ -1,0 +1,89 @@
+menu: "Diagnostic → (Implicit prerequisite for any body-module write
+        operation: add/remove module, write VIN, write security-code DIDs)"
+target_ecu: any body-module ECU (multi)
+captured_from:
+  shim_log: cstech2win_shim_20260512-164253.log
+  range_ms: [13482, 41813]
+  vehicle_profile: SAAB 9-3 (bench, 2017)
+status: captured (full request/send-key/ack cycle for 5 ECUs)
+services:
+  - 0x27  # SecurityAccess (level $01 — public, computable offline)
+
+# Critical distinction from engine_sas_unlock.yaml:
+#
+# Level $01 (this file): the standard UDS SecurityAccess. Algorithm is
+#   the NativeVM (DllSecurity.dll core), but the per-ECU algorithm_id is
+#   one of the "public" indices that Tech2Win has embedded and computes
+#   locally — NO internet round-trip required. Used for body-module
+#   pairing (door, BCM, transmission, etc).
+#
+# Level $0B (engine_sas_unlock.yaml): SAAB-specific SAS algorithm.
+#   Tech2Win delegates this to SAAB's dealer-network SAS server. Without
+#   internet, Tech2Win never sends the send-key step.
+#
+# Both levels use the same NativeVM engine bytecode; what differs is the
+# algorithm_id table (level-1 indices are dealer-public; level-B indices
+# are SAS-server-protected).
+
+steps:
+  - step: request_seed
+    tx: [0x27, 0x01]
+    can_id: $024X        # any body-module ECU (see workflow file for canonical order)
+    rx_pos_prefix: [0x67, 0x01]
+    seed_layout: [seed_hi, seed_lo]
+    timeout_ms: 500
+    notes: |
+      The seed at level $01 is deterministic per ECU (same value every
+      session). Different from rolling-key SAS.
+
+  - step: compute_key
+    type: offline
+    input: rx_step_request_seed.seed
+    algorithm:
+      family: saab_l01
+      reference: |
+        Same NativeVM engine as the SAS level (see engine_sas_unlock.yaml),
+        but with a level-1 algorithm_id table. Tech2Win has these built in;
+        OpenSAAB does not ship the table.
+
+  - step: send_key
+    tx_template: [0x27, 0x02, "key_hi", "key_lo"]
+    can_id: $024X
+    rx_pos: [0x67, 0x02]
+    timeout_ms: 500
+    common_nrcs:
+      0x35: invalidKey
+      0x36: exceededNumberOfAttempts
+      0x37: requiredTimeDelayNotExpired
+
+observed_pairs:
+  # Bench 2017 SAAB 9-3, captured 2026-05-12. Same values appear in
+  # Bojer SSA tuples so they cross-verify.
+  - ecu: $0248
+    seed: 0xC86E
+    key:  0x2FCB
+    bojer_tuple_algo: 0x0339
+  - ecu: $0242
+    seed: 0xA78C
+    key:  0x73A8
+    bojer_tuple_algo: 0x0361
+  - ecu: $0246
+    seed: 0x0463
+    key:  0x9CC0
+    bojer_tuple_algo: 0x030B
+  - ecu: $0247
+    key:  0xA55E
+  - ecu: $0245
+    key:  0xDE40
+
+notes: |
+  - Seed/key timing: ~100ms seed latency, ~100ms send-key ack. The whole
+    request→send→ack cycle for one ECU takes ~250ms.
+  - This is the unlock Tech2Win actually completes when you choose
+    "add module" or "remove module" in the BCM/door/HVAC menus.
+  - Each ECU's unlock is independent — granting on $0242 doesn't unlock
+    $0246. Tech2Win walks all needed ECUs in sequence.
+  - The "send-key" data appears to be a 16-bit transformation of the
+    seed using NativeVM bytecode with a level-1 algorithm_id. We don't
+    publish the table; you can RE it from a Tech2Win install or use
+    Bojer for online resolution.

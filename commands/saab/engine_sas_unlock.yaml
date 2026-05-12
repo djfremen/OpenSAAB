@@ -83,14 +83,22 @@ steps:
              validated externally (custom Python client; see notes)."
 
 why_tech2win_stops_after_seed: |
-  Stock Tech2Win delegates key computation to SAAB's online SAS server. With
-  no internet connectivity, Tech2 receives the seed at step 3 and silently
-  abandons the flow — no $27 0C is ever sent. Any subsequent operation
-  requiring an unlocked ECU (door-add, programming, VIN write) fails for
-  "security access not granted".
+  Stock Tech2Win delegates SAS key computation (level $0B) to SAAB's
+  online SAS server. With no internet, Tech2 receives the seed at step
+  3 and silently abandons the flow — no $27 0C is ever sent. Any
+  subsequent ENGINE programming operation (engine reflash, immo-pairing,
+  fuel-system enable) fails for "security access not granted".
 
-  Custom clients that own the NativeVM engine locally don't have this
-  limitation — compute the key from the seed and send $27 0C directly.
+  Important contrast: BODY-module operations (add door, write VIN, pair
+  HVAC) use level $01, NOT $0B. Level $01 keys are computable inside
+  Tech2Win without internet, so body-module operations succeed even on
+  a bench with no network. See:
+    - commands/saab/security_access_l01_unlock.yaml
+    - workflows/saab/body_module_add.yaml
+
+  Custom clients that own the SAS-level NativeVM engine locally (RE'd
+  from dllsecurity.dll) bypass the internet dependency entirely — compute
+  the level-$0B key from the seed and send $27 0C directly.
 
 notes: |
   - The level-$01 sweep across 9 ECUs (security_access_sweep_l01.yaml)
