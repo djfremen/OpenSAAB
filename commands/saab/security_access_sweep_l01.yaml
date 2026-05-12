@@ -1,0 +1,101 @@
+menu: "Diagnostic → (Various; runs as the SecurityAccess preamble before any
+        operation that needs ECU programming, e.g. 'add door module')"
+target_ecu: multi (9 ECUs swept in canonical order)
+captured_from:
+  shim_log: cstech2win_shim_20260512-162133.log
+  range_ms: [21275, 23972]
+  vehicle_profile: SAAB 9-3 (bench, 2017)
+status: captured
+services:
+  - 0x27  # SecurityAccess
+
+# Tech2 walks every diagnosable ECU at level $01 and harvests the seed.
+# The collected (algorithm_index, seed) tuples form the 9-tuple "SKA
+# algorithm tape" that SAAB's dealer-network SAS server uses to compute
+# keys. Bojer fills these slots into the SSA post-auth blob.
+#
+# Order is canonical and reproducible — verified against 2026-05-07 v6
+# shim and 2026-05-12 bench captures, same bench ECU returns identical
+# seeds (deterministic per ECU).
+sweep:
+  - slot: 0
+    can_id: $0257
+    reply: $0657
+    tx: [0x27, 0x01]
+    rx_pos_example: [0x67, 0x01, 0x3B, 0x86]
+    seed_example: 0x3B86
+  - slot: 1
+    can_id: $0242
+    reply: $0642
+    label: TDM
+    tx: [0x27, 0x01]
+    rx_pos_example: [0x67, 0x01, 0xA7, 0x8C]
+    seed_example: 0xA78C
+  - slot: 2
+    can_id: $0241
+    reply: $0641
+    label: engine_diag_gateway
+    tx: [0x27, 0x01]
+    rx_pos_example: [0x67, 0x01, 0xF6, 0x31]
+    seed_example: 0xF631
+  - slot: 3
+    can_id: $0243
+    reply: $0643
+    label: EBCM
+    tx: [0x27, 0x01]
+    rx_pos_example: [0x67, 0x01, 0xA0, 0xE9]
+    seed_example: 0xA0E9
+  - slot: 4
+    can_id: $0246
+    reply: $0646
+    label: SIC
+    tx: [0x27, 0x01]
+    rx_pos_example: [0x67, 0x01, 0x04, 0x63]
+    seed_example: 0x0463
+  - slot: 5
+    can_id: $0248
+    reply: $0648
+    tx: [0x27, 0x01]
+    rx_pos_example: [0x67, 0x01, 0xC8, 0x6E]
+    seed_example: 0xC86E
+  - slot: 6
+    can_id: $024A
+    reply: $064A
+    tx: [0x27, 0x01]
+    rx_pos_example: [0x67, 0x01, 0x8D, 0x07]
+    seed_example: 0x8D07
+  - slot: 7
+    can_id: $024B
+    reply: $064B
+    tx: [0x27, 0x01]
+    rx_pos_example: [0x67, 0x01, 0x80, 0x54]
+    seed_example: 0x8054
+  - slot: 8
+    can_id: $07E1
+    reply: $07E9
+    label: OBD_TCM
+    tx: [0x27, 0x01]
+    rx_pos_example: [0x67, 0x01, 0xD2, 0xDC]
+    seed_example: 0xD2DC
+
+common_nrcs:
+  0x37:
+    name: requiredTimeDelayNotExpired
+    cause: |
+      ECU is in the 10-second post-power-on lockout. Wait 10s after ignition-on
+      before the first $27 to any ECU. Observed reliably on every cold boot.
+
+timing:
+  inter_tx_ms_typical: 200-300
+  response_latency_ms_typical: 100-160
+
+notes: |
+  - Each ECU returns a seed that is DETERMINISTIC per-ECU (same value on
+    every power cycle). This is unique to the SKA flow and distinguishes
+    it from rolling-key SAS.
+  - The collected (seed, slot) pairs are paired with an algorithm_id by
+    the SAS server; the algorithm_ids are NOT bus-readable — they live in
+    SAAB's online lookup or in the post-auth SSA card.
+  - On stock Tech2Win, this sweep precedes any SecurityAccess level $0B
+    SAS request (see engine_sas_unlock.yaml). Tech2Win uses the harvest
+    to identify the vehicle profile before requesting SAS.

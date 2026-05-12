@@ -42,6 +42,16 @@ By design, this repo doesn't ship:
 If you need the seed/key engine, you have to RE it yourself (`dllsecurity.dll`
 documentation is available elsewhere) or use Bojer's hosted service.
 
+## Currently catalogued
+
+| Entry | Status |
+|---|---|
+| `commands/saab/cim_info_read.yaml` | captured (9 ECU identification DIDs) |
+| `commands/saab/security_access_sweep_l01.yaml` | captured (9-ECU SKA tuple harvest, full canonical slot order) |
+| `commands/saab/engine_sas_unlock.yaml` | captured to seed; send-key bench-validated externally |
+| `commands/saab/vin_read_did_3f.yaml` | captured (SAAB-extended VIN read on engine-diag gateway) |
+| `workflows/saab/door_module_add_prerequisites.yaml` | end-to-end chain (1→7) for the SecurityAccess preflight that body-module operations require |
+
 ## Quick start — read a captured command
 
 ```yaml

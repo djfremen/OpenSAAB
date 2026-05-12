@@ -1,0 +1,36 @@
+menu: "Diagnostic → (Implicit; Tech2 reads this DID immediately before $27 0B
+        to confirm the vehicle identity)"
+target_ecu: $0241/$0641
+captured_from:
+  shim_log: cstech2win_shim_20260512-162133.log
+  range_ms: [26399, 26824]
+  vehicle_profile: SAAB 9-3 (bench, 2017)
+status: captured
+services:
+  - 0x1A  # ReadDataByIdentifier
+
+dids:
+  0x3F:
+    name: vin_saab_extended
+    iso_tp: multi_frame_FF_then_CF
+    rx_first_frame_example: "5a 3f 59 53 33 46 44 34 39 59"
+    rx_decoded: "VIN ASCII, 17 bytes. Example FF carries 'YS3FD49Y…'"
+    notes: |
+      Distinct from the OBD-II standardized VIN read (DID 0x90 to $07E0).
+      DID 0x3F is the SAAB-extended read directly from the engine-diag
+      gateway at $0241. Same VIN string is returned either way on a healthy
+      vehicle, but $1A 3F on $0241 is what Tech2Win uses internally as the
+      "is this the car we expect" check.
+
+common_nrcs:
+  0x78:
+    name: responsePending
+    notes: "Common — the 17-byte VIN takes 2-3 ISO-TP frames to assemble.
+            ECM emits one $7F 1A 78 before the First Frame arrives."
+
+notes: |
+  - Tech2 sends this right after the DeviceControl ping ($AE 00 → $EE 00)
+    and right before requesting the SAS seed ($27 0B).
+  - The fact that this read works without prior SecurityAccess unlock
+    confirms VIN identification is in the "default session" reachability
+    set for $0241.

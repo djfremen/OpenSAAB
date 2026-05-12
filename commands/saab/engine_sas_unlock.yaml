@@ -1,0 +1,105 @@
+menu: "Diagnostic → (Implicit prerequisite for any operation that touches
+        protected memory: add module, write VIN, programming, etc.)"
+target_ecu: $0241/$0641
+captured_from:
+  shim_log: cstech2win_shim_20260512-162133.log
+  range_ms: [26054, 27354]
+  vehicle_profile: SAAB 9-3 (bench, 2017)
+status: captured (seed step only — stock Tech2Win abandons here without internet)
+services:
+  - 0xAE  # DeviceControl (pre-flight)
+  - 0x1A  # ReadDataByIdentifier 0x3F (VIN read, confirms ECU identity)
+  - 0x27  # SecurityAccess level $0B (SAS — manufacturer-specific)
+
+# Sequence Tech2Win runs at the engine ECU once the level-$01 sweep is done.
+# This is the GMW3110 §8.8.5.1 SecurityAccess flow at SAAB's manufacturer-
+# defined level $0B.
+#
+# Step 4 (compute_key) is OFFLINE — does not touch the bus. Tech2Win
+# delegates this to SAAB's dealer-network SAS server; we compute locally
+# using the security_calc NativeVM engine (RE'd from dllsecurity.dll).
+steps:
+  - step: device_control_ping
+    tx: [0xAE, 0x00]
+    can_id: $0241
+    rx_pos: [0xEE, 0x00]
+    timeout_ms: 500
+    notes: "Pre-SAS handshake. Tech2 always sends this immediately before $27 0B."
+
+  - step: vin_read
+    tx: [0x1A, 0x3F]
+    can_id: $0241
+    rx_pos_prefix: [0x5A, 0x3F]
+    iso_tp: multi_frame_FF_then_CF
+    rx_decoded_example: "VIN starts 'YS3FD49Y…' (17-byte ASCII)"
+    timeout_ms: 1500
+    notes: "Confirms vehicle identity before the SAS attempt. Distinct from
+            OBD-standard $1A 90 VIN read."
+
+  - step: request_seed_SAS
+    tx: [0x27, 0x0B]
+    can_id: $0241
+    rx_pos_prefix: [0x67, 0x0B]
+    seed_layout: [seed_hi, seed_lo]
+    timeout_ms: 500
+    on_pending: wait_and_repoll
+    common_nrcs:
+      0x78:
+        name: responsePending
+        cause: "ECU is computing seed — wait up to ~200ms and re-read.
+                Observed reliably; expect to see this once before the positive."
+      0x37: requiredTimeDelayNotExpired
+      0x36: exceededNumberOfAttempts
+    known_seeds:
+      bench_2017: 0xC4DC
+
+  - step: compute_key
+    type: offline
+    input: rx_step_request_seed_SAS.seed
+    algorithm:
+      family: saab_ska
+      tape_id_example: 0x0367   # high-byte 0x03 = SAAB SKA family tag
+                                # low-byte 0x67 = NativeVM algorithm index
+      reference: |
+        RE'd from sasbridge.dll → dllsecurity.dll SetSeedAndGetKey.
+        Validated 9/9 against Bojer roundtrip on 2026-05-11.
+        Implementation NOT in this repo (copyright-encumbered).
+    known_outputs:
+      bench_2017: 0x4EED        # vm_get_key(0xC4DC, 0x67) = 0x4EED
+
+  - step: send_key_SAS
+    tx_template: [0x27, 0x0C, "key_hi", "key_lo"]
+    can_id: $0241
+    rx_pos: [0x67, 0x0C]
+    timeout_ms: 500
+    common_nrcs:
+      0x35:
+        name: invalidKey
+        cause: "Wrong key. Each one burns an attempt; ECU locks after 3-5."
+      0x36: exceededNumberOfAttempts
+      0x37: requiredTimeDelayNotExpired
+    status: "NOT yet captured in shim — stock Tech2Win never reaches this step
+             without internet access to SAAB's SAS server. The send is bench-
+             validated externally (custom Python client; see notes)."
+
+why_tech2win_stops_after_seed: |
+  Stock Tech2Win delegates key computation to SAAB's online SAS server. With
+  no internet connectivity, Tech2 receives the seed at step 3 and silently
+  abandons the flow — no $27 0C is ever sent. Any subsequent operation
+  requiring an unlocked ECU (door-add, programming, VIN write) fails for
+  "security access not granted".
+
+  Custom clients that own the NativeVM engine locally don't have this
+  limitation — compute the key from the seed and send $27 0C directly.
+
+notes: |
+  - The level-$01 sweep across 9 ECUs (security_access_sweep_l01.yaml)
+    typically runs before this, harvesting the algorithm tape Tech2Win
+    needs to identify which algo applies to which seed.
+  - For SAAB SKA, the algorithm_id stored as 0x03XX has high-byte 0x03
+    as a family tag and low-byte XX as the NativeVM index. Use the low
+    byte against bytecode table 1.
+  - On the bench, seed 0xC4DC + algo 0x0367 → key 0x4EED. Send
+    `04 27 0C 4E ED` on $0241.
+  - After successful unlock, the session remains authenticated until
+    TesterPresent timeout (P3C) or until $20 (ReturnToNormalOperation).

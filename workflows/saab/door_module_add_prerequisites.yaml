@@ -1,0 +1,76 @@
+name: door_module_add_prerequisites
+purpose: |
+  The SecurityAccess preflight Tech2Win runs before any operation that
+  programs a body-control module (notably "add door module"). Captures
+  the full chain: ECU sweep, ECM ready-wait, identity confirmation, SAS
+  seed request, key computation, unlock.
+
+  Stock Tech2Win runs steps 1-5 but DOES NOT send step 6 (key) because
+  it depends on internet-reachable SAAB SAS server. Custom client with
+  local NativeVM completes step 6 and proceeds to the actual module-add
+  command.
+
+vehicle: SAAB 9-3 (T8 / E78 / ME9.6); likely applies to other SAAB
+captured_from: cstech2win_shim_20260512-162133.log  range_ms [19000, 27600]
+status: captured (steps 1-5); send-key (step 6) bench-validated externally
+
+steps:
+  - step: 1_l01_sweep
+    description: "Walk 9 ECUs at $27 01, harvest seeds"
+    delegate: commands/saab/security_access_sweep_l01.yaml
+    output: algorithm_tape  # 9-tuple (slot, seed) for SAS server / local lookup
+
+  - step: 2_ecm_ready_wait
+    description: "Poll $AA 01 01 on $0241 until ECM stops returning 7F AA 78"
+    delegate: commands/saab/diag_session_setup.yaml  # TODO: split into its own
+    timeout_ms: 5000
+
+  - step: 3_device_control_ping
+    tx:    [0xAE, 0x00]
+    can_id: $0241
+    rx_pos: [0xEE, 0x00]
+    timeout_ms: 500
+
+  - step: 4_vin_confirm
+    delegate: commands/saab/vin_read_did_3f.yaml
+
+  - step: 5_request_sas_seed
+    tx:    [0x27, 0x0B]
+    can_id: $0241
+    rx_pos_prefix: [0x67, 0x0B]
+    store_seed_in: session_var.engine_sas_seed
+    timeout_ms: 500
+    on_pending: wait_and_repoll
+    known_values:
+      bench_2017: 0xC4DC
+
+  - step: 6_compute_key
+    type: offline
+    input:  session_var.engine_sas_seed
+    algo_id: 0x0367           # SAAB SKA family / NativeVM idx 0x67 / table 1
+    output: session_var.engine_sas_key
+    known_values:
+      bench_2017: 0x4EED
+
+  - step: 7_send_key_unlock
+    tx_template: [0x27, 0x0C, "key_hi", "key_lo"]
+    can_id: $0241
+    rx_pos: [0x67, 0x0C]
+    timeout_ms: 500
+    on_NRC_35: "invalidKey — burn an attempt and abort, do not retry"
+    on_NRC_36: "exceededNumberOfAttempts — ECU locked, wait for cooldown"
+    on_NRC_37: "requiredTimeDelayNotExpired — wait 10s, retry once"
+
+after_unlock: |
+  Session is authenticated. The actual "add door module" command can now
+  proceed — typically a $3B WriteDataByIdentifier or $34/$36
+  RequestDownload/TransferData to the door body-control ECU at its own
+  diag pair. That step is module-specific; capture and document
+  separately.
+
+why_stock_tech2win_fails: |
+  Step 6 in stock Tech2Win is an HTTPS round-trip to SAAB's dealer SAS
+  service. With no internet, Tech2Win has the seed but never produces a
+  key — it silently returns to TesterPresent idle and the door-add
+  command later fails for "security not granted". This was the failure
+  mode observed on 2026-05-12 at the bench.
