@@ -1,0 +1,68 @@
+menu: "Diagnostic → Get ECM Information → CIM Info"
+target_ecu: $0241/$0641
+captured_from:
+  shim_log: cstech2win_shim_20260512-155116.log
+  range_ms: [12000, 14600]
+  vehicle_profile: SAAB 9-3 (bench, 2017)
+status: captured
+services:
+  - 0x1A  # ReadDataByIdentifier
+
+# DIDs polled, in the order Tech2 issues them. Tech2 fires each as a
+# separate $1A request; some get positive responses (5A xx ...), some
+# get NRC (7F 1A nn) when the field is unsupported on this ECU.
+dids:
+  0xC2:
+    name: ecu_field_c2
+    example: "00 c3 53 f3"
+    interpretation: "32-bit big-endian (0x00C353F3 = 12,800,499) — likely calibration ID or part-number low word"
+  0xD2:
+    name: ecu_field_d2
+    example: "41 42"
+    interpretation: "ASCII 'AB' — vendor/model two-char tag"
+  0xC3:
+    name: ecu_field_c3
+    example_nrc: 0x22
+    interpretation: "conditionsNotCorrect — field not readable in current session"
+  0xC4:
+    name: ecu_field_c4
+    example_nrc: 0x31
+    interpretation: "requestOutOfRange — field not present on this ECU revision"
+  0x9A:
+    name: sas_algo_tape_head
+    example: "03 04"
+    interpretation: |
+      First two bytes of the SAAB SKA algorithm tape. Matches the high-byte
+      pattern 0x03XX seen in Bojer post-auth tuples. This is the SAS tuple
+      algorithm ID for the first SKA slot.
+  0x99:
+    name: ecu_field_99
+    example: "20 04 02 23"
+  0x98:
+    name: ecu_field_98
+    example: "20 20 20 20 20 20 20 20"
+    interpretation: "ASCII spaces — 8-char string field, unfilled on this ECU"
+  0x7C:
+    name: ecu_field_7c
+    example: "00 c3 b8 80"
+    interpretation: "32-bit big-endian (0x00C3B880 = 12,827,776)"
+  0x7B:
+    name: ecu_field_7b
+    example: "01 32 d0 4d"
+    interpretation: "32-bit big-endian (0x0132D04D = 20,107,341)"
+
+# Tech2 also polled some setup before this — $AA 01 01 ReadDataByPacketIdentifier
+# repeated 20+ times to wake the ECM's diag responder. That's documented in
+# commands/saab/diag_session_setup.yaml as a prerequisite, not duplicated here.
+
+notes: |
+  - Tech2 sends the $1A queries on a tight ~140-180ms cadence with no
+    inter-query pauses. The ECM responds in ~120-200ms (single-frame ISO-TP).
+  - Some DIDs (0xC3, 0xC4) returned NRC; this is normal — Tech2 probes a
+    superset of fields and lets the ECM reject ones it doesn't implement.
+  - The address $0241 is labeled as BCM in stock GMLAN nomenclature
+    (per Jason Gaunt's 2013 GMLAN library), but on SAAB 9-3 platforms it
+    routes to the body/engine diag gateway. Whether this is literally the
+    CIM or the engine ECM presenting CIM-related identification fields is
+    still being clarified — see notes/2026-05-12 in the private workspace.
+  - No SecurityAccess required for this read.

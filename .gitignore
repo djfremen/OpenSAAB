@@ -1,0 +1,14 @@
+_session_snapshot.log
+*.pyc
+__pycache__/
+.venv/
+.DS_Store
+.idea/
+.vscode/
+
+# Anything in workflows/ that's auto-generated from a bench capture and
+# might contain VIN-tagged data — promote intentionally, don't commit raw.
+workflows/saab/_raw/
+
+# Private workspace symlinks (if anyone clones into a workspace mirror)
+*.private/
