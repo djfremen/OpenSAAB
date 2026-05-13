@@ -70,6 +70,7 @@ documentation is available elsewhere) or use Bojer's hosted service.
 | `commands/saab/module_pair_write.yaml` | captured (4-DID write of VIN + security-code prefix per module) |
 | `commands/saab/vin_read_did_3f.yaml` | captured (SAAB-extended VIN read on engine-diag gateway) |
 | `commands/saab/check_ignition_key_status.yaml` | captured (DeviceControl + DPID 0x0B read; bit layout TBD) |
+| `commands/saab/check_codes_read_dtcs.yaml` | captured (full 17-ECU 2-pass DTC sweep via $A9 81, GMW3110 §9) |
 | `workflows/saab/body_module_add.yaml` | end-to-end: unlock + pair-write loop for 5 ECUs (level $01, works offline) |
 | `workflows/saab/door_module_add_prerequisites.yaml` | end-to-end chain (1→7) for the SecurityAccess preflight that body-module operations require |
 

@@ -1,0 +1,184 @@
+menu: "Diagnostic → Check Codes"
+target_ecu: "ALL ECUs on bus — sweep across SAAB manufacturer-alias
+             addresses ($024X / $054X reply) plus OBD-II ($07E1 / $05E9)."
+captured_from:
+  shim_log: cstech2win_shim_20260513-114826.log
+  range_ms: [37000, 56000]
+  vehicle_profile: SAAB 9-3 (bench, 2017)
+status: captured (full 2-pass DTC sweep over 17 ECUs with example payloads)
+services:
+  - 0x20  # ReturnToNormalOperation — per-ECU session reset before each DTC read
+  - 0xA9  # ReadDiagnosticInformation (GMW3110 §9)
+    # subfunction:
+    #   0x81  ReadStatusOfDTCByStatusMask
+    # masks observed:
+    #   0x12  status & (active | test_failed_since_clear)
+    #   0x10  status & confirmed/stored
+
+# Two-pass sweep. Pass 1 (mask 0x12) probes a small subset of body modules.
+# Pass 2 (mask 0x10) covers every ECU on the bus including OBD-II.
+sweeps:
+  - sweep: pass_1_mask_12
+    mask: 0x12
+    purpose: "Stored + recently-failed DTCs on body ECUs (subset)."
+    ecus_in_order: [$024B, $024A, $0248, $0243]
+  - sweep: pass_2_mask_10
+    mask: 0x10
+    purpose: "Confirmed DTCs across full bus, including OBD-II."
+    ecus_in_order:
+      - $0245
+      - $0257
+      - $0242
+      - $0243
+      - $0244
+      - $0247
+      - $0246
+      - $0248
+      - $0249
+      - $024A
+      - $024B
+      - $025C
+      - $025B
+      - $024D
+      - $07E1   # OBD-II TCM
+      - $024F
+      - $0241   # last — engine alias, takes ~1.5s before its terminator arrives
+
+# Per-ECU protocol within each sweep pass:
+per_ecu_steps:
+  - step: 1_session_reset
+    tx: [0x20]
+    can_id: ${ECU}
+    rx_pos: [0x60]
+    rx_can_id: ${ECU + 0x400}   # e.g. $0243 → $0643
+    timeout_ms: 300
+    notes: |
+      ReturnToNormalOperation. Closes any open security/diag session, putting
+      the ECU into a known default state before the DTC read. Tech2Win
+      issues this once per ECU per sweep pass.
+
+  - step: 2_read_dtc_status
+    tx: [0xA9, 0x81, "${mask}"]   # ${mask} = 0x12 or 0x10 depending on sweep
+    can_id: ${ECU}
+    rx:
+      can_id: ${ECU + 0x300}      # e.g. $0243 → $0543 (single-frame DPID-style address)
+      frame_format:
+        byte_0: 0x81              # echo of subfunction
+        bytes_1_3: dtc_code       # 3-byte GMW3110 DTC code
+        byte_4: status_mask       # bitfield (see status_bits below)
+        bytes_5_7: trailing       # 00 00 00 (typical) or ff ff ff
+      delivery: "Each DTC arrives as its own single-frame.
+                 Terminator is a frame with dtc_code = 00 00 00 and the sweep
+                 mask echoed in byte 4."
+    response_pending:
+      can_id: ${ECU + 0x400}      # MF address — e.g. $0241 → $0641
+      pattern: [0x7F, 0xA9, 0x78]
+      observed_on: [$0241]
+      typical_delay_ms: 1500
+      notes: "Engine ECM at $0241 returns responsePending on $0641 before
+              the actual SF frames on $0541 arrive. ~1.3s wait."
+    timeout_ms: 2500
+
+# DTC status byte (byte 4) interpretation per GMW3110 §9.3.
+status_bits:
+  0x01: active_failure_this_drive_cycle
+  0x02: test_failed_since_last_clear
+  0x04: test_passed_since_last_clear
+  0x08: pending_dtc_awaiting_confirmation
+  0x10: confirmed_dtc_stored
+  0x20: mil_request
+  0x40: warning_indicator_request
+  0x80: dtc_availability_for_export
+
+# Observed bench responses (full snapshot from this capture):
+observed_responses:
+  pass_1_mask_12:
+    $024B/$054B:
+      dtcs:
+        - { code: "B8 32 45", status: 0x13 }   # active + test-failed + confirmed
+      terminator: "81 00 00 00 12 00 00 00"
+    $024A/$054A:
+      dtcs:
+        - { code: "B8 32 45", status: 0x13 }
+      terminator: "81 00 00 00 12 00 00 00"
+    $0248/$0548:
+      dtcs:
+        - { code: "B8 32 45", status: 0x13 }
+      terminator: "81 00 00 00 12 00 00 00"
+    $0243/$0543:
+      dtcs:
+        - { code: "B8 32 45", status: 0x13 }
+      terminator: "81 00 00 00 12 00 00 00"
+  pass_2_mask_10:
+    $0245/$0545:
+      dtcs:
+        - { code: "99 28 05", status: 0x5F, trailing: "ff ff ff" }
+        - { code: "A4 29 06", status: 0x5F, trailing: "ff ff ff" }
+        - { code: "82 60 06", status: 0x5F, trailing: "ff ff ff" }
+      terminator: "81 00 00 00 DF 00 03 FF"
+    $024F/$054F:
+      dtcs:
+        - { code: "90 01 46", status: 0x17 }
+        - { code: "A6 99 04", status: 0x17 }
+        - { code: "A5 75 04", status: 0x17 }
+        - { code: "A6 98 04", status: 0x17 }
+        - { code: "A5 25 04", status: 0x17 }
+        - { code: "B8 10 06", status: 0x17 }
+      terminator: "81 00 00 00 17 00 00 00"
+    $024D/$054D:
+      dtcs: []
+      terminator: "81 00 00 00 76 00 00 00"
+    $07E1/$05E9:
+      dtcs: []
+      terminator: "81 00 00 00 97"               # 5-byte frame — OBD-II framing
+    $0241/$0541:
+      dtcs: []
+      terminator: "81 00 00 00 17 00 00 00"
+      notes: "Returned `7F A9 78` responsePending on $0641 first; actual
+              terminator landed ~1.5s later on $0541. Engine ECM is slower
+              than body modules for DTC reads."
+
+dtc_byte_layout: |
+  GMW3110 §9 encodes DTCs as 3 bytes (Failure Type byte + 2-byte subtype):
+    byte 0[hi nibble]: SAE J2012 system letter (P=0, C=4, B=8, U=C; observed
+                       prefix shows up in high nibble: e.g. 0xB8 → 'B'8...)
+    byte 0[lo nibble] + byte 1: System ID
+    byte 2: Sub-type / failure mode
+  Example: `B8 32 45` → letter `B`, code `832`, failure type `45`.
+  Example: `82 60 06` → letter `B`, code `260`, failure type `06`.
+  Mapping back to SAE textual codes (B-, C-, U-, P-) requires the standard
+  SAE J2012 lookup, not vehicle-specific.
+
+addressing_caveat: |
+  Three address pairs in play for each ECU:
+    Request:        $024X
+    DTC reply (SF): $054X      ← single-frame DPID-style address
+    Diag reply:     $064X      ← used for responsePending and multi-frame
+
+  This is unusual — most UDS protocols put all responses on a single reply
+  CAN-ID. GMW3110's split between $054X (SF DTCs) and $064X (MF / NRC) is
+  a SAAB/GM specific routing choice. A client reading DTCs must subscribe
+  to BOTH reply addresses.
+
+notes: |
+  - The mask-0x12 pre-sweep covers only 4 body ECUs. Likely Tech2Win's
+    "quick scan" for actively-failing body codes before the comprehensive
+    confirmed-DTC pass. Unconfirmed by Tech2Win docs.
+  - On this bench: $0245 has 3 DTCs status 0x5F (very dirty — multiple bits
+    set including warning indicator). $024F has 6 DTCs status 0x17. Body
+    modules $0243/$0248/$024A/$024B all share DTC `B8 32 45` status 0x13 —
+    likely a shared bus/comm fault propagated across multiple ECUs.
+  - DTCs ARE NOT cleared by this workflow. Clearing is a separate command
+    (likely $14 ClearDiagnosticInformation, not yet captured).
+  - The 0x20 ReturnToNormalOperation prefix is operationally important —
+    skipping it leaves the ECU in whatever session was last entered, and
+    some ECUs reject $A9 in non-default session with NRC 0x22.
+
+open_questions:
+  - Whether mask 0x12 vs 0x10 selection is per-ECU-type or hardcoded
+    Tech2Win behavior — same vehicle, same Tech2Win launch chose mask
+    0x12 for exactly those 4 ECUs and mask 0x10 for everyone else.
+  - Whether the OBD-II $07E1 reply on $05E9 follows GMW3110 §9 framing
+    or ISO 14229 framing — observed terminator was 5 bytes, not 8.
+  - Whether `B8 32 45` is a SAAB-canonical "lost comm" code or
+    vehicle-specific. Cross-check against Trionic's DTC dictionary.
