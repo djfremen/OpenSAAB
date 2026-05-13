@@ -73,6 +73,8 @@ documentation is available elsewhere) or use Bojer's hosted service.
 | `commands/saab/check_codes_read_dtcs.yaml` | captured (full 17-ECU 2-pass DTC sweep via $A9 81, GMW3110 §9) |
 | `commands/saab/engine_me96_read_codes.yaml` | captured (single-ECU $07E0 read with mask 0x0C; 21 DTCs from a dirty ME9.6) |
 | `commands/saab/clear_codes_clear_dtcs.yaml` | captured (per-ECU $04 ClearDiagnosticInformation across 20 ECUs) |
+| `docs/saab_ecu_address_map_2026-05-13.md` | derived map of CAN-ID → physical module, cross-referencing bench DTCs vs z90.pl + Trionic |
+| `tools/decode_gmw3110_dtc.py` | GMW3110 §9 DTC decoder transcribed from Trionic's `GetDtcDescription` |
 | `workflows/saab/body_module_add.yaml` | end-to-end: unlock + pair-write loop for 5 ECUs (level $01, works offline) |
 | `workflows/saab/door_module_add_prerequisites.yaml` | end-to-end chain (1→7) for the SecurityAccess preflight that body-module operations require |
 

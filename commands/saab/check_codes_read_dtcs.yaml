@@ -93,39 +93,42 @@ status_bits:
 
 # Observed bench responses (full snapshot from this capture).
 # DTC names decoded via Trionic's algorithm — see dtc_byte_layout below.
+# Descriptions and z90-attributed ECU sourced from z90.pl/saab/dtc/
+# (model 9-3 9440 catalog), cross-referenced 2026-05-13.
+# Inferred CAN-ID → ECU mapping in protocol/saab_ecu_address_map.md.
 observed_responses:
   pass_1_mask_12:
-    $024B/$054B:
+    $024B/$054B:   # door module — see saab_ecu_address_map
       dtcs:
-        - { raw: "B8 32 45", code: "B3832-45", status: 0x13 }
+        - { raw: "B8 32 45", code: "B3832-45", status: 0x13, desc: "Information: Anti Pinch Not Learned" }
       terminator: "81 00 00 00 12 00 00 00"
-    $024A/$054A:
+    $024A/$054A:   # door module
       dtcs:
-        - { raw: "B8 32 45", code: "B3832-45", status: 0x13 }
+        - { raw: "B8 32 45", code: "B3832-45", status: 0x13, desc: "Information: Anti Pinch Not Learned" }
       terminator: "81 00 00 00 12 00 00 00"
-    $0248/$0548:
+    $0248/$0548:   # door module
       dtcs:
-        - { raw: "B8 32 45", code: "B3832-45", status: 0x13 }
+        - { raw: "B8 32 45", code: "B3832-45", status: 0x13, desc: "Information: Anti Pinch Not Learned" }
       terminator: "81 00 00 00 12 00 00 00"
-    $0243/$0543:
+    $0243/$0543:   # door module
       dtcs:
-        - { raw: "B8 32 45", code: "B3832-45", status: 0x13 }
+        - { raw: "B8 32 45", code: "B3832-45", status: 0x13, desc: "Information: Anti Pinch Not Learned" }
       terminator: "81 00 00 00 12 00 00 00"
   pass_2_mask_10:
-    $0245/$0545:
+    $0245/$0545:   # ACC / seat heating — z90 attribution
       dtcs:
-        - { raw: "99 28 05", code: "B1928-05", status: 0x5F, trailing: "ff ff ff" }
-        - { raw: "A4 29 06", code: "B2429-06", status: 0x5F, trailing: "ff ff ff" }
-        - { raw: "82 60 06", code: "B0260-06", status: 0x5F, trailing: "ff ff ff" }
+        - { raw: "99 28 05", code: "B1928-05", status: 0x5F, desc: "Seat Temperature Sensor Left Circuit, Open/Short to B+", trailing: "ff ff ff" }
+        - { raw: "A4 29 06", code: "B2429-06", status: 0x5F, desc: "Seat Heating Left Circuit, Open", trailing: "ff ff ff" }
+        - { raw: "82 60 06", code: "B0260-06", status: 0x5F, desc: "(not in z90 9-3 2009 catalog — possibly seat-related, B0260 family)", trailing: "ff ff ff" }
       terminator: "81 00 00 00 DF 00 03 FF"
-    $024F/$054F:
+    $024F/$054F:   # UEC (User Equipment Center) — front lighting controller
       dtcs:
-        - { raw: "90 01 46", code: "B1001-46", status: 0x17 }
-        - { raw: "A6 99 04", code: "B2699-04", status: 0x17 }
-        - { raw: "A5 75 04", code: "B2575-04", status: 0x17 }
-        - { raw: "A6 98 04", code: "B2698-04", status: 0x17 }
-        - { raw: "A5 25 04", code: "B2525-04", status: 0x17 }
-        - { raw: "B8 10 06", code: "B3810-06", status: 0x17 }
+        - { raw: "90 01 46", code: "B1001-46", status: 0x17, desc: "Control Module not Added" }
+        - { raw: "A6 99 04", code: "B2699-04", status: 0x17, desc: "Low Beam Right Circuit, Open" }
+        - { raw: "A5 75 04", code: "B2575-04", status: 0x17, desc: "Low Beam Left Circuit, Open" }
+        - { raw: "A6 98 04", code: "B2698-04", status: 0x17, desc: "Fog Light Front Right Circuit, Open" }
+        - { raw: "A5 25 04", code: "B2525-04", status: 0x17, desc: "Fog Light Front Left Circuit, Open" }
+        - { raw: "B8 10 06", code: "B3810-06", status: 0x17, desc: "Head Lamp Washer Relay Circuit, Open/Short to Ground" }
       terminator: "81 00 00 00 17 00 00 00"
     $024D/$054D:
       dtcs: []

@@ -33,27 +33,37 @@ steps:
 # All 22 frames captured from this single request. Status byte interpretation
 # follows GMW3110 §9.3 — see commands/saab/check_codes_read_dtcs.yaml#status_bits.
 observed_dtcs:
-  - { raw: "C0 01 00", code: "U0001-00", status: 0x19, note: "high speed CAN comm bus" }
-  - { raw: "C1 22 00", code: "U0122-00", status: 0x19, note: "lost comm with VDIM (Vehicle Dynamics Integration Module)" }
-  - { raw: "C2 12 00", code: "U0212-00", status: 0x19, note: "lost comm with steering column control module" }
-  - { raw: "C1 55 00", code: "U0155-00", status: 0x25, note: "lost comm with IPC (occurrence 1)" }
-  - { raw: "C1 55 00", code: "U0155-00", status: 0x25, note: "lost comm with IPC (occurrence 2 — duplicate frame)" }
-  - { raw: "06 26 00", code: "P0626-00", status: 0x25, note: "generator field terminal circuit high" }
-  - { raw: "06 25 00", code: "P0625-00", status: 0x25, note: "generator field terminal circuit low" }
-  - { raw: "04 20 00", code: "P0420-00", status: 0x25, note: "catalyst system efficiency below threshold" }
-  - { raw: "02 34 00", code: "P0234-00", status: 0x25, note: "turbo overboost condition" }
-  - { raw: "02 99 00", code: "P0299-00", status: 0x25, note: "turbo underboost condition" }
-  - { raw: "06 96 00", code: "P0696-00", status: 0x25, note: "5V reference C circuit low" }
-  - { raw: "06 95 00", code: "P0695-00", status: 0x25, note: "5V reference C circuit high (paired w/ P0696)" }
-  - { raw: "04 82 00", code: "P0482-00", status: 0x25, note: "cooling fan 3 control circuit" }
-  - { raw: "20 97 00", code: "P2097-00", status: 0x25, note: "post catalyst fuel trim system rich (bank 1)" }
-  - { raw: "20 96 00", code: "P2096-00", status: 0x25, note: "post catalyst fuel trim system lean (bank 1)" }
-  - { raw: "21 96 00", code: "P2196-00", status: 0x25, note: "O2 sensor signal stuck rich (bank 1 sensor 1)" }
-  - { raw: "21 95 00", code: "P2195-00", status: 0x25, note: "O2 sensor signal stuck lean (bank 1 sensor 1)" }
-  - { raw: "04 11 00", code: "P0411-00", status: 0xBF, note: "secondary air system incorrect flow — HEAVIEST status (all bits + cal-supported)" }
-  - { raw: "C1 22 00", code: "U0122-00", status: 0x3F, note: "lost comm with VDIM (re-appears with fuller status — distinct entry)" }
-  - { raw: "05 00 00", code: "P0500-00", status: 0x09, note: "vehicle speed sensor — only active + cal-supported, no MIL yet" }
+  # Descriptions sourced from z90.pl/saab/dtc/ — community SAAB DTC reference
+  # (model 9-3 9440, MY 2009). Cross-referenced 2026-05-13.
+  - { raw: "C0 01 00", code: "U0001-00", status: 0x19, desc: "TCM was Missing on Bus" }
+  - { raw: "C1 22 00", code: "U0122-00", status: 0x19, desc: "ESP Missing on BUS" }
+  - { raw: "C2 12 00", code: "U0212-00", status: 0x19, desc: "CIM Missing on BUS" }
+  - { raw: "C1 55 00", code: "U0155-00", status: 0x25, desc: "MIU Missing on BUS (occurrence 1)" }
+  - { raw: "C1 55 00", code: "U0155-00", status: 0x25, desc: "MIU Missing on BUS (occurrence 2)" }
+  - { raw: "06 26 00", code: "P0626-00", status: 0x25, desc: "Generator F terminal Circuit, Short to B+" }
+  - { raw: "06 25 00", code: "P0625-00", status: 0x25, desc: "Generator F terminal Circuit, Open/Short to Ground" }
+  - { raw: "04 20 00", code: "P0420-00", status: 0x25, desc: "Three Way Catalytic Converter. Malfunction." }
+  - { raw: "02 34 00", code: "P0234-00", status: 0x25, desc: "Turbocharger Overboost Detected" }
+  - { raw: "02 99 00", code: "P0299-00", status: 0x25, desc: "Turbocharger Underboost Detected" }
+  - { raw: "06 96 00", code: "P0696-00", status: 0x25, desc: "Cooling Fan 3 Control Circuit, Short to B+" }
+  - { raw: "06 95 00", code: "P0695-00", status: 0x25, desc: "Cooling Fan 3 Control Circuit, Open/Short to Ground" }
+  - { raw: "04 82 00", code: "P0482-00", status: 0x25, desc: "Cooling Fan 3 Control Circuit, Open" }
+  - { raw: "20 97 00", code: "P2097-00", status: 0x25, desc: "Post Catalyst Fuel Trim System, High Limit Bank 1" }
+  - { raw: "20 96 00", code: "P2096-00", status: 0x25, desc: "Post Catalyst Fuel Trim System, Low Limit Bank 1" }
+  - { raw: "21 96 00", code: "P2196-00", status: 0x25, desc: "Short Term Fuel Trim. Min Value, Air/Fuel too Rich." }
+  - { raw: "21 95 00", code: "P2195-00", status: 0x25, desc: "Short Term Fuel Trim. Max Value, Air/Fuel too Lean." }
+  - { raw: "04 11 00", code: "P0411-00", status: 0xBF, desc: "Secondary Air Injection System. Incorrect Airflow. — HEAVIEST status (all bits + warning indicator)" }
+  - { raw: "C1 22 00", code: "U0122-00", status: 0x3F, desc: "ESP Missing on BUS (re-appears with fuller status — distinct entry)" }
+  - { raw: "05 00 00", code: "P0500-00", status: 0x09, desc: "Vehicle Speed. Incorrect Signal. — only active + cal-supported, no MIL yet" }
 terminator: "81 00 00 00 FF 00 00 00"
+
+clinical_picture: |
+  Reading these together: the engine has been losing comm with TCM, ESP,
+  CIM, and MIU — bus dropouts. On top of that, multiple paired pin-fault
+  codes (P0625/P0626 alternator, P0695/P0696 cooling fan 3 circuit) suggest
+  wiring trouble in the engine-bay harness. P0234/P0299 paired indicates
+  the turbo control loop is unstable. P0411 (secondary air) is the only
+  DTC currently requesting MIL.
 
 dtc_byte_layout: |
   Same algorithm as check_codes_read_dtcs.yaml — transcribed from
