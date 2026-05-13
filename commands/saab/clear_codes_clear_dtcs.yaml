@@ -1,0 +1,126 @@
+menu: "Diagnostic → Clear Codes"
+target_ecu: "ALL ECUs on bus — sweep across SAAB manufacturer-alias addresses
+             ($024X with reply on $064X) plus OBD-II ($07E0 / $07E8). Body
+             modules typically all listed; engine ECUs included."
+captured_from:
+  shim_log: cstech2win_shim_20260513-115320.log
+  range_ms: [139500, 158000]
+  vehicle_profile: SAAB 9-3 (field car, 2009-2011 ME9.6, VIN prefix YS3FH46U…)
+status: captured (20 ECUs cleared in one sweep)
+services:
+  - 0x04  # ClearDiagnosticInformation (GMW3110 §10.4)
+    # No subfunction. The single-byte $04 request clears ALL DTCs the
+    # ECU has stored. There is no per-DTC selectivity in this service.
+
+# Per-ECU sweep order observed on the bench. Tech2Win iterates one $04 at a
+# time — does not use functional broadcast.
+ecus_in_order:
+  - $0245
+  - $0249
+  - $0242
+  - $0245   # second pass on same ECU — see notes
+  - $0241
+  - $0243
+  - $0244
+  - $0246
+  - $025D
+  - $0248
+  - $0249
+  - $024A
+  - $024B
+  - $025B
+  - $024D
+  - $0243   # second pass — possibly retry
+  - $025F
+  - $024F
+  - $0253
+  - $0241   # second pass on engine — confirmed clear
+
+per_ecu_steps:
+  - step: 1_clear_request
+    tx: [0x04]
+    can_id: ${ECU}
+    timeout_ms: 1500
+    notes: |
+      Single-byte ClearDiagnosticInformation request. The ECM acknowledges
+      after it has finished erasing — typical 100-300ms per body module,
+      occasionally up to ~1.4s on engine ECMs.
+
+  - step: 2_response
+    rx_can_id: ${ECU + 0x400}    # e.g. $0241 → $0641; $07E0 → $07E8
+    response_pending:
+      pattern: [0x7F, 0x04, 0x78]
+      common: true
+      notes: |
+        Most ECUs send `7F 04 78` first, then the positive `44` once the
+        clear completes. Treat 0x78 as normal-during-busy; do not retry
+        until you've waited the full timeout.
+    positive_response: [0x44]    # SID + 0x40 = positive ack
+    negative_response_codes:
+      0x22: conditionsNotCorrect   # not seen here, but spec-likely if
+                                   # ECU is in a session that forbids clear
+      0x33: securityAccessDenied   # spec-likely if a security level is
+                                   # required (not observed on this bench)
+
+# Bench observations from the captured sweep:
+observed_responses:
+  $0245/$0645:
+    - "[139554ms] TX 04 → [139673ms] RX 7F 04 78 → [139793ms] RX 44   (~239 ms)"
+  $0249/$0649:
+    - "[140304ms] TX 04 → [140320ms] RX 7F 04 78 → [142174ms] RX 44   (~1870 ms)"
+  $0242/$0642:
+    - "[142365ms] TX 04 → [142400ms] RX 44   (immediate, no pending)"
+  $0241/$0641:
+    - "[143360ms] TX 04 → [143447ms] RX 7F 04 78 → [143714ms] RX 44   (~354 ms)"
+  $0243/$0643:
+    - "[143899ms] TX 04 → [143932ms] RX 44   (immediate)"
+  $0246/$0646:
+    - "[144316ms] TX 04 → [144335ms] RX 44   (immediate)"
+  $024D/$064D:
+    - "[146258ms] TX 04 → [146289ms] RX 7F 04 78 → [147108ms] RX 44   (~850 ms)"
+  $07E0/$07E8:
+    - "[148428ms] TX 04 → [148666ms] RX 44   (~238 ms; OBD-II clear of ME9.6 engine)"
+
+session_close: |
+  No explicit $20 (ReturnToNormalOperation) observed after the sweep.
+  Tech2Win moves to the next menu without an explicit session teardown;
+  the diagnostic session lapses on TesterPresent timeout.
+
+ordering_caveat: |
+  Observed sweep order is NOT the canonical ECU enumeration. Tech2Win
+  appears to issue clears as the user progresses through whatever
+  internal model orders these — possibly ECU detection order from the
+  preceding A9 sweep, possibly a static config table. A few ECUs ($0245,
+  $0249, $0243, $0241) get cleared TWICE in the same sweep without an
+  intervening write — likely a Tech2Win retry pass to handle the slower
+  responders, but unconfirmed.
+
+notes: |
+  - Clear is global per ECU — there's no way via $04 alone to clear
+    one specific DTC. To clear selectively, the ECU must support
+    $14 ClearDiagnosticInformation with a DTC-mask sub-payload (ISO
+    14229), which GMW3110 does not standardise.
+  - This sweep ran AFTER an A9 read sweep + ME9.6 dedicated read in
+    the same Tech2Win session. State changes from clear are visible by
+    re-running check_codes_read_dtcs.yaml after this entry.
+  - Engine ECMs ($0241 SAAB-alias, $07E0 OBD-II) take noticeably longer
+    to clear than body modules. Allow at least 2s per ECU in any
+    automated client.
+  - Several ECUs returned `7F 04 78` (responsePending) before the
+    positive `44` — clients must NOT treat `7F 04 78` as a failure.
+  - Tech2Win's "Clear Codes" menu is destructive — DTC history is
+    wiped from each ECU. Capture DTCs first via check_codes_read_dtcs
+    or engine_me96_read_codes if you want to preserve the snapshot.
+
+open_questions:
+  - Whether Tech2Win prefilters which ECUs to clear (e.g. only those that
+    returned DTCs in the preceding A9 sweep) or always sweeps the full
+    bus. This capture's ECU list is similar but NOT identical to the
+    preceding A9 sweep — needs comparison.
+  - Whether the duplicate-clear pattern ($0245, $0249, $0243, $0241 each
+    appear twice) is retry logic or two separate ECU instances at the
+    same alias.
+  - Whether some ECUs need a security-access level before $04 will
+    succeed. Bench captures show no L01 unlock immediately preceding
+    this sweep, and all clears succeeded — so for these ECUs at least,
+    $04 is permitted in default session.
