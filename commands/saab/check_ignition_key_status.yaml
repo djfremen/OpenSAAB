@@ -1,0 +1,136 @@
+menu: "Diagnostic → Body → CIM → Check Ignition Key Status"
+target_ecu: $0241/$0641   # Tech2Win manufacturer alias; canonical Jason
+                          # Gaunt 2013 label for $0241 is TO_BCM.
+                          # Reply DPID frames arrive on $0541.
+captured_from:
+  shim_log: cstech2win_shim_20260513-113205.log
+  range_ms: [0, 8000]
+  vehicle_profile: SAAB 9-3 (bench, 2017)
+status: captured
+services:
+  - 0x1A  # ReadDataByIdentifier — software version handshake
+  - 0xAE  # DeviceControl — init + request-key-status
+  - 0xAA  # ReadDataByPacketIdentifier — DPID polls (key status + context)
+
+# Tech2Win runs this sequence with no SecurityAccess. DeviceControl 0xAE
+# and ReadDataByPacketIdentifier 0xAA are pre-authorised at session start;
+# no $27 unlock precedes the menu action.
+steps:
+  - step: 1_read_software_version
+    tx: [0x1A, 0x9A]
+    can_id: $0241
+    rx_pos_prefix: [0x5A, 0x9A]
+    rx_example: "5A 9A 03 04"
+    timeout_ms: 1500
+    notes: |
+      Sanity-handshake before the workflow proper. The 2-byte payload
+      0x03 0x04 also shows up in cim_info_read.yaml under DID 0x9A
+      ("sas_algo_tape_head"); same field, re-read here as a liveness check.
+
+  - step: 2_device_control_init
+    tx: [0xAE, 0x01, 0x01]
+    can_id: $0241
+    rx_pos: [0xEE, 0x01]
+    timeout_ms: 1500
+    notes: "DeviceControl DCID=0x01 sub=0x01 — workflow init / mode select."
+
+  - step: 3_subscribe_dpid_01
+    tx: [0xAA, 0x01, 0x01]
+    can_id: $0241
+    ack_pattern: [0x7F, 0xAA, 0x78]   # responsePending (normal)
+    data_frame:
+      can_id: $0541
+      starts_with: [0x01]
+      example: "01 79 06 02 02 FD 04 FC"
+    timeout_ms: 1500
+    notes: |
+      Single-shot DPID poll (mode 0x01). The ECM replies once on $0541
+      with the DPID echo (0x01) + 7 payload bytes. Same idle/context
+      DPID Tech2Win uses elsewhere — content is engine-state telemetry.
+
+  - step: 4_device_control_request_key_status
+    tx: [0xAE, 0x03, 0x02]
+    can_id: $0241
+    rx_pos: [0xEE, 0x03]
+    timeout_ms: 2000
+    notes: |
+      DeviceControl DCID=0x03 sub=0x02 — request the ECM compute / refresh
+      its key-status snapshot. May emit `7F AE 78` (responsePending) before
+      the positive `EE 03`; allow ~600 ms.
+
+  - step: 5_read_dpid_0B_key_status
+    tx: [0xAA, 0x01, 0x0B]
+    can_id: $0241
+    ack_pattern: [0x7F, 0xAA, 0x78]
+    data_frame:
+      can_id: $0541
+      starts_with: [0x0B]
+      length: 8
+      example: "0B 43 80 F7 01 00 00 00"
+    timeout_ms: 1500
+    interpretation: |
+      Byte 0 = DPID echo (0x0B).
+      Bytes 1..2 = status / flag pair. Observed `43 80`. Bit-meaning TBD;
+        diff against a `no key inserted` and a `valid key inserted` run
+        to lock down.
+      Bytes 3..4 = paired-key ID / transponder code. Observed `F7 01`.
+      Bytes 5..7 = reserved / zero. Observed `00 00 00`.
+
+  - step: 6_read_dpid_08_context
+    tx: [0xAA, 0x01, 0x08]
+    can_id: $0241
+    ack_pattern: [0x7F, 0xAA, 0x78]
+    data_frame:
+      can_id: $0541
+      starts_with: [0x08]
+      length: 8
+      example: "08 00 00 00 00 00 18 00"
+    timeout_ms: 1500
+    notes: "Context DPID. Decoding TBD."
+
+  - step: 7_read_dpid_06_context
+    tx: [0xAA, 0x01, 0x06]
+    can_id: $0241
+    ack_pattern: [0x7F, 0xAA, 0x78]
+    data_frame:
+      can_id: $0541
+      starts_with: [0x06]
+      length: 8
+      example: "06 0F 00 1F 00 00 00 00"
+    timeout_ms: 1500
+    notes: "Context DPID. Decoding TBD."
+
+addressing_caveat: |
+  Same $0241 vs $0245 question as cim_info_read.yaml:
+
+   1. Tech2Win uses $0241 (manufacturer alias) for this menu — actual
+      key-pairing physical module is the CIM, canonically at $0245
+      per Trionic's FilterIdCIM.
+   2. Could be Tech2Win routing through the engine-diag gateway, or
+      could be that key-status data is stored at the BCM/engine ECU
+      address and propagated by an internal bus.
+
+  To disambiguate: re-send `AA 01 0B` to $0245 in a follow-up capture and
+  compare the response. Identical → gateway routing. Different / no
+  reply → $0241 owns this data block.
+
+notes: |
+  - This is a pure-read workflow; safe to repeat indefinitely.
+  - The 3 trailing DPID polls (0x01 / 0x08 / 0x06) may be Tech2Win
+    refreshing its on-screen context panels rather than part of the
+    key-status read proper. The key-status payload itself is DPID 0x0B.
+  - Captured on a fully L01-unlocked session (preceded by
+    security_access_l01_unlock + an engine $27 01 → $27 02 round earlier
+    in the same Tech2Win launch). Whether this workflow needs L01 unlock
+    is untested — re-run on a fresh session without L01 to confirm.
+  - The Tech2 service menu surfaces this read alongside "Add Key" and
+    "Remove Key"; pairing those captures will give a clean view of the
+    full key-management state machine.
+
+open_questions:
+  - DPID 0x0B byte-layout (bytes 1..4 flags vs key-id).
+  - Whether 0x08 / 0x06 are part of this workflow or generic context.
+  - Whether `AE 01 01` is a workflow-specific init or a general
+    pre-authorisation Tech2Win does for any DeviceControl session.
+  - Whether L01 SecurityAccess is required or this works on a cold
+    session.
