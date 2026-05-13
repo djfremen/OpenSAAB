@@ -28,6 +28,22 @@ tools/      Small scripts that don't depend on copyleft libraries.
 docs/       Bench capture workflow, vehicle profiles, glossary.
 ```
 
+## Editorial principle
+
+`protocol/` describes **canonical sources** with citations (Jason Gaunt
+2013, Trionic, GMW3110, etc.). `commands/` describes **bench
+observations** — what bytes flowed when. We don't editorially bridge the
+two: if a bench observation suggests routing or aliasing not in any
+canonical source, that goes in the relevant `commands/` entry as an
+open question, not smuggled into the protocol reference. See
+[`docs/feedback_bojer_2026-05-12.md`](docs/feedback_bojer_2026-05-12.md)
+for what prompted this.
+
+Architecturally, the design direction is a transport-abstracted GMLAN
+library — the protocol layer should not care whether bytes flow over
+slcan, J2534, Chipsoft USB, or anything else. Per Bojer's framing:
+*"With gmlan you will get to see whats going on."*
+
 ## What's NOT here
 
 By design, this repo doesn't ship:
