@@ -79,51 +79,53 @@ per_ecu_steps:
               the actual SF frames on $0541 arrive. ~1.3s wait."
     timeout_ms: 2500
 
-# DTC status byte (byte 4) interpretation per GMW3110 §9.3.
+# DTC status byte (byte 4) interpretation per GMW3110 §9.3, transcribed
+# from Trionic8.cs:GetDtcDescription comments (lines 4669-4676).
 status_bits:
-  0x01: active_failure_this_drive_cycle
-  0x02: test_failed_since_last_clear
-  0x04: test_passed_since_last_clear
-  0x08: pending_dtc_awaiting_confirmation
-  0x10: confirmed_dtc_stored
-  0x20: mil_request
-  0x40: warning_indicator_request
-  0x80: dtc_availability_for_export
+  0x01: DTCSupportedByCalibration
+  0x02: currentDTC                       # active right now
+  0x04: testNotPassedSinceDTCCleared
+  0x08: testFailedSinceDTCCleared
+  0x10: historyDTC                       # stored in EEPROM
+  0x20: testNotPassedSinceCurrentPowerUp
+  0x40: currentDTCSincePowerUp
+  0x80: warningIndicatorRequestedState   # MIL request
 
-# Observed bench responses (full snapshot from this capture):
+# Observed bench responses (full snapshot from this capture).
+# DTC names decoded via Trionic's algorithm — see dtc_byte_layout below.
 observed_responses:
   pass_1_mask_12:
     $024B/$054B:
       dtcs:
-        - { code: "B8 32 45", status: 0x13 }   # active + test-failed + confirmed
+        - { raw: "B8 32 45", code: "B3832-45", status: 0x13 }
       terminator: "81 00 00 00 12 00 00 00"
     $024A/$054A:
       dtcs:
-        - { code: "B8 32 45", status: 0x13 }
+        - { raw: "B8 32 45", code: "B3832-45", status: 0x13 }
       terminator: "81 00 00 00 12 00 00 00"
     $0248/$0548:
       dtcs:
-        - { code: "B8 32 45", status: 0x13 }
+        - { raw: "B8 32 45", code: "B3832-45", status: 0x13 }
       terminator: "81 00 00 00 12 00 00 00"
     $0243/$0543:
       dtcs:
-        - { code: "B8 32 45", status: 0x13 }
+        - { raw: "B8 32 45", code: "B3832-45", status: 0x13 }
       terminator: "81 00 00 00 12 00 00 00"
   pass_2_mask_10:
     $0245/$0545:
       dtcs:
-        - { code: "99 28 05", status: 0x5F, trailing: "ff ff ff" }
-        - { code: "A4 29 06", status: 0x5F, trailing: "ff ff ff" }
-        - { code: "82 60 06", status: 0x5F, trailing: "ff ff ff" }
+        - { raw: "99 28 05", code: "B1928-05", status: 0x5F, trailing: "ff ff ff" }
+        - { raw: "A4 29 06", code: "B2429-06", status: 0x5F, trailing: "ff ff ff" }
+        - { raw: "82 60 06", code: "B0260-06", status: 0x5F, trailing: "ff ff ff" }
       terminator: "81 00 00 00 DF 00 03 FF"
     $024F/$054F:
       dtcs:
-        - { code: "90 01 46", status: 0x17 }
-        - { code: "A6 99 04", status: 0x17 }
-        - { code: "A5 75 04", status: 0x17 }
-        - { code: "A6 98 04", status: 0x17 }
-        - { code: "A5 25 04", status: 0x17 }
-        - { code: "B8 10 06", status: 0x17 }
+        - { raw: "90 01 46", code: "B1001-46", status: 0x17 }
+        - { raw: "A6 99 04", code: "B2699-04", status: 0x17 }
+        - { raw: "A5 75 04", code: "B2575-04", status: 0x17 }
+        - { raw: "A6 98 04", code: "B2698-04", status: 0x17 }
+        - { raw: "A5 25 04", code: "B2525-04", status: 0x17 }
+        - { raw: "B8 10 06", code: "B3810-06", status: 0x17 }
       terminator: "81 00 00 00 17 00 00 00"
     $024D/$054D:
       dtcs: []
@@ -139,15 +141,24 @@ observed_responses:
               than body modules for DTC reads."
 
 dtc_byte_layout: |
-  GMW3110 §9 encodes DTCs as 3 bytes (Failure Type byte + 2-byte subtype):
-    byte 0[hi nibble]: SAE J2012 system letter (P=0, C=4, B=8, U=C; observed
-                       prefix shows up in high nibble: e.g. 0xB8 → 'B'8...)
-    byte 0[lo nibble] + byte 1: System ID
-    byte 2: Sub-type / failure mode
-  Example: `B8 32 45` → letter `B`, code `832`, failure type `45`.
-  Example: `82 60 06` → letter `B`, code `260`, failure type `06`.
-  Mapping back to SAE textual codes (B-, C-, U-, P-) requires the standard
-  SAE J2012 lookup, not vehicle-specific.
+  Algorithm transcribed from mattiasclaesson/Trionic
+  TrionicCANLib/Trionic8.cs:GetDtcDescription (lines 4635-4678):
+
+    byte 1 bits 7-6  →  letter      (0=P, 1=C, 2=B, 3=U)
+    byte 1 bits 5-4  →  digit_2     (decimal 0-3)
+    byte 1 bits 3-0  →  digit_3     (hex 0-F)
+    byte 2 high nib  →  digit_4     (hex 0-F)
+    byte 2 low nib   →  digit_5     (hex 0-F)
+    byte 3           →  failureType (printed as 2-digit hex suffix)
+
+  Worked examples (all from this capture):
+    `B8 32 45` → (2,3,8,3,2) + 0x45 → B3832-45  (body code, fault subtype 45)
+    `82 60 06` → (2,0,2,6,0) + 0x06 → B0260-06
+    `99 28 05` → (2,1,9,2,8) + 0x05 → B1928-05
+    `04 20 00` → (0,0,4,2,0) + 0x00 → P0420-00  (powertrain — catalyst eff)
+    `C1 22 00` → (3,0,1,2,2) + 0x00 → U0122-00  (network — lost comm w/ VDIM)
+
+  Decoder script: tools/decode_gmw3110_dtc.py.
 
 addressing_caveat: |
   Three address pairs in play for each ECU:

@@ -33,36 +33,46 @@ steps:
 # All 22 frames captured from this single request. Status byte interpretation
 # follows GMW3110 §9.3 — see commands/saab/check_codes_read_dtcs.yaml#status_bits.
 observed_dtcs:
-  - { code: "C0 01 00", status: 0x19, sae_textual: "C0001-00 (likely)" }
-  - { code: "C1 22 00", status: 0x19, sae_textual: "C1122-00" }
-  - { code: "C2 12 00", status: 0x19, sae_textual: "C2120-00" }
-  - { code: "C1 55 00", status: 0x25, sae_textual: "C1550-00 (occurrence 1)" }
-  - { code: "C1 55 00", status: 0x25, sae_textual: "C1550-00 (occurrence 2 — duplicate frame, unclear why)" }
-  - { code: "06 26 00", status: 0x25, sae_textual: "P0626-00" }
-  - { code: "06 25 00", status: 0x25, sae_textual: "P0625-00" }
-  - { code: "04 20 00", status: 0x25, sae_textual: "P0420-00" }
-  - { code: "02 34 00", status: 0x25, sae_textual: "P0234-00" }
-  - { code: "02 99 00", status: 0x25, sae_textual: "P0299-00" }
-  - { code: "06 96 00", status: 0x25, sae_textual: "P0696-00" }
-  - { code: "06 95 00", status: 0x25, sae_textual: "P0695-00" }
-  - { code: "04 82 00", status: 0x25, sae_textual: "P0482-00" }
-  - { code: "20 97 00", status: 0x25, sae_textual: "P2097-00" }
-  - { code: "20 96 00", status: 0x25, sae_textual: "P2096-00" }
-  - { code: "21 96 00", status: 0x25, sae_textual: "P2196-00" }
-  - { code: "21 95 00", status: 0x25, sae_textual: "P2195-00" }
-  - { code: "04 11 00", status: 0xBF, sae_textual: "P0411-00 (heaviest — all status bits + availability)" }
-  - { code: "C1 22 00", status: 0x3F, sae_textual: "C1122-00 (re-appears with full status — duplicate?)" }
-  - { code: "05 00 00", status: 0x09, sae_textual: "P0500-00 (active + pending only — no MIL yet)" }
+  - { raw: "C0 01 00", code: "U0001-00", status: 0x19, note: "high speed CAN comm bus" }
+  - { raw: "C1 22 00", code: "U0122-00", status: 0x19, note: "lost comm with VDIM (Vehicle Dynamics Integration Module)" }
+  - { raw: "C2 12 00", code: "U0212-00", status: 0x19, note: "lost comm with steering column control module" }
+  - { raw: "C1 55 00", code: "U0155-00", status: 0x25, note: "lost comm with IPC (occurrence 1)" }
+  - { raw: "C1 55 00", code: "U0155-00", status: 0x25, note: "lost comm with IPC (occurrence 2 — duplicate frame)" }
+  - { raw: "06 26 00", code: "P0626-00", status: 0x25, note: "generator field terminal circuit high" }
+  - { raw: "06 25 00", code: "P0625-00", status: 0x25, note: "generator field terminal circuit low" }
+  - { raw: "04 20 00", code: "P0420-00", status: 0x25, note: "catalyst system efficiency below threshold" }
+  - { raw: "02 34 00", code: "P0234-00", status: 0x25, note: "turbo overboost condition" }
+  - { raw: "02 99 00", code: "P0299-00", status: 0x25, note: "turbo underboost condition" }
+  - { raw: "06 96 00", code: "P0696-00", status: 0x25, note: "5V reference C circuit low" }
+  - { raw: "06 95 00", code: "P0695-00", status: 0x25, note: "5V reference C circuit high (paired w/ P0696)" }
+  - { raw: "04 82 00", code: "P0482-00", status: 0x25, note: "cooling fan 3 control circuit" }
+  - { raw: "20 97 00", code: "P2097-00", status: 0x25, note: "post catalyst fuel trim system rich (bank 1)" }
+  - { raw: "20 96 00", code: "P2096-00", status: 0x25, note: "post catalyst fuel trim system lean (bank 1)" }
+  - { raw: "21 96 00", code: "P2196-00", status: 0x25, note: "O2 sensor signal stuck rich (bank 1 sensor 1)" }
+  - { raw: "21 95 00", code: "P2195-00", status: 0x25, note: "O2 sensor signal stuck lean (bank 1 sensor 1)" }
+  - { raw: "04 11 00", code: "P0411-00", status: 0xBF, note: "secondary air system incorrect flow — HEAVIEST status (all bits + cal-supported)" }
+  - { raw: "C1 22 00", code: "U0122-00", status: 0x3F, note: "lost comm with VDIM (re-appears with fuller status — distinct entry)" }
+  - { raw: "05 00 00", code: "P0500-00", status: 0x09, note: "vehicle speed sensor — only active + cal-supported, no MIL yet" }
 terminator: "81 00 00 00 FF 00 00 00"
 
 dtc_byte_layout: |
-  Same GMW3110 §9 encoding as check_codes_read_dtcs.yaml. Quick reminder:
-    Byte 0 high nibble  → SAE letter (0=P, 4=C, 8=B, C=U)
-    Byte 0 low nibble + byte 1  → 3-digit system code
-    Byte 2             → failure mode / sub-type
+  Same algorithm as check_codes_read_dtcs.yaml — transcribed from
+  Trionic8.cs:GetDtcDescription:
 
-  Example: `04 20 00` → letter 'P' (high nibble 0), code 0420, sub 00 → P0420-00.
-  Example: `C1 22 00` → letter 'C' (high nibble C=12), code 1122, sub 00 → C1122-00.
+    byte 1 bits 7-6  →  letter      (0=P, 1=C, 2=B, 3=U)
+    byte 1 bits 5-4  →  digit_2     (decimal 0-3)
+    byte 1 bits 3-0  →  digit_3     (hex 0-F)
+    byte 2 high nib  →  digit_4     (hex 0-F)
+    byte 2 low nib   →  digit_5     (hex 0-F)
+    byte 3           →  failureType (printed as 2-digit hex suffix)
+
+  Worked examples (this capture):
+    `04 20 00` → (0,0,4,2,0)+0x00 → P0420-00  (catalyst efficiency)
+    `C1 22 00` → (3,0,1,2,2)+0x00 → U0122-00  (NOT C1122 — high 2 bits of
+                                              byte 1 = 0xC0 >> 6 = 3 = 'U')
+    `21 96 00` → (0,2,1,9,6)+0x00 → P2196-00  (O2 sensor stuck)
+
+  Decoder script: tools/decode_gmw3110_dtc.py.
 
 addressing_split: |
   ME9.6 engine ECU uses OBD-II standardised addressing, distinct from the
@@ -86,18 +96,20 @@ contrast_with_check_codes_yaml: |
     menu, unlike the bus-wide Check Codes flow which resets each ECU.
 
 notes: |
-  - This is a *dirty* engine — 21 unique DTCs returned. Several have
-    status 0x25 (test_passed_since_clear | mil_request | active),
-    suggesting the codes are stored but the MIL is not currently
-    commanded ON for them.
-  - Two frames carry the same `C1 55 00` payload — possibly an artefact
-    of the ECM's DTC table having both a "fresh" and "history" copy of
-    the same code. Could also be a shim duplicate; cross-check against a
-    second capture.
-  - `04 11 00` (P0411 — secondary air system) has the highest status
-    (0xBF = full bitfield) — that one is the most "alarmed" DTC.
-  - SAE J2012 textual decoding above is best-effort; verify against the
-    Trionic DTC dictionary or ME9.6 calibration before relying on names.
+  - This is a *dirty* engine — 21 unique DTCs returned. Most have status
+    0x25 = (testNotPassedSinceCurrentPowerUp | testNotPassedSinceDTCCleared
+    | DTCSupportedByCalibration). Codes are stored and were re-tested
+    (and failed) on the current power cycle.
+  - Two frames carry `C1 55 00` U0155-00 — most likely two distinct
+    historical entries the ECM exposes separately, not a shim duplicate.
+  - `P0411` (secondary air system) carries status 0xBF — every bit set
+    including `warningIndicatorRequestedState`. That's the only DTC
+    actively requesting MIL in this snapshot.
+  - DTC names decoded via Trionic's algorithm; failure-mode (sub-byte 3)
+    interpretation per SAE J2012 — best-effort labels in `note:` field.
+  - U-codes (U0001, U0122, U0155, U0212) all indicate lost-comm with
+    other modules — consistent with the ME9.6 having seen a bus dropout
+    or modules being offline at some point.
 
 open_questions:
   - Why mask 0x0C here specifically? Tech2Win could read 0x10 (confirmed)
