@@ -50,14 +50,22 @@ documentation is available elsewhere) or use Bojer's hosted service.
 | `commands/saab/security_access_sweep_l01.yaml` | captured (9-ECU SKA tuple harvest, full canonical slot order) |
 | `commands/saab/security_access_l01_unlock.yaml` | captured (full seed/key/ack cycle for 5 ECUs — body-module unlock) |
 | `commands/saab/engine_sas_unlock.yaml` | captured to seed; send-key bench-validated externally |
+| `commands/saab/engine_program_unlock_fd.yaml` | spec-only, Trionic-cited (level $FD for engine flashing) |
 | `commands/saab/module_pair_write.yaml` | captured (4-DID write of VIN + security-code prefix per module) |
 | `commands/saab/vin_read_did_3f.yaml` | captured (SAAB-extended VIN read on engine-diag gateway) |
 | `workflows/saab/body_module_add.yaml` | end-to-end: unlock + pair-write loop for 5 ECUs (level $01, works offline) |
 | `workflows/saab/door_module_add_prerequisites.yaml` | end-to-end chain (1→7) for the SecurityAccess preflight that body-module operations require |
 
-**Key distinction:** SAAB has two SecurityAccess levels:
-- **Level $01** — body modules (door, VIN, HVAC). Keys computable offline. Used by `body_module_add`.
-- **Level $0B** — engine ECU (programming, SAS). Keys require dealer SAS server OR local NativeVM RE. See `engine_sas_unlock`.
+**SAAB has four documented SecurityAccess levels** (see [`docs/audit_trionic_2026-05-12.md`](docs/audit_trionic_2026-05-12.md) for cross-validation against Trionic):
+
+| Level | Send-key | Purpose | Algorithm source |
+|---|---|---|---|
+| `$01` | `$02` | Body-module unlock (door, IPC, RFA, transmission) | NativeVM, per-ECU |
+| `$0B` | `$0C` | SAAB SAS / IMMO-specific (Tech2Win-only path) | Private NativeVM tape |
+| `$FB` | `$FC` | Mid-tier engine access | Hardcoded formula (Trionic) |
+| `$FD` | `$FE` | Engine reprogramming / flashing | Hardcoded formula (Trionic) |
+
+Engine ECU operations split: SAS/IMMO uses `$0B` at SAAB-manufacturer alias `$0241`; engine flashing uses `$FD` at OBD-II `$7E0`.
 
 ## Quick start — read a captured command
 

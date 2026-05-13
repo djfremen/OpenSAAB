@@ -60,9 +60,21 @@ notes: |
     inter-query pauses. The ECM responds in ~120-200ms (single-frame ISO-TP).
   - Some DIDs (0xC3, 0xC4) returned NRC; this is normal — Tech2 probes a
     superset of fields and lets the ECM reject ones it doesn't implement.
-  - The address $0241 is labeled as BCM in stock GMLAN nomenclature
-    (per Jason Gaunt's 2013 GMLAN library), but on SAAB 9-3 platforms it
-    routes to the body/engine diag gateway. Whether this is literally the
-    CIM or the engine ECM presenting CIM-related identification fields is
-    still being clarified — see notes/2026-05-12 in the private workspace.
   - No SecurityAccess required for this read.
+
+addressing_caveat: |
+  This capture used `$0241/$0641`, which is Tech2Win's manufacturer-alias
+  for its diag entry point. The CANONICAL CIM address per Trionic's
+  documentation is `$0245/$0545/$0645` (Trionic8.cs:44, FilterIdCIM).
+
+  Two possibilities, not yet bench-disambiguated:
+   1. Tech2Win routes "CIM Info" reads through the engine diag gateway
+      at `$0241`, which proxies to the CIM module. Then `$0241` and
+      `$0245` reach the same physical module via different paths.
+   2. `$0241` is the engine ECU itself, which stores CIM-related
+      identification fields (algorithm tape, vehicle config) locally,
+      and Tech2Win's "CIM Info" menu is actually misnamed.
+
+  To resolve: send the same `$1A 9A` to `$0245` and compare the response.
+  If identical, theory 1 (gateway routing). If different or no response,
+  theory 2 (it's really the engine ECU).

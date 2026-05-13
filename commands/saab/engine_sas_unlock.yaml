@@ -1,5 +1,6 @@
-menu: "Diagnostic → (Implicit prerequisite for any operation that touches
-        protected memory: add module, write VIN, programming, etc.)"
+menu: "Diagnostic → (Implicit prerequisite for SAAB SAS / IMMO operations;
+        NOT what Tech2Win uses for engine ECU flashing — that's level $FD,
+        see engine_program_unlock_fd.yaml)"
 target_ecu: $0241/$0641
 captured_from:
   shim_log: cstech2win_shim_20260512-162133.log
@@ -82,12 +83,24 @@ steps:
              without internet access to SAAB's SAS server. The send is bench-
              validated externally (custom Python client; see notes)."
 
+scope_clarification: |
+  Level $0B is SAAB SAS / IMMO-specific. It's NOT what enables full engine
+  reprogramming — that's level $FD (see engine_program_unlock_fd.yaml).
+  The operations that REQUIRE $0B unlock specifically are believed to be:
+   - IMMO key/transponder pairing
+   - Anti-theft enable/disable
+   - SSA card region read/write
+   - (possibly) Specific SAAB-engineering DIDs not in the public set
+  Most "engine programming" operations (flash main code, ECU recovery,
+  partition format) go through OBD-II addressing at level $FD instead,
+  per Trionic's `Trionic8.cs:RequestSecurityAccess`.
+
 why_tech2win_stops_after_seed: |
   Stock Tech2Win delegates SAS key computation (level $0B) to SAAB's
   online SAS server. With no internet, Tech2 receives the seed at step
   3 and silently abandons the flow — no $27 0C is ever sent. Any
-  subsequent ENGINE programming operation (engine reflash, immo-pairing,
-  fuel-system enable) fails for "security access not granted".
+  subsequent SAS/IMMO operation requiring an unlocked $0B session fails
+  for "security access not granted".
 
   Important contrast: BODY-module operations (add door, write VIN, pair
   HVAC) use level $01, NOT $0B. Level $01 keys are computable inside
@@ -96,9 +109,14 @@ why_tech2win_stops_after_seed: |
     - commands/saab/security_access_l01_unlock.yaml
     - workflows/saab/body_module_add.yaml
 
-  Custom clients that own the SAS-level NativeVM engine locally (RE'd
-  from dllsecurity.dll) bypass the internet dependency entirely — compute
-  the level-$0B key from the seed and send $27 0C directly.
+  Engine reflashing uses level $FD, NOT $0B. The $FD key is a hardcoded
+  arithmetic formula (NOT NativeVM), open-source in Trionic's
+  `SeedToKey.calculateKey`. See:
+    - commands/saab/engine_program_unlock_fd.yaml
+
+  Custom clients that own the SAS-level NativeVM tape entry locally (RE'd
+  from dllsecurity.dll, NOT in Trionic) bypass the SAAB-online dependency
+  for `$0B` operations specifically.
 
 notes: |
   - The level-$01 sweep across 9 ECUs (security_access_sweep_l01.yaml)

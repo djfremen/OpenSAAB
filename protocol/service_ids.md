@@ -16,7 +16,7 @@ literature. SID values match Jason Gaunt's 2013 GMLAN library and scapy's
 | `0x20` | ReturnToNormalOperation | |
 | `0x22` | ReadDataByParameterIdentifier | |
 | `0x23` | ReadMemoryByAddress | Used for SSA region reads on SAAB |
-| `0x27` | SecurityAccess | Seed/key. Level `$01` = standard; `$0B` = SAAB SAS (manufacturer-specific) |
+| `0x27` | SecurityAccess | Seed/key. SAAB uses at least 4 levels — see SecurityAccess levels table below |
 | `0x28` | DisableNormalCommunication | |
 | `0x2C` | DefineDPID | |
 | `0x2D` | DefinePIDByAddress | |
@@ -59,6 +59,34 @@ Negative response format: `7F <requested_sid> <nrc>`.
 | `0x78` | responsePending | ECU is computing; keep polling, don't time out |
 | `0x7E` | subFunctionNotSupportedInActiveSession | |
 | `0x7F` | serviceNotSupportedInActiveSession | |
+
+## SecurityAccess levels on SAAB
+
+Cross-referenced against
+[`mattiasclaesson/Trionic`](https://github.com/mattiasclaesson/Trionic)
+(`SeedToKey.cs`, `SeedKey/AlgorithmDictionary.cs`). Wire format follows
+GMW3110 §8.8.5.1 — request uses an odd subfunction; send-key uses the
+next-even (level + 1).
+
+| Request | Send-key | Routing | Purpose | Key algorithm |
+|---|---|---|---|---|
+| `$27 01` | `$27 02` | `$024X` (Tech2Win body bus) OR `$7E0` (OBD-II) | Body-module standard unlock (door, IPC, RFA, transmission, etc.) | NativeVM bytecode tape, per-ECU algorithm index. Trionic publishes constants in `AlgorithmDictionary.cs` for TRIONIC8 / MOTRONIC96 / EDC16C39 / EDC17C19. |
+| `$27 0B` | `$27 0C` | `$0241` (SAAB manufacturer alias) | SAS / IMMO-specific unlock — what Tech2Win uses for module-pairing and immobiliser operations. Delegates to SAAB's online SAS server in stock Tech2Win. | Private NativeVM tape entry (not in Trionic). Bench-verified: seed `0xC4DC` + algo idx `0x67` → key `0x4EED`. |
+| `$27 FB` | `$27 FC` | `$7E0` (OBD-II) | Mid-tier engine access | Hardcoded formula: `key = (((seed>>5)|(seed<<11)) + 0xB988) ^ 0x8749 + 0x06D3 ^ 0xCFDF` |
+| `$27 FD` | `$27 FE` | `$7E0` (OBD-II) | Highest engine access — used for flashing/reprogramming the engine ECU. Trionic's default. | Hardcoded formula: `key = (((seed>>5)|(seed<<11)) + 0xB988) / 3 ^ 0x8749 + 0x0ACF ^ 0x81BF` |
+
+**The two big distinctions:**
+- `$01` is **universal** (all ECUs, all addressing schemes) and uses
+  NativeVM bytecode with a per-ECU algorithm index.
+- `$0B` is **Tech2Win/SAAB-online-specific** — narrow scope, mostly
+  SAS/IMMO pairing. Engine REPROGRAMMING does NOT use `$0B`; it uses
+  `$FD`.
+- `$FB`/`$FD` are **hardcoded mathematical formulas** (not bytecode).
+  Different from the NativeVM-based `$01`. These are bench-validated
+  in Trionic's source.
+
+ME9.6 engine ECUs have a custom non-NativeVM formula even at `$01` —
+see `SeedToKey.calculateKeyForME96`. Not all SAAB ECUs are bytecode-driven.
 
 ## Tactical notes
 

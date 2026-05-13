@@ -58,15 +58,42 @@ Example pairs:
 | `0x7E8` | OBD-II physical from ECM |
 | `0x7E9` | OBD-II physical from TCM |
 
+## Two addressing schemes on the same bus
+
+SAAB platforms support **both** OBD-II standardized addressing and a
+SAAB-manufacturer alias scheme simultaneously. Different clients use
+different schemes for the same physical modules:
+
+| Module | OBD-II addressing (Trionic-style) | SAAB-manufacturer alias (Tech2Win-style) |
+|---|---|---|
+| Engine ECU (T8 / ME9.6) | `$7E0` TX, `$7E8` RX, `$5E8` aux | `$0241` TX, `$0641` RX (SAS path) |
+| CIM (Column Integrated Module) | `$245` TX, `$545` SF, `$645` MF | `$0241/$0641` (via Tech2Win gateway routing) |
+| TCM (transmission) | `$7E1` TX, `$7E9` RX | `$0242` TX, `$0642` RX |
+
+Trionic ([`mattiasclaesson/Trionic`](https://github.com/mattiasclaesson/Trionic),
+`Trionic8.cs:42-44`) authoritatively maps the OBD-II side:
+```csharp
+FilterIdECU = { 0x7E0, 0x7E8, 0x5E8 };
+FilterIdCIM = { 0x245, 0x545, 0x645 };
+```
+
+OpenSAAB bench captures show Tech2Win using the `$024X` manufacturer
+aliases for SecurityAccess and identification reads. **Both routes
+reach the same physical modules** — they're not mutually exclusive,
+but each tool tends to pick one. Engine programming (Trionic's
+strength) uses OBD-II; SAS / IMMO operations (Tech2Win's lane) use
+the SAAB aliases.
+
 ## Platform notes
 
-**SAAB 9-3 (2003-2011, T8/E78/ME9.6):** `0x241/0x641` is the diag entry
-point for the engine ECM AND for CIM-related identification fields. The
-labeling differs from stock GM because SAAB's body/engine diag gateway
-is consolidated.
+**SAAB 9-3 (2003-2011, T8/E78/ME9.6):** Tech2Win uses `0x241/0x641` for
+SecurityAccess level `$0B` (SAS path). Trionic uses `0x7E0/0x7E8` for
+engine programming via `$FD`. Same ECU, different operation classes,
+different addressing.
 
 **SAAB 9-5 (T7/T8 platforms):** uses the same `0x241/0x641` for engine
 on the older T7. T8/T8.5 platforms vary.
 
-Most SAAB SecurityAccess (UDS `$27 0B` SAS) is on `0x241`. Other ECUs
-(transmission, ABS) use the standard `$27 01` on their own diag pair.
+Most SAAB SecurityAccess via Tech2Win (UDS `$27 0B`) is on `0x241`.
+Body modules (transmission, ABS, IPC, RFA) use `$27 01` on their own
+manufacturer-alias diag pair (`$024X`).

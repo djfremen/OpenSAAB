@@ -1,0 +1,90 @@
+menu: "Diagnostic → Programming → (Engine ECU flashing / partition format /
+        bootloader recovery — anything that needs the highest engine
+        access level)"
+target_ecu: $7E0/$7E8 (OBD-II addressing to engine ECU)
+status: spec-only (NOT in OpenSAAB bench captures; transcribed from
+        mattiasclaesson/Trionic with attribution)
+captured_from: NOT bench-captured. Source: Trionic SeedToKey.cs +
+               Trionic8.cs:RequestSecurityAccess.
+services:
+  - 0x27  # SecurityAccess (level $FD, highest engine tier)
+
+# Trionic-cited. Use this entry as the spec for any client that wants to
+# flash the engine ECU without going through SAAB's online server. Bench
+# captures of this flow are not yet in OpenSAAB — contributions welcome.
+
+steps:
+  - step: request_seed_FD
+    tx_bytes: [0x02, 0x27, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00]
+    can_id: $7E0
+    rx_pos_prefix: [0x67, 0xFD]
+    seed_layout: [seed_hi, seed_lo]
+    timeout_ms: 1500
+    notes: |
+      Trionic packs the request as `0x0000000000FD2702` (little-endian
+      8-byte CAN payload). Decoded: PCI=0x02, SID=0x27, sub=0xFD.
+
+  - step: compute_key_FD
+    type: offline
+    algorithm: |
+      # Direct port of Trionic's SeedToKey.calculateKey() for AccessLevelFD.
+      # Public-domain math — no NativeVM tape entry needed.
+      def fd_key(seed: int) -> int:
+          # convertSeed: rotate + Add
+          key = ((seed >> 5) | (seed << 11)) & 0xFFFF
+          key = (key + 0xB988) & 0xFFFF
+          # FD-specific:
+          key //= 3
+          key ^= 0x8749
+          key = (key + 0x0ACF) & 0xFFFF
+          key ^= 0x81BF
+          return key & 0xFFFF
+    notes: |
+      Note: the `key //= 3` (integer division) step has a known
+      ambiguity at boundary values — Trionic uses C# `int /` which is
+      truncating integer division. Python `//` matches.
+
+  - step: send_key_FE
+    tx_template: [0x04, 0x27, 0xFE, "key_hi", "key_lo", 0x00, 0x00, 0x00]
+    can_id: $7E0
+    rx_pos_prefix: [0x67, 0xFE]
+    timeout_ms: 1500
+    common_nrcs:
+      0x35: invalidKey
+      0x36: exceededNumberOfAttempts
+      0x37: requiredTimeDelayNotExpired
+
+trionic_reference:
+  source: https://github.com/mattiasclaesson/Trionic/blob/master/TrionicCANLib/SeedToKey.cs
+  function: calculateKey(seed, AccessLevel.AccessLevelFD)
+  related: TrionicCANLib/Trionic8.cs RequestSecurityAccess (lines ~310-420)
+
+middle_tier_alternative:
+  level: $FB
+  send_key: $FC
+  algorithm: |
+    def fb_key(seed: int) -> int:
+        key = ((seed >> 5) | (seed << 11)) & 0xFFFF
+        key = (key + 0xB988) & 0xFFFF
+        key ^= 0x8749
+        key = (key + 0x06D3) & 0xFFFF
+        key ^= 0xCFDF
+        return key & 0xFFFF
+  notes: |
+    Identical convertSeed prefix; different XOR/Add constants. Trionic
+    documents `$FB` as middle-tier engine access — purpose less clear
+    than `$FD` (full flash). Possibly used for read-only diagnostics
+    that still require ECU authentication.
+
+notes: |
+  - Bench validation pending. OpenSAAB does not have a Tech2Win shim
+    capture of $27 FD because Tech2Win uses different addressing /
+    different SecurityAccess level for its operations. To validate:
+    run a Trionic flashing session against a bench ECU with the shim
+    attached (if Trionic's bus traffic is shim-captured).
+  - The convertSeed prefix (`((seed>>5)|(seed<<11)) + 0xB988`) is shared
+    between $FB and $FD — only the post-mixing differs. Suggests both
+    levels were designed by the same author with the prefix as a common
+    "scramble" step.
+  - **NOT NativeVM bytecode.** This is plain arithmetic. Distinguishes
+    $FB/$FD from $01 (NativeVM per-ECU) and $0B (NativeVM private tape).
