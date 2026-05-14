@@ -35,9 +35,7 @@ docs/       Bench capture workflow, vehicle profiles, glossary.
 observations** — what bytes flowed when. We don't editorially bridge the
 two: if a bench observation suggests routing or aliasing not in any
 canonical source, that goes in the relevant `commands/` entry as an
-open question, not smuggled into the protocol reference. See
-[`docs/feedback_bojer_2026-05-12.md`](docs/feedback_bojer_2026-05-12.md)
-for what prompted this.
+open question, not smuggled into the protocol reference.
 
 Architecturally, the design direction is a transport-abstracted GMLAN
 library — the protocol layer should not care whether bytes flow over
