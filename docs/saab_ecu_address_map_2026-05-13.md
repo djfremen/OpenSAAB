@@ -22,7 +22,7 @@ address.
 | `$0242` | `$0542` | `$0642` | **BCM** (Body Control Module) | High | DTCs `B0092-05` "Passenger Seat Sensor circuit" + `B1001` "Control Module not Added" + lost-comm with multiple modules — z90 attributes both to BCM(#817) |
 | `$0243` | `$0543` | `$0643` | **Door module** (DDM/PDM/RLDM/RRDM — specific role TBD) | High | `B3832-45` "Information: Anti Pinch Not Learned" — z90 attributes only to DDM(#819), PDM(#825), RLDM(#827), RRDM(#828). Same code seen on $0243/$0248/$024A/$024B → all four are doors |
 | `$0245` | `$0545` | `$0645` | **ACC / Heated Seats / Climate** (NOT CIM as Trionic claims) | Medium-High | z90 attributes captured `B1928-05` "Seat Temperature Sensor Left" + `B2429-06` "Seat Heating Left" to ACC(#814). **Conflicts** with Trionic's `FilterIdCIM = { 0x245 }` — see ambiguity note below |
-| `$0246` | `$0546` | `$0646` | TO_SIC (canonical) — bench evidence pending | Low | Jason Gaunt label only; no DTC evidence in this capture set |
+| `$0246` | `$0546` | `$0646` | **TO_SIC** (Steering Integration Control — canonical) | Medium | 2026-05-14 1367 capture: 6 DIDs respond on $0646 (02, 03, 90, 9A, B9, BA). Real populated ECU. DID 9A=`04 09`, BA=`7C CF 35 50` (calibration). No DTCs yet to cross-reference vs z90 |
 | `$0247` | `$0547` | `$0647` | TO_SDC (canonical) — bench evidence pending | Low | Jason Gaunt label only |
 | `$0248` | `$0548` | `$0648` | **Door module** (DDM/PDM/RLDM/RRDM) | High | Same `B3832-45` as $0243; z90 door-module exclusive |
 | `$0249` | `$0549` | `$0649` | **TCS/ESP** (Anti-Skid / Electronic Stability) | Medium | DTCs `U2105-00` "ECM Missing on Bus", `U2143-00` "Steering Angle Sensor Missing", `U2108-00` "TCS/ESP Missing" — z90 attributes to TCS/ESP(#831) more often than other candidates |
@@ -34,7 +34,7 @@ address.
 | `$0257` | `$0557` | `$0657` | unknown — possibly RFA (Remote Function Actuator) | Low | Jason Gaunt has TO_RFA at $0258, this is adjacent; involved in L01 SecurityAccess sweep |
 | `$025B` | `$055B` | `$065B` | unknown body module — bench evidence pending | None | |
 | `$025C` | `$055C` | `$065C` | unknown body module — bench evidence pending | None | |
-| `$025D` | `$055D` | `$065D` | unknown body module — bench evidence pending | None | Active in clear-codes sweep; identifies as ASCII `1A9` from DID 0x81 read |
+| `$025D` | `$055D` | `$065D` | **TBD — confirmed ASCII `"1A9"` signature** | Medium | 2026-05-14 1367 capture: DID 81 returns `5A 81 31 41 39` = ASCII `"1A9"` (verifies the 2026-05-13 note). Also DID B2 = `A1 00 00 00 00 00`. Needs Tech2Win Module Description screen to put a SAAB name on `"1A9"` |
 | `$025F` | `$055F` | `$065F` | unknown body module — bench evidence pending | None | |
 | `$07E0` | `$05E8` | `$07E8` | **Engine ECM (OBD-II)** — ME9.6 on the field car | High | Trionic `FilterIdECU = { 0x7E0, 0x7E8, 0x5E8 }`; all 21 captured DTCs are engine codes z90-attributed to ME9(#840) and T8(#821) |
 | `$07E1` | `$05E9` | `$07E9` | **TCM (OBD-II)** — Transmission | High | Jason Gaunt canonical `OBD-II physical to TCM`; bench L01 SecurityAccess captures show $0257/$07E1 returning 67 01 d2 dc |
@@ -88,15 +88,41 @@ Bench test to resolve: actuate one window at a time and observe which
 ECU's DPID stream changes. Or read DID 0x90 (VIN/identity) — each door
 module ought to identify itself.
 
+## 2026-05-14 update — `$1A` ID sweep from 1367 ME9.6 capture
+
+Bench shim log `cstech2win_1778807278859.log.gz` (599 frames / 110.5 s,
+VIN `YS3FH46U681101367`) ran a full Check-Codes + Clear-Codes flow that
+included `$1A` reads on every body module. 12 ECUs answered; 8 stayed
+silent. Confirmed responders and their DIDs are catalogued in
+[`commands/saab/ecu_id_sweep.yaml`](../commands/saab/ecu_id_sweep.yaml).
+
+Key takeaways:
+
+- `$0646` (TO_SIC canonical) now has bench evidence — responds to **6
+  DIDs** (02, 03, 90, 9A, B9, BA). Was previously "Low confidence".
+- `$0643` and `$0648` both return DID 01 = `C9 34` — **same door-module
+  hardware revision**, helps disambiguate which-door-is-which later.
+- `$065D` ASCII `"1A9"` confirmed from DID 81. Still no SAAB-canonical
+  name — Tech2Win's Module Description menu screen would resolve this.
+- Bus-wide consistency: every responder returned the **same VIN** on
+  DID 90 — confirms the SAAB diagnostic gateway broadcasts VIN to all
+  modules at boot.
+
+The eight silent targets (`$0244, $0247, $024D, $0253, $0257, $025B,
+$025F, $0657`) need a dedicated re-query to disambiguate "no module at
+this address" vs "module present but doesn't carry $1A". Use the
+`ecu_id_sweep.yaml` workflow.
+
 ## What's NOT inferred yet
 
-- Which physical module sits at `$0246`, `$0247`, `$0253`, `$025B`,
-  `$025C`, `$025D`, `$025F` — these were swept in the L01 SecurityAccess
-  pass and clear-codes sweep but didn't produce diagnostic DTCs that
-  would fingerprint them.
+- Which physical module sits at `$0247`, `$0253`, `$025B`,
+  `$025C`, `$025F` — silent on `$1A` in this capture; need targeted
+  re-query.
+- `$025D` answers ASCII `"1A9"` but the SAAB name behind that tag is
+  unknown — best resolved by reading Tech2Win's Module Description
+  screen which displays canonical names.
 - Whether `$0244` (Jason Gaunt `TO_EHU`) corresponds to the actual
-  Entertainment Head Unit on this platform — bench has it in some
-  captures but we haven't pulled identifying DTCs.
+  Entertainment Head Unit on this platform — silent on `$1A` here.
 
 ## How to grow this map
 
