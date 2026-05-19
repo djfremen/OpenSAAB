@@ -1,0 +1,30 @@
+dtc: B3948-00
+module: CIM
+module_long_name: Column Integration Module
+description: "Information DTC: Steering Lock System, Critical Failure"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3948-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Information DTC: Steering Lock System, Critical Failure"
+  description: "Information DTC: Steering Lock System, Critical Failure"
+  symptom: |
+    Symptom: Message appears in display.
+    Possible that ignition key cannot be turned.
+    The engine may not start.
+  fault_symptom: |
+    Message appears in display.
+    
+    Possible that ignition key cannot be turned.
+    
+    The engine may not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Diagnostics run when key is inserted and removed.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    U1500
+  system_reaction: The control module does not allow starter motor cranking.
+  diagnostic_help: The DTC is an information fault code generated because another SCL trouble code is set.

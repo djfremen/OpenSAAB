@@ -1,0 +1,18 @@
+dtc: P0610-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: ECU attributes not programmed/Internal fault.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0610-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: ECU attributes not programmed/Internal fault.
+  description: ECU attributes not programmed/Internal fault.
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition on for at least 3 s.
+  fault_criteria: Properties not programmed.
+  system_reaction: None
+  diagnostic_help: Discard the control module in the proper manner.

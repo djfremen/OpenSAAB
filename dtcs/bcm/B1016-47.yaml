@@ -1,0 +1,17 @@
+dtc: B1016-47
+module: BCM
+module_long_name: Body Control Module
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/bcm/b1016-47
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics run when ignition is ON.
+  fault_criteria: VIN not programmed in BCM.
+  diagnosis_regards: Checking if the VIN is programmed in the control module.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"Procedure after fitting the control module\""

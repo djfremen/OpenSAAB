@@ -1,0 +1,52 @@
+dtc: P0221-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Throttle Position Sensor 2 Circuit. Out of Range.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0221-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Throttle Position Sensor 2 Circuit. Out of Range.
+  description: Throttle Position Sensor 2 Circuit. Out of Range.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Cruise control not working.
+    Limp home
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Cruise control not working.
+    
+    Limp home
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    When the ECM is awake, diagnosis is active (even with the ignition off).
+    
+    NONE of the following DTCs must be detected:
+    
+    P0222, P0223
+  fault_criteria: When voltage on the input is outside the interval 0.28 V - 4.7 V.
+  system_reaction: |
+    Correction of mass air flow/combustion for fuel calculation is blocked.
+    
+    Limited acceleration and idle function.
+    
+    Cruise control blocked.
+    
+    Secondary air switched off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Electrical fault in connecting leads or component.
+    
+    If DTC P0222 or P0223 is generated, P0221 is cleared.
+    
+    The sum of sensors 1 & 2 must be 5 V with ignition on and engine running.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Throttle Position Sensor 1
+    
+    •Throttle Position Sensor 2
+    
+    (See also description of readings/activations in diagnostic tool)

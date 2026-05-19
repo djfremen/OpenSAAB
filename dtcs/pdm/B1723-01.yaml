@@ -1,0 +1,32 @@
+dtc: B1723-01
+module: PDM
+module_long_name: Passenger Door Module
+description: Mirror Motor Left/Right Circuit Short to B+
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/pdm/b1723-01
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Mirror Motor Left/Right Circuit Short to B+
+  description: Mirror Motor Left/Right Circuit Short to B+
+  symptom: "Symptom: Power mirror cannot be operated"
+  fault_symptom: Power mirror cannot be operated
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    During electric mirror operation.
+    
+    NONE of the following DTCs must be detected:
+    
+    B1600
+  fault_criteria: Control module input short circuit to B+.
+  system_reaction: The motor attempts to activate the electric mirror left/right function four times during each new driving cycle.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Mirror Motor Passenger Door
+    
+    (See also description of readings/activations in diagnostic tool)

@@ -1,0 +1,34 @@
+dtc: U2107-00
+module: SPA
+module_long_name: Single Parking Assist
+description: BCM Missing on Bus
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/spa/u2107-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: BCM Missing on Bus
+  description: BCM Missing on Bus
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    •Ignition ON.
+    
+    •Battery voltage greater than 9 V.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    •U2101
+    
+    •U2103
+  fault_criteria: BCM control module not on the bus.
+  system_reaction: |
+    Parking assistance is switched off.
+    
+    No bus communication.
+  diagnosis_regards: Electrical fault on bus leads or in the component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Fault Counter, I-bus
+    
+    (See also description of readings/activations in diagnostic tool)

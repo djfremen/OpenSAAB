@@ -1,0 +1,41 @@
+dtc: P0625-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Generator F terminal Circuit, Open/Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0625-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Generator F terminal Circuit, Open/Short to Ground"
+  description: "Generator F terminal Circuit, Open/Short to Ground"
+  symptom: "Symptom: Higher idling speed."
+  fault_symptom: Higher idling speed.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Engine speed under 3000 rpm.
+    
+    Generator active.
+    
+    (Generator active means L Terminal high)
+  fault_criteria: |
+    Period length below 0.5% for more than 30 s.
+    
+    Generator connection for field current (DF). Originates in the internal regulator and shows the amount of period length for which the generator applies field current. Used to calculate generator torque requirement.
+  system_reaction: Control module continues working with the higher idling function.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Alternator F Terminal
+    
+    •Alternator L Terminal
+    
+    Activation:
+    
+    •Alternator L Terminal Load Dump
+    
+    (See also description of readings/activations in diagnostic tool)

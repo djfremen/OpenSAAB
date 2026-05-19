@@ -1,0 +1,31 @@
+dtc: B3060-00
+module: CIM
+module_long_name: Column Integration Module
+description: Unknown Transponder Detected at Key in
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3060-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Unknown Transponder Detected at Key in
+  description: Unknown Transponder Detected at Key in
+  symptom: |
+    Symptom: Message appears in display.
+    Engine does not start.
+  fault_symptom: |
+    Message appears in display.
+    
+    Engine does not start.
+  type_of_diagnosis: Diagnostics is carried out each time the key is inserted in the ignition switch.
+  enable_criteria: Key in ignition switch.
+  fault_criteria: Faulty fix code read from the transponder.
+  system_reaction: None
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Transponder Fixcode OK
+    
+    (See also description of readings/activations in diagnostic tool)
+    
+    See menu "All - Add/Remove"
+  diagnostic_help: A trouble code is generated if a key from another car is inserted in the ignition switch.

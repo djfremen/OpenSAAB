@@ -1,0 +1,62 @@
+dtc: P1682-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Plausibility Fault between voltage feed from +15 and main relay
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p1682-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Plausibility Fault between voltage feed from +15 and main relay
+  description: Plausibility Fault between voltage feed from +15 and main relay
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    No starter motor cranking.
+    Engine does not start.
+    Engine shut off.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    No starter motor cranking.
+    
+    Engine does not start.
+    
+    Engine shut off.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Test 1
+    
+    •Ignition ON.
+    
+    Test 2
+    
+    •When the ignition is switched off.
+  fault_criteria: |
+    Test 1
+    
+    •Voltage on pin A2/A19 but not on pin A48/A64.
+    
+    Test 2
+    
+    •No voltage on pin A2/A19 but on A48/A64 for more than 6 s after ignition off.
+  system_reaction: None
+  diagnosis_regards: |
+    Finding electrical faults on the power supply from the main relay.
+    
+    ____________________________________
+    
+    IMPORTANT
+    
+    •The DTC can be generated due to faults in connector H42-2 (pins 13, 14, 17, 18, 19 and 20).
+    
+    ____________________________________
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Ignition switch +15
+    
+    •Ignition Key Position
+    
+    •Battery Voltage:
+    
+    (See also description of readings/activations in diagnostic tool)

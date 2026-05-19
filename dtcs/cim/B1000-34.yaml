@@ -1,0 +1,34 @@
+dtc: B1000-34
+module: CIM
+module_long_name: Column Integration Module
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b1000-34
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: |
+    Symptom: Cannot turn key.
+    Engine does not start.
+    Steering column lock not working.
+  fault_symptom: |
+    Cannot turn key.
+    
+    Engine does not start.
+    
+    Steering column lock not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Diagnosis is carried out before the control module goes into standby.
+    
+    Diagnosis takes 8 minutes.
+  fault_criteria: Control module on-board diagnostics has detected a RAM error.
+  system_reaction: |
+    Steering column lock deactivated.
+    
+    The control module does not allow starter motor cranking.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"Before changing a control module\" and \"After fitting a control module\" under Fault diagnosis, general."

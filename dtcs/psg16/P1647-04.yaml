@@ -1,0 +1,29 @@
+dtc: P1647-04
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: "A/C Relay Circuit, Open"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p1647-04
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "A/C Relay Circuit, Open"
+  description: "A/C Relay Circuit, Open"
+  symptom: "Symptom: A/C not working, no cooling."
+  fault_symptom: "A/C not working, no cooling."
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Output activated.
+  fault_criteria: No voltage on the control module output for more than 0.6 s
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_tool_functions: |
+    Activate:
+    
+    Air Conditioning Relay
+    
+    (See also description of readings/activations in diagnostic tool)

@@ -1,0 +1,36 @@
+dtc: U1005-08
+module: CU-AMPS
+module_long_name: Control Unit AMPS
+description: "GPS antenna circuit, open/short circuit"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cu-amps/u1005-08
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "GPS antenna circuit, open/short circuit"
+  description: "GPS antenna circuit, open/short circuit"
+  symptom: "Symptom: \"On Star System Malfunction. Contact Service.\"  shown on the display."
+  fault_symptom: "\"On Star System Malfunction. Contact Service.\"  shown on the display."
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Battery voltage must be between 9 - 16 V.
+    
+    No starter motor cranking.
+  fault_criteria: The resistance value of the antenna circuit is more/less than 288 ohm due to an open circuit/shorting to ground/B+.
+  checking_wiring: Jiggle the wiring harness at several points to detect intermittent breaks or short circuits. Check also the connector for oxidation or loose pins.
+  diagnostic_help: |
+    Check that the following MIs/Campaigns have been carried out before starting fault diagnosis:
+    
+    US Market
+    
+    MI No. 391-2394 - Customer Satisfaction Campaign 15421 - Update of OnStar system.
+    
+    MI No. 391-2409 - Customer Satisfaction Campaign 15424 - Update of OnStar system.
+    
+    CA Market
+    
+    MI No. 391-2410 - Customer Satisfaction Campaign 15421 - Update of OnStar system.
+    
+    MI No. 391-2408 - Customer Satisfaction Campaign 15424 - Update of OnStar system.

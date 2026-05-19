@@ -1,0 +1,21 @@
+dtc: B0053-00
+module: ACM
+module_long_name: Airbag Control Module
+description: Deployment Commanded with circuit malfunctions present.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acm/b0053-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Deployment Commanded with circuit malfunctions present.
+  description: Deployment Commanded with circuit malfunctions present.
+  symptom: "Symptom: Airbag warning lamp is lit"
+  fault_symptom: Airbag warning lamp is lit
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: The control module requests activation of a detonation circuit and detects circuit fault on the lead.
+  system_reaction: Airbag warning lamp is lit
+  diagnostic_help: |
+    IMPORTANT
+    
+    •Read "Before starting fault diagnosis" under Fault diagnosis, general before beginning fault diagnosis.

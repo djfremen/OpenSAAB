@@ -1,0 +1,40 @@
+dtc: B0959-06
+module: SPA
+module_long_name: Single Parking Assist
+description: Left Center Distance Sensor. Communication line is open or short to ground.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/spa/b0959-06
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Left Center Distance Sensor. Communication line is open or short to ground.
+  description: Left Center Distance Sensor. Communication line is open or short to ground.
+  symptom: |
+    Symptom: Message appears in display.
+    SPA stops all measurements and the acoustic signals from SID for SPA are switched off.
+  fault_symptom: |
+    •Message appears in display.
+    
+    •SPA stops all measurements and the acoustic signals from SID for SPA are switched off.
+  enable_criteria: |
+    •Ignition ON.
+    
+    •Reverse gear selected
+    
+    •Battery voltage greater than 9 V.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    •B1350 01
+    
+    •B1350 02
+  fault_criteria: Signal Lines(s) Shorted to Ground
+  system_reaction: The control module is inactive until it receives a signal from the sensor.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    See Reading:
+    
+    Distance, Left Middle Sensor
+    
+    (See also description of readings/activations in diagnostic tool)

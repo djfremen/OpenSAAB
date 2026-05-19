@@ -1,0 +1,18 @@
+dtc: B3927-00
+module: CIM
+module_long_name: Column Integration Module
+description: PDM or CIM Not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3927-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: PDM or CIM Not Added
+  description: PDM or CIM Not Added
+  symptom: "Symptom: Engine does not start."
+  fault_symptom: Engine does not start.
+  type_of_diagnosis: Diagnostics carried out according to valid fix code from the transponder.
+  enable_criteria: Diagnostics runs when key is inserted.
+  fault_criteria: Incorrect immobilizer code received from PDM.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"After fitting a control module\" under fault diagnosis, general."

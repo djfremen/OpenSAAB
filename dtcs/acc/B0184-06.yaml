@@ -1,0 +1,18 @@
+dtc: B0184-06
+module: ACC
+module_long_name: Automatic Climate Control
+description: "Solar Sensor Circuit, Open/Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acc/b0184-06
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Solar Sensor Circuit, Open/Short to Ground"
+  description: "Solar Sensor Circuit, Open/Short to Ground"
+  symptom: "Symptom: Deteriorated climate comfort."
+  fault_symptom: Deteriorated climate comfort.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Break or short-circuit to ground in solar sensor circuit.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: "In case of a fault, the system will work as it would in cloudy weather."

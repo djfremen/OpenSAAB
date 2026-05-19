@@ -1,0 +1,37 @@
+dtc: P0343-07
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Pump Camshaft speed has been too high.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0343-07
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Pump Camshaft speed has been too high.
+  description: Pump Camshaft speed has been too high.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Engine stops.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Engine stops.
+  type_of_diagnosis: Continuous
+  enable_criteria: Engine running.
+  fault_criteria: Camshaft speed has been higher than 3100 rpm for 65 seconds.
+  system_reaction: |
+    Limp Home, fuel limitation.
+    
+    Engine Turn Off
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Camshaft RPM
+    
+    Engine RPM
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: |
+    Fuel shut-off takes place at 5000 rpm.
+    
+    The engine has been forced to over-rev. This may have occurred during wide open throttle acceleration 1-2-3-2 or shifting 4-1.

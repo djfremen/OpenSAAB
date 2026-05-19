@@ -1,0 +1,44 @@
+dtc: P0337-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Crankshaft Position Sensor. No Input.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0337-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Crankshaft Position Sensor. No Input.
+  description: Crankshaft Position Sensor. No Input.
+  symptom: |
+    Symptom: Malfunction Indicator Lamp
+    Engine cannot be started during permanent fault.
+    Engine dies while running/idling.
+    Message in SID regarding TCM and TCS/ESP.
+  fault_symptom: |
+    Malfunction Indicator Lamp
+    
+    Engine cannot be started during permanent fault.
+    
+    Engine dies while running/idling.
+    
+    Message in SID regarding TCM and TCS/ESP.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Start engine revving.
+    
+    System voltage drops by more than 0.5 V.
+    
+    Pressure in intake manifold drops more than 1 kPa.
+  fault_criteria: "If the input conditions are fulfilled for more than 2 s, the damper is closed for 2 s to evaluate the relationship between intake pressure and atmospheric pressure. If intake pressure is less than atmospheric pressure + 3 kPa for 0.5 s, a DTC is generated."
+  system_reaction: None
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Engine RPM
+    
+    •Battery Voltage
+    
+    •Manifold Absolute Pressure
+    
+    (See also description of readings/activations in diagnostic tool)

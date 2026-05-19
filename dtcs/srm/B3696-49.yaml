@@ -1,0 +1,20 @@
+dtc: B3696-49
+module: SRM
+module_long_name: Steering Wheel Module
+description: Sunroof Module Incorrectly Fitted/Obstructed Mechanism
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/srm/b3696-49
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Sunroof Module Incorrectly Fitted/Obstructed Mechanism
+  description: Sunroof Module Incorrectly Fitted/Obstructed Mechanism
+  symptom: "Symptom: No express function."
+  fault_symptom: No express function.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Learning between engine and mechanism not performed.
+  system_reaction: Express function turned off.
+  diagnosis_regards: To locate an incorrectly fitted motor in sunroof assembly or blocked mechanism.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: See method for assembling sunroof motor.

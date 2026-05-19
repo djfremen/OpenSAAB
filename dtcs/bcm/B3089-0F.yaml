@@ -1,0 +1,18 @@
+dtc: B3089-0F
+module: BCM
+module_long_name: Body Control Module
+description: "UAM, Internal Fault"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/bcm/b3089-0f
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "UAM, Internal Fault"
+  description: "UAM, Internal Fault"
+  symptom: "Symptom: Message appears in display."
+  fault_symptom: Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnosis runs when car alarmed or when ignition on.
+  fault_criteria: Signal error from ultrasound sensor.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: To locate electrical faults in the ultrasound sensor internal electronics.

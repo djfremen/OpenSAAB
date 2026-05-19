@@ -1,0 +1,28 @@
+dtc: C0855-03
+module: TCS
+module_long_name: Traction Control System
+description: "+X, Open/Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcs/c0855-03
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "+X, Open/Short to Ground"
+  description: "+X, Open/Short to Ground"
+  symptom: |
+    Symptom: Message appears in display.
+    Steering column lock not working.
+  fault_symptom: |
+    Message appears in display.
+    
+    Steering column lock not working.
+  type_of_diagnosis: Continuous
+  fault_criteria: Battery voltage is below 9.5 V for 0.5 s.
+  system_reaction: Steering column lock deactivated.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Electrical fault in connecting leads or component.
+    
+    •IMPORTANT
+    
+    Fault in connector H42-2 / H42-3 is often a cause of this DTC.

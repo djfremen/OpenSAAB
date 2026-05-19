@@ -1,0 +1,32 @@
+dtc: B0410-06
+module: ACC
+module_long_name: Automatic Climate Control
+description: "Air Mix Door Motor Left Circuit, Open/Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acc/b0410-06
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Air Mix Door Motor Left Circuit, Open/Short to Ground"
+  description: "Air Mix Door Motor Left Circuit, Open/Short to Ground"
+  symptom: "Symptom: Defective temperature control."
+  fault_symptom: Defective temperature control.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Output activated.
+  fault_criteria: Break or short-circuit to ground in the circuit of the air distribution damper motor.
+  system_reaction: None
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Air Mix Door Motor Left
+    
+    Activation:
+    
+    Air Mix Left
+    
+    (See also description of readings/activations in diagnostic tool)

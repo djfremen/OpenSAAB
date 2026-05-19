@@ -1,0 +1,24 @@
+dtc: B2540-05
+module: BCM
+module_long_name: Body Control Module
+description: "Rear Fog Light Button Circuit, Open/Short to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/bcm/b2540-05
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Rear Fog Light Button Circuit, Open/Short to B+"
+  description: "Rear Fog Light Button Circuit, Open/Short to B+"
+  symptom: "Symptom: Rear fog lights not working."
+  fault_symptom: Rear fog lights not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: When voltage on output exceeds 10.2V.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Rear Fog Lights Switch
+    
+    (See also description of readings/activations in diagnostic tool)

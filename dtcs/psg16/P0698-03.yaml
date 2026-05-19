@@ -1,0 +1,41 @@
+dtc: P0698-03
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Voltage Supply Group 3. Short to Ground.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0698-03
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Voltage Supply Group 3. Short to Ground.
+  description: Voltage Supply Group 3. Short to Ground.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Idling speed set to 1400 rpm.
+    Rpm cannot be controlled.
+    Cruise control not working.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Idling speed set to 1400 rpm.
+    
+    Rpm cannot be controlled.
+    
+    Cruise control not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: "Voltage is lower than 4,6 V for more than 0,2 s."
+  system_reaction: |
+    Limp Home, engine torque limitation.
+    
+    Cruise control switched off.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Pedal Position Sensor 1
+    
+    (See also description of readings/activations in diagnostic tool)

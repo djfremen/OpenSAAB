@@ -1,0 +1,19 @@
+dtc: P0606-3F
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Internal Control Module Malfunction
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0606-3f
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Internal Control Module Malfunction
+  description: Internal Control Module Malfunction
+  symptom: "Symptom: -"
+  fault_symptom: -
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: "Control module on-board diagnostics has detected a \"Timeout\" fault."
+  system_reaction: -
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_help: The DTC can be generated when adjusting with the diagnostic instrument.

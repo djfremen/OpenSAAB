@@ -1,0 +1,34 @@
+dtc: C0131-05
+module: TCS
+module_long_name: Traction Control System
+description: "Pressure Sensor Circuit, Open/Short to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcs/c0131-05
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Pressure Sensor Circuit, Open/Short to B+"
+  description: "Pressure Sensor Circuit, Open/Short to B+"
+  symptom: |
+    Symptom: Warning lamp lights.
+    Message appears in display.
+  fault_symptom: |
+    Warning lamp lights.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    No ABS modulation.
+    
+    Acceleration less than 2 m/s2 or retardation less than 2 m/s2.
+  fault_criteria: When voltage on output exceeds 4.7V.
+  system_reaction: No ESP function
+  diagnosis_regards: Electrical fault in the component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Pedal Pressure
+    
+    (See also description of readings/activations in diagnostic tool)

@@ -1,0 +1,30 @@
+dtc: P0342-2D
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Pump Camshaft Position Sensor Circuit Malfunction. Internal Fault.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0342-2d
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Pump Camshaft Position Sensor Circuit Malfunction. Internal Fault.
+  description: Pump Camshaft Position Sensor Circuit Malfunction. Internal Fault.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Engine stops.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Engine stops.
+  type_of_diagnosis: Continuous
+  enable_criteria: Engine running.
+  fault_criteria: No camshaft signal after 25 crankshaft signals.
+  system_reaction: Engine Turn Off
+  diagnosis_regards: Internal diesel pump fault.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Camshaft RPM
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: The DTC can be generated if the timing chain is broken or very worn.

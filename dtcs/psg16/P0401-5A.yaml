@@ -1,0 +1,84 @@
+dtc: P0401-5A
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: EGR Flow To Low
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0401-5a
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: EGR Flow To Low
+  description: EGR Flow To Low
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Engine speed between 1250 - 1500 and fuel quantity between 10 - 12.5 mg/combustion.
+    
+    Engine speed between 1500 - 1750 and fuel quantity between 10 - 20 mg/combustion.
+    
+    Engine speed between 1750 - 2750 and fuel quantity between 10 - 27.5 mg/combustion.
+    
+    NONE of the following DTCs must be detected:
+    
+    P0017
+    
+    P0100, P0101, P0102, P0103
+    
+    P0106, P0107, P0108
+    
+    P0149, P1149
+    
+    P0243, P0244
+    
+    P0244 F6, P0245, P0246
+    
+    P0335, P0336, P0337 FD
+    
+    P0337 2E, P0341
+    
+    P0400, P2413
+    
+    P0403, P0404
+    
+    P0642, P0643
+    
+    P0652, P0653
+    
+    P2100, P2102, P2103
+  fault_criteria: |
+    Current EGR flow below requested EGR flow.
+    
+    DTC limit between 150 - 300 mg air/combustion depending on the difference between fuel/combustion and rpm.
+  system_reaction: "Limp Home, engine torque limitation."
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Charge Air Control Valve
+    
+    Swirl Control Valve
+    
+    Control valve, shut-off damper
+    
+    Engine RPM
+    
+    Activate:
+    
+    Charge Air Control Valve
+    
+    Swirl Control Valve
+    
+    Control valve, shut-off damper
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: |
+    EGR valve closes after one minute at idling speed.
+    
+    The DTC indicates air leakage between the turbocharger and intake manifold.

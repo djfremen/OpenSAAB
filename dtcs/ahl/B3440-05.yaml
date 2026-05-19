@@ -1,0 +1,31 @@
+dtc: B3440-05
+module: AHL
+module_long_name: Automatic Headlamp Levelling
+description: "RH Stepper Motor Circuit, Open/Short to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ahl/b3440-05
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "RH Stepper Motor Circuit, Open/Short to B+"
+  description: "RH Stepper Motor Circuit, Open/Short to B+"
+  symptom: |
+    Symptom: Message appears in display.
+    Headlamp beam adjustment not working.
+  fault_symptom: |
+    Message appears in display.
+    
+    Headlamp beam adjustment not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Xenon lights on.
+    
+    Stepping motor activated.
+    
+    Battery voltage greater than 9 V.
+  fault_criteria: Control module output short-circuit to B+/open-circuit.
+  system_reaction: Control module outputs to stepping motor switched off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: "Before fault diagnosis begins, read the document \"Safety and handling directions, xenon lights\" under Technical description."

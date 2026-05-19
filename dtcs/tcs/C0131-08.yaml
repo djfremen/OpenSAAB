@@ -1,0 +1,75 @@
+dtc: C0131-08
+module: TCS
+module_long_name: Traction Control System
+description: "Pressure sensor Circuit, Signal not Plausible"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcs/c0131-08
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Pressure sensor Circuit, Signal not Plausible"
+  description: "Pressure sensor Circuit, Signal not Plausible"
+  symptom: |
+    Symptom: Warning lamp lights.
+    Message appears in display.
+  fault_symptom: |
+    Warning lamp lights.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    •Test 1
+    
+    Brake light switch not activated.
+    
+    Vehicle accelerating with engine power.
+    
+    •Test 2
+    
+    Vehicle speed more than 7 km/h.
+    
+    Acceleration more than 2 m/s2
+    
+    No TCS regulation.
+    
+    •Test 3
+    
+    Brake light switch activated.
+    
+    Retardation more than 5 m/s2.
+    
+    •Test 4
+    
+    Brake light switch not activated.
+    
+    No TCS regulation.
+    
+    Vehicle accelerating with engine power.
+  fault_criteria: |
+    •Test 1
+    
+    Pedal pressure exceeds 25 bar for more than 2.5 seconds.
+    
+    •Test 2
+    
+    Pedal pressure exceeds 50 bar for more than 2.5 seconds.
+    
+    •Test 3
+    
+    Brake light switch activated more than 5 times and pedal pressure less than 1.4 bar for more than 2.5 seconds.
+    
+    •Test 4
+    
+    Pedal pressure exceeds 20 bar.
+  system_reaction: No ESP function
+  diagnosis_regards: Electrical fault in the component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Brake Light Switch
+    
+    Pedal Pressure
+    
+    (See also description of readings/activations in diagnostic tool)

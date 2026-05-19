@@ -1,0 +1,41 @@
+dtc: P0149-5B
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Injection Timing Control Malfunction. Injection too Early.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0149-5b
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Injection Timing Control Malfunction. Injection too Early.
+  description: Injection Timing Control Malfunction. Injection too Early.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Engine does not start.
+    Performance loss.
+    A/C not working, no cooling.
+    Cruise control not working.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Engine does not start.
+    
+    Performance loss.
+    
+    A/C not working, no cooling.
+    
+    Cruise control not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Engine speed more than 600 rpm.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    P0337 2E, P0341
+    
+    P0335, P0336
+  fault_criteria: Incorrect injector setting.
+  system_reaction: "Limp Home, fuel limitation."
+  diagnostic_help: "See method \"Checking camshaft and fuel pump setting\"."

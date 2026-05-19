@@ -1,0 +1,21 @@
+dtc: B3934-52
+module: PDM
+module_long_name: Passenger Door Module
+description: "Mirror Motor Potentiometer, Motion in Reverse Order Detected"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/pdm/b3934-52
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Mirror Motor Potentiometer, Motion in Reverse Order Detected"
+  description: "Mirror Motor Potentiometer, Motion in Reverse Order Detected"
+  symptom: "Symptom: Memory functions not working"
+  fault_symptom: Memory functions not working
+  type_of_diagnosis: Each time the door module checks if the electric mirror button is depressed or not.
+  enable_criteria: When electric mirrors are operated.
+  fault_criteria: When the electric mirror position potentiometer detects movement in the opposite direction in relation to the engine.
+  system_reaction: |
+    Memory functions not working
+    
+    Manual electric mirror operation working.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."

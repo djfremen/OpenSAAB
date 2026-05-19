@@ -1,0 +1,34 @@
+dtc: P0696-01
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: "Cooling Fan 3 Control Circuit, Short to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0696-01
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Cooling Fan 3 Control Circuit, Short to B+"
+  description: "Cooling Fan 3 Control Circuit, Short to B+"
+  symptom: "Symptom: Radiator fan malfunction."
+  fault_symptom: Radiator fan malfunction.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Radiator fan circuit activated.
+  fault_criteria: Output short circuit to B+ for more than 0.6 s.
+  system_reaction: Radiator fan speed set to LOW.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Fan Control Output 3
+    
+    Activate:
+    
+    Fan Control Output 3
+    
+    (See also description of readings/activations in diagnostic tool)

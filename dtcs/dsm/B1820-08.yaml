@@ -1,0 +1,34 @@
+dtc: B1820-08
+module: DSM
+module_long_name: Driver Seat Module
+description: "Switch, Backrest Layback Circuit, Signal Invalid"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/dsm/b1820-08
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Switch, Backrest Layback Circuit, Signal Invalid"
+  description: "Switch, Backrest Layback Circuit, Signal Invalid"
+  symptom: |
+    Symptom: The button is considered inactive until it is released and activated again.
+    The engine can temporarily go in the opposite direction
+  fault_symptom: |
+    The button is considered inactive until it is released and activated again.
+    
+    The engine can temporarily go in the opposite direction
+  type_of_diagnosis: Continuous
+  enable_criteria: When seat operation is permitted.
+  fault_criteria: "Backrest back button has stuck (been active for more than 60 s). Alternatively, backrest forward button and backrest back button are both active."
+  system_reaction: |
+    The button is considered inactive until it is released and activated again.
+    
+    The engine can temporarily go in the opposite direction
+  diagnosis_regards: Detecting an electrical or mechanical fault on the button.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Motor, Seat Back Forward
+    
+    Motor, Seat Back Rearward
+    
+    (See also description of readings/activations in diagnostic tool)

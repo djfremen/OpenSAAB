@@ -1,0 +1,66 @@
+dtc: C0460-11
+module: ESP
+module_long_name: Electronic Stability Program
+description: Steering angle sensor. Faulty signal
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/c0460-11
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Steering angle sensor. Faulty signal
+  description: Steering angle sensor. Faulty signal
+  symptom: |
+    Symptom: ESP warning lamp on.
+    Message appears in display.
+  fault_symptom: |
+    ESP warning lamp on.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Test 1
+    
+    •Ignition ON.
+    
+    Test 2
+    
+    •Engine running.
+    
+    •Vehicle speed over 15 km/h
+    
+    Test 3
+    
+    •Ignition ON.
+    
+    Test 4
+    
+    •Engine running.
+    
+    •Vehicle speed over 15 km/h
+    
+    •Diagnostics runs when there is a speed difference between the wheel sensors.
+  fault_criteria: |
+    Test 1
+    
+    •Steering wheel angle sensor exceeds normal value for normal driving (3000 degrees/s)
+    
+    Test 2
+    
+    •The calculated steering angle compensation exceeds 18 degrees.
+    
+    Test 3
+    
+    •Steering angle exceeds +/- 720 degrees.
+    
+    Test 4
+    
+    •Value of steering angle sensor is stuck.
+  system_reaction: No ESP function
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Steering Angle
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: The DTC is generated if the wheels are out of alignment.

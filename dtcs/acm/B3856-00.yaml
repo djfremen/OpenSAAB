@@ -1,0 +1,27 @@
+dtc: B3856-00
+module: ACM
+module_long_name: Airbag Control Module
+description: "Passenger Side C-pillar Sensor, Faulty Communication"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acm/b3856-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Passenger Side C-pillar Sensor, Faulty Communication"
+  description: "Passenger Side C-pillar Sensor, Faulty Communication"
+  symptom: "Symptom: Airbag warning lamp is lit"
+  fault_symptom: Airbag warning lamp is lit
+  type_of_diagnosis: Asynchronous
+  enable_criteria: Ignition ON.
+  fault_criteria: |
+    •Control module receives incorrect or no ID from the sensor within a period of 5 seconds with ignition on.
+    
+    •Control module receives no status from the sensor within a period of 5 s.
+    
+    (normally, the sensor sends out status 1/s.)
+  system_reaction: The control module ignores the activation command from the sensor as long as a fault is active.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: |
+    IMPORTANT
+    
+    •Read "Before starting fault diagnosis" under Fault diagnosis, general before beginning fault diagnosis.

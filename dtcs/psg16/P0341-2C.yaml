@@ -1,0 +1,38 @@
+dtc: P0341-2C
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Pump Camshaft Mechanical Fault.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0341-2c
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Pump Camshaft Mechanical Fault.
+  description: Pump Camshaft Mechanical Fault.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+    A/C not working, no cooling.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+    
+    A/C not working, no cooling.
+  type_of_diagnosis: Continuous
+  enable_criteria: Engine running.
+  fault_criteria: Control module has detected that the signal from the crankshaft position sensor has arrived earlier or later than the signal from the camshaft sensor.
+  system_reaction: "Limp Home, engine shut-off."
+  diagnosis_regards: Internal diesel pump fault.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Camshaft RPM
+    
+    Engine RPM
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: |
+    If another DTC is present in PSG16, start fault diagnosis with that DTC.
+    
+    The camshaft can be set incorrectly, see document "Setting valve timing".

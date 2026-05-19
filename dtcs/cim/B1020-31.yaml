@@ -1,0 +1,27 @@
+dtc: B1020-31
+module: CIM
+module_long_name: Column Integration Module
+description: SCL Internal Failure
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b1020-31
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: SCL Internal Failure
+  description: SCL Internal Failure
+  symptom: |
+    Symptom: Message appears in display.
+    Steering column lock not working.
+  fault_symptom: |
+    Message appears in display.
+    
+    Steering column lock not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics runs when key is inserted.
+  fault_criteria: Internal memory error in SCL.
+  system_reaction: |
+    Steering column lock deactivated.
+    
+    DTC B3948 generated in CIM.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"Before changing a control module\" and \"After fitting a control module\" under Fault diagnosis, general."

@@ -1,0 +1,48 @@
+dtc: P0116-FA
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Engine Coolant Temperature Malfunction.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0116-fa
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Engine Coolant Temperature Malfunction.
+  description: Engine Coolant Temperature Malfunction.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Radiator fan runs continuously.
+    Extended glow duration.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Radiator fan runs continuously.
+    
+    Extended glow duration.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Engine running longer than 60 s.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    P0196, P0197, P0198
+  fault_criteria: Coolant temperature has not exceeded 70°C 3 minutes after coolant temperature has exceeded 80°C for 5 seconds.
+  system_reaction: The control module uses 0°C as a substitute value.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Coolant Temperature
+    
+    Coolant Temperature Sensor
+    
+    Oil Temperature Sensor
+    
+    Engine Oil Temperature
+    
+    (See also description of readings/activations in diagnostic tool)

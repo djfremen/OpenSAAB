@@ -1,0 +1,19 @@
+dtc: B3832-45
+module: RLDM
+module_long_name: Rear Left Door Module
+description: "Information: Anti Pinch Not Learned"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/rldm/b3832-45
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Information: Anti Pinch Not Learned"
+  description: "Information: Anti Pinch Not Learned"
+  symptom: "Symptom: Express up not working."
+  fault_symptom: Express up not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: During electric window lift operation.
+  fault_criteria: Stroke and window position not stored or invalid.
+  system_reaction: "Control module deactivates \"express up\" function until DTC is cleared."
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.

@@ -1,0 +1,28 @@
+dtc: P1614-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: T8 or CIM Not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p1614-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: T8 or CIM Not Added
+  description: T8 or CIM Not Added
+  symptom: "Symptom: The car will not start."
+  fault_symptom: The car will not start.
+  type_of_diagnosis: Once per driving cycle.
+  enable_criteria: Ignition ON.
+  fault_criteria: |
+    Incorrect response from CIM.
+    
+    The immobilization codes in T8 and the CIM do not correlate.
+  system_reaction: |
+    Fuel cut off
+    
+    Starter motor cannot be started.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    DTC generated if T8/CIM has been transferred from another car without being "Added" with the diagnostic tool.
+    
+    See "Before changing a control module" and "After fitting a control module" under Fault diagnosis, general.

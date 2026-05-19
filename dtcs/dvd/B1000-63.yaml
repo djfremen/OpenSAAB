@@ -1,0 +1,22 @@
+dtc: B1000-63
+module: DVD
+module_long_name: DVD Player
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/dvd/b1000-63
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: "Symptom: Readout mechanism not functioning."
+  fault_symptom: Readout mechanism not functioning.
+  enable_criteria: Ignition ON.
+  fault_criteria: Eject button pushed for more than 8 seconds.
+  system_reaction: Internal control module fault
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the control module.
+    
+    See "Procedure for control module replacement"

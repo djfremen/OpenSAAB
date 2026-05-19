@@ -1,0 +1,31 @@
+dtc: B3700-04
+module: CIM
+module_long_name: Column Integration Module
+description: "Stalk Switch Wiper Interval Circuit, Open"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3700-04
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Stalk Switch Wiper Interval Circuit, Open"
+  description: "Stalk Switch Wiper Interval Circuit, Open"
+  symptom: "Symptom: Intermittent wiper operation interval control does not work."
+  fault_symptom: Intermittent wiper operation interval control does not work.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: "Intermittent wiper lever, open circuit"
+  diagnosis_regards: Electrical fault in the component.
+  diagnostic_tool_functions: |
+    See Reading:
+    
+    Wiper Front. Interval Position 1
+    
+    Wiper Front. Interval Position 2
+    
+    Wiper Front. Interval Position 3
+    
+    Wiper Front. Interval Position 4
+    
+    Wiper Front. Interval Position 5
+    
+    (See also description of readings/activations in diagnostic tool)

@@ -1,0 +1,30 @@
+dtc: B3420-02
+module: AHL
+module_long_name: Automatic Headlamp Levelling
+description: "Rear Axle Sensor Circuit,  Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ahl/b3420-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Rear Axle Sensor Circuit,  Short to Ground"
+  description: "Rear Axle Sensor Circuit,  Short to Ground"
+  symptom: |
+    Symptom: Message appears in display.
+    Headlamp beam adjustment not working.
+  fault_symptom: |
+    Message appears in display.
+    
+    Headlamp beam adjustment not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Xenon lights on.
+  fault_criteria: Control module input short-circuit to ground for more than 0.16 s.
+  system_reaction: |
+    Headlamp beam adjustment is switched off.
+    
+    Headlamp reflectors adjusted to a lower position.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: "Before fault diagnosis begins, read the document \"Safety and handling directions, xenon lights\" under Technical description."

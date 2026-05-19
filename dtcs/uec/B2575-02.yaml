@@ -1,0 +1,24 @@
+dtc: B2575-02
+module: UEC
+module_long_name: User Equipment Center
+description: "Low Beam Left Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/uec/b2575-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Low Beam Left Circuit, Short to Ground"
+  description: "Low Beam Left Circuit, Short to Ground"
+  symptom: |
+    Symptom: Left-hand dipped beam, faulty function.
+    Message appears in display.
+  fault_symptom: |
+    Left-hand dipped beam, faulty function.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: Light switch in position 2.
+  fault_criteria: Current consumption is greater than 30 A for more than 12 ms.
+  system_reaction: Control module output is switched off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: "If the vehicle has Xenon headlights, the ignition must be ON for 30 seconds for this to be detected."

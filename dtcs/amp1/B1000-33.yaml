@@ -1,0 +1,25 @@
+dtc: B1000-33
+module: AMP1
+module_long_name: AMP1 Amplifier 1
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/amp1/b1000-33
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: "Symptom: Amplifier not functioning."
+  fault_symptom: Amplifier not functioning.
+  enable_criteria: |
+    Ignition OFF.
+    
+    Starter motor cranking or engine running.
+  fault_criteria: Internal control module fault
+  system_reaction: Amplifier not functioning.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the control module.
+    
+    See "Procedure for control module replacement"

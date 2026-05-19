@@ -1,0 +1,33 @@
+dtc: P0695-02
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: "Cooling Fan 3 Control Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0695-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Cooling Fan 3 Control Circuit, Short to Ground"
+  description: "Cooling Fan 3 Control Circuit, Short to Ground"
+  symptom: "Symptom: Radiator fan runs continuously."
+  fault_symptom: Radiator fan runs continuously.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Radiator fan circuit Not activated.
+  system_reaction: Radiator fan speed set to LOW.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Fan Control Output 3
+    
+    Activate:
+    
+    Fan Control Output 3
+    
+    (See also description of readings/activations in diagnostic tool)

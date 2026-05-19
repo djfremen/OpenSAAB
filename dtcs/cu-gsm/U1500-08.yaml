@@ -1,0 +1,26 @@
+dtc: U1500-08
+module: CU-GSM
+module_long_name: Control Unit GSM
+description: Failed start-up of phone unit in CU
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cu-gsm/u1500-08
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Failed start-up of phone unit in CU
+  description: Failed start-up of phone unit in CU
+  symptom: "Symptom: No phone function."
+  fault_symptom: No phone function.
+  enable_criteria: |
+    Ignition ON.
+    
+    Battery voltage must be between 9 - 16 V.
+    
+    No starter motor cranking.
+  fault_criteria: Control module on-board diagnostics has detected an internal communication fault.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the control module.
+    
+    See "Before changing a control module".

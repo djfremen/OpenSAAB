@@ -1,0 +1,61 @@
+dtc: P0731-6F
+module: TCM
+module_long_name: Transmission Control Module
+description: "Gear 1, Faulty Gear Ratio."
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcm/p0731-6f
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Gear 1, Faulty Gear Ratio."
+  description: "Gear 1, Faulty Gear Ratio."
+  symptom: "Symptom: Message appears in display."
+  fault_symptom: Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running and not in limp home mode.
+    
+    •Exceptions:
+    
+    Output speed < 500 rpm.
+    
+    Output speed > 1260 rpm.
+    
+    Acceleration pedal position < 50 %.
+    
+    Engine speed does not increase for a duration of 1 second.
+    
+    Driver not driving in 1st gear.
+    
+    •Normal exceptions for shifting error DTC:
+    
+    Selector lever not in position D.
+    
+    During shifting.
+    
+    Oil temperature <= 20 º C
+    
+    Engine speed <400 rpm.
+    
+    Battery voltage < 10.5 Volt.
+    
+    Selector lever in R position.
+    
+    •Malfunction in one of the following systems:
+    
+    Input speed.
+    
+    Output speed.
+    
+    Gear selector position sensor 
+    
+    Gearbox Fluid Temperature Sensor
+    
+    Engine speed.
+    
+    ABS vehicle speed.
+    
+    Accelerator pedal position.
+  fault_criteria: "Gear ratio measured by the control module varies more than 3% from the expected value."
+  system_reaction: Limp home
+  diagnosis_regards: Locating a mechanical fault.

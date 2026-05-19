@@ -1,0 +1,15 @@
+dtc: B1000-35
+module: REC
+module_long_name: Rear Electronic Centre
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/rec/b1000-35
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  type_of_diagnosis: "Diagnostics run each time control module \"wakes\"."
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module on-board diagnostics has detected a ROM error.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""

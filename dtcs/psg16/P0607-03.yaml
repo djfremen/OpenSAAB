@@ -1,0 +1,22 @@
+dtc: P0607-03
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Internal Control Module Malfunction
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0607-03
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Internal Control Module Malfunction
+  description: Internal Control Module Malfunction
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Internal control module fault
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.

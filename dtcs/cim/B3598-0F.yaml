@@ -1,0 +1,29 @@
+dtc: B3598-0F
+module: CIM
+module_long_name: Column Integration Module
+description: "Cruise Control Switch Circuit, Value Incorrect"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3598-0f
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Cruise Control Switch Circuit, Value Incorrect"
+  description: "Cruise Control Switch Circuit, Value Incorrect"
+  symptom: "Symptom: Cruise control not working."
+  fault_symptom: Cruise control not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: The control module receives a faulty signal from the cruise control unit.
+  system_reaction: "In case of a fault, the control module will ignore button presses."
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Cruise Control Switch Set -
+    
+    Cruise Control Switch Set +
+    
+    (See also description of readings/activations in diagnostic tool)
+    
+    Cruise control button

@@ -1,0 +1,24 @@
+dtc: B3899-48
+module: DVD
+module_long_name: DVD Player
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/dvd/b3899-48
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  symptom: "Symptom: Control module not configured."
+  fault_symptom: Control module not configured.
+  enable_criteria: |
+    Ignition ON.
+    
+    Starter motor cranking or engine running.
+  fault_criteria: Control module not configured.
+  system_reaction: Non-immobilizer related functions should have full functionality.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Control module was not added.
+    
+    See "Procedure after fitting the control module"

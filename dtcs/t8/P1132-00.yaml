@@ -1,0 +1,33 @@
+dtc: P1132-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: O2S. Switch point - rich. Sensor 1
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p1132-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: O2S. Switch point - rich. Sensor 1
+  description: O2S. Switch point - rich. Sensor 1
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine speed between 1500 and 2800 rpm.
+    
+    Engine load between 200 - 400 mg/c.
+    
+    No changes in load.
+    
+    Closed loop is blocked (rich or lean) for a number of combustions in order to maintain 0.7V from oxygen sensor 2. The prescribed number of combustions is adapted.
+  fault_criteria: Closed loop blocked in lean mode for more than 50 combustions.
+  system_reaction: None
+  diagnosis_regards: Defective oxygen sensor.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •O2S 1
+    
+    •Closed Loop
+    
+    (See also description of readings/activations in diagnostic tool)

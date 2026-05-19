@@ -1,0 +1,14 @@
+dtc: U2155-1F
+module: ICM1
+module_long_name: Infotainment Control Module 1
+description: O-buss. Intermittent Open Circuit before Control Module
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/icm1/u2155-1f
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: O-buss. Intermittent Open Circuit before Control Module
+  description: O-buss. Intermittent Open Circuit before Control Module
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: "No contact with one, several or all O-bus systems."

@@ -1,0 +1,20 @@
+dtc: B1339-00
+module: DDM
+module_long_name: Driver Door Module
+description: +30 Power Feed Missing
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ddm/b1339-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: +30 Power Feed Missing
+  description: +30 Power Feed Missing
+  symptom: "Symptom: Electric window lift cannot be operated."
+  fault_symptom: Electric window lift cannot be operated.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Diagnostics run when power window is operated.
+  fault_criteria: Voltage is less than 6 V.
+  system_reaction: Power mirror cannot be operated

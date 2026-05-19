@@ -1,0 +1,32 @@
+dtc: C0547-02
+module: CIM
+module_long_name: Column Integration Module
+description: "SCL-ISM, Unlocked & Secured Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/c0547-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "SCL-ISM, Unlocked & Secured Circuit, Short to Ground"
+  description: "SCL-ISM, Unlocked & Secured Circuit, Short to Ground"
+  symptom: |
+    Symptom: Message appears in display.
+    Engine does not start.
+  fault_symptom: |
+    Message appears in display.
+    
+    Engine does not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics runs when the key is inserted in the ignition switch and is turned to ON again.
+  fault_criteria: "ISM-SCL lead, open circuit."
+  system_reaction: The control module does not allow starter motor cranking.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    SCL Voltage, Unlocked and Secured
+    
+    Key Capture. Steering Unlocked and Secured
+    
+    (See also description of readings/activations in diagnostic tool)

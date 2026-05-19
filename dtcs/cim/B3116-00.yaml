@@ -1,0 +1,31 @@
+dtc: B3116-00
+module: CIM
+module_long_name: Column Integration Module
+description: "Remote Control 3, Wrong Code (May Set when Used out of Range)"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3116-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Remote Control 3, Wrong Code (May Set when Used out of Range)"
+  description: "Remote Control 3, Wrong Code (May Set when Used out of Range)"
+  symptom: "Symptom: Lock/unlock with remote control not working"
+  fault_symptom: Lock/unlock with remote control not working
+  type_of_diagnosis: Diagnostics carried out when the button is depressed.
+  enable_criteria: Control module is active.
+  fault_criteria: Code sent from remote control does not correspond to code stored in CIM.
+  system_reaction: None
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Remote Last Range Status
+    
+    Remote Battery Status
+    
+    Remote Last Number
+    
+    See menu "All - Add/Remove"
+  diagnostic_help: |
+    A DTC is generated if the remote control battery is flat and after changing battery.
+    
+    Pressing the remote control 5 times outside its operating range after changing the battery will generate a fault code. If the car is locked at this time, you will have to unlock it manually and subsequently insert the key into the ignition lock to reprogram the key.

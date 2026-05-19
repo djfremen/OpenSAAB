@@ -1,0 +1,22 @@
+dtc: P1712-71
+module: TCM
+module_long_name: Transmission Control Module
+description: Wheel Speed FR. Bus Data Unreliable
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcm/p1712-71
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Wheel Speed FR. Bus Data Unreliable
+  description: Wheel Speed FR. Bus Data Unreliable
+  symptom: "Symptom: Message appears in display."
+  fault_symptom: Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition on for at least 3 s.
+    
+    Exceptions:
+    
+    TCM in Limp Home.
+  fault_criteria: Control module receives faulty signal from wheel sensor.
+  system_reaction: Limp home

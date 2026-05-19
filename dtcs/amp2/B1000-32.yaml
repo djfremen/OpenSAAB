@@ -1,0 +1,24 @@
+dtc: B1000-32
+module: AMP2
+module_long_name: AMP2 Amplifier 2
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/amp2/b1000-32
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: "Symptom: Amplifier not functioning."
+  fault_symptom: Amplifier not functioning.
+  enable_criteria: |
+    Ignition OFF.
+    
+    Starter motor cranking or engine running.
+  fault_criteria: Internal control module fault
+  system_reaction: Amplifier not functioning.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: |
+    Change the control module.
+    
+    See "Procedure for control module replacement"

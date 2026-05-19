@@ -1,0 +1,45 @@
+dtc: P1452-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "EVAP System, Tank Pressure Sensor Value too low"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p1452-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "EVAP System, Tank Pressure Sensor Value too low"
+  description: "EVAP System, Tank Pressure Sensor Value too low"
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Once per driving cycle. Stopped when fault criteria are fulfilled or OK reported.
+  enable_criteria: |
+    Ignition ON.
+    
+    Crankshaft stationary.
+    
+    Vehicle speed 0 km/h.
+    
+    Intake air temperature higher than 0°C.
+    
+    Atmospheric pressure between 75 and 106 kPa.
+    
+    Tank level lower than 50 litres.
+    
+    Current tank pressure sensor value is adapted.
+  fault_criteria: Adapted value is more than 750 Pa lower than atmospheric pressure.
+  system_reaction: None
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Faulty tank pressure sensor.
+    
+    Resistance in cable and connectors to tank pressure sensor.
+    
+    Fault in connector H42-2 is often a cause of this DTC.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Tank Pressure
+    
+    Pressure must be around 0 pa with ignition on.
+    
+    (See also description of readings/activations in diagnostic tool)

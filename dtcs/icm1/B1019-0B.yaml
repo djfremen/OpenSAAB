@@ -1,0 +1,28 @@
+dtc: B1019-0B
+module: ICM1
+module_long_name: Infotainment Control Module 1
+description: "SID, internal fault"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/icm1/b1019-0b
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "SID, internal fault"
+  description: "SID, internal fault"
+  symptom: |
+    Symptom: Slow response in cold weather.
+    Display too warm.
+    Poor contrast.
+  fault_symptom: |
+    Slow response in cold weather.
+    
+    Display too warm.
+    
+    Poor contrast.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the SID unit.
+    
+    See "Procedure for control module replacement"

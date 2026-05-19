@@ -1,0 +1,33 @@
+dtc: B0194-38
+module: ACC
+module_long_name: Automatic Climate Control
+description: "Fan Blower Control Module, Internal Failure"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acc/b0194-38
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Fan Blower Control Module, Internal Failure"
+  description: "Fan Blower Control Module, Internal Failure"
+  symptom: |
+    Symptom: Faulty function of ventilation fan.
+    No A/C function.
+  fault_symptom: |
+    Faulty function of ventilation fan.
+    
+    No A/C function.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ventilation fan activated.
+  fault_criteria: Fault in the internal ventilation fan control unit.
+  system_reaction: A/C function switched off.
+  diagnosis_regards: Electrical fault in the component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Fan Feedback OK
+    
+    Activation:
+    
+    Fan PWM Control
+    
+    (See also description of readings/activations in diagnostic tool)

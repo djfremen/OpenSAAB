@@ -1,0 +1,12 @@
+dtc: P1835-71
+module: TCM
+module_long_name: Transmission Control Module
+description: Kickdown Position. Bus Data Unreliable
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcm/p1835-71
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Kickdown Position. Bus Data Unreliable
+  description: Kickdown Position. Bus Data Unreliable
+  diagnostic_help: See diagnostic trouble codes in Trionic 8

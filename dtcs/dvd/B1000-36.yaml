@@ -1,0 +1,26 @@
+dtc: B1000-36
+module: DVD
+module_long_name: DVD Player
+description: "Malfunction in one of the following systems:"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/dvd/b1000-36
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Malfunction in one of the following systems:DVD unit."
+  description: "Malfunction in one of the following systems:"
+  enable_criteria: |
+    Ignition OFF.
+    
+    Starter motor cranking or engine running.
+  fault_criteria: Control module on-board diagnostics has detected a EEPROM error.
+  system_reaction: |
+    Malfunction in one of the following systems:
+    
+    DVD unit.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Replace ECU
+    
+    See "Procedure for control module replacement"

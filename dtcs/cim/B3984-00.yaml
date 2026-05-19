@@ -1,0 +1,18 @@
+dtc: B3984-00
+module: CIM
+module_long_name: Column Integration Module
+description: MIU not programmable
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3984-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: MIU not programmable
+  description: MIU not programmable
+  symptom: "Symptom: Message appears in display."
+  fault_symptom: Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics runs when key is inserted.
+  fault_criteria: Immobilizer code cannot be programmed in MIU.
+  system_reaction: None
+  diagnostic_help: Discard the control module in the proper manner.

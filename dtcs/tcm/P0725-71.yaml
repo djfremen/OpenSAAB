@@ -1,0 +1,36 @@
+dtc: P0725-71
+module: TCM
+module_long_name: Transmission Control Module
+description: Engine Speed. Bus Data Unreliable
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcm/p0725-71
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Engine Speed. Bus Data Unreliable
+  description: Engine Speed. Bus Data Unreliable
+  symptom: |
+    Symptom: Gearbox warning lamp lights in MIU.
+    Message appears in display.
+    Limited shifting function.
+  fault_symptom: |
+    Gearbox warning lamp lights in MIU.
+    
+    Message appears in display.
+    
+    Limited shifting function.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Input shaft speed exceeds 500 rpm.
+    
+    No bus communication fault with engine management system.
+    
+    "Limp home" function not active.
+  fault_criteria: Incorrect engine speed signal from engine management system for more than 4 s.
+  system_reaction: Limp home
+  diagnostic_help: |
+    If engine management system self-diagnostics detects a fault on the crankshaft position sensor, the speed signal on the bus becomes invalid. When the engine management system approves the speed signal, the correct value is transmitted on the bus. When P0725 71 is generated in TCM, DTC P0335/P0336/P0337/P0339 is stored in the engine management system.
+    
+    Follow the fault tracing procedure for the DTC in question in the engine management system.

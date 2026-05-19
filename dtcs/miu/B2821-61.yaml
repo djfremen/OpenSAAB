@@ -1,0 +1,17 @@
+dtc: B2821-61
+module: MIU
+module_long_name: Main Instrument Unit
+description: "Trip Odometer Switch, button stuck"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/miu/b2821-61
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Trip Odometer Switch, button stuck"
+  description: "Trip Odometer Switch, button stuck"
+  symptom: "Symptom: Trip odometer cannot be reset."
+  fault_symptom: Trip odometer cannot be reset.
+  type_of_diagnosis: Diagnostics runs when the Reset button is depressed.
+  enable_criteria: Ignition ON.
+  fault_criteria: Reset button is stuck in the depressed position.
+  diagnosis_regards: Mechanical fault (button stuck) or internal fault in MIU.

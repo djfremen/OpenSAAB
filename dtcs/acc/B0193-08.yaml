@@ -1,0 +1,37 @@
+dtc: B0193-08
+module: ACC
+module_long_name: Automatic Climate Control
+description: "Fan blower Circuit, Invalid Signal"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acc/b0193-08
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Fan blower Circuit, Invalid Signal"
+  description: "Fan blower Circuit, Invalid Signal"
+  symptom: |
+    Symptom: Possible ventilation fan malfunction.
+    Possible AC malfunction.
+  fault_symptom: |
+    Possible ventilation fan malfunction.
+    
+    Possible AC malfunction.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ventilation fan activated.
+  fault_criteria: |
+    No feedback signal from ventilation fan's internal control unit.
+    
+    Open circuit/short circuit on PWM signal to ventilation fan control.
+  system_reaction: A/C function switched off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Fan Feedback OK
+    
+    Activation:
+    
+    Fan PWM Control
+    
+    (See also description of readings/activations in diagnostic tool)

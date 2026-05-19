@@ -1,0 +1,24 @@
+dtc: B3922-00
+module: CIM
+module_long_name: Column Integration Module
+description: "Stalk Switch Wiper Front Circuit, Malfunction"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3922-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Stalk Switch Wiper Front Circuit, Malfunction"
+  description: "Stalk Switch Wiper Front Circuit, Malfunction"
+  symptom: "Symptom: Stalk Switch Wiper Front Circuit, Malfunction"
+  fault_symptom: "Stalk Switch Wiper Front Circuit, Malfunction"
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: The control module receives a faulty signal from the wiper control.
+  system_reaction: None
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    See Reading:
+    
+    Stalk Switch Wipers
+    
+    (See also description of readings/activations in diagnostic tool)

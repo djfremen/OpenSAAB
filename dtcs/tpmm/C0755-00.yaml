@@ -1,0 +1,26 @@
+dtc: C0755-00
+module: TPMM
+module_long_name: Tyre Pressure Monitor Module
+description: "Air Valve Right Front, No Radio Signal"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tpmm/c0755-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Air Valve Right Front, No Radio Signal"
+  description: "Air Valve Right Front, No Radio Signal"
+  symptom: "Symptom: Message appears in display."
+  fault_symptom: Message appears in display.
+  enable_criteria: Vehicle speed above 30 km/h for more than 30 seconds.
+  fault_criteria: No signal from the pressure sensor within 10 minutes after the input conditions are met.
+  system_reaction: None
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Pressure Status LF
+    
+    Transmissions RF
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: "In case of a fault, the control module may need up to 10 minutes in an active state before it can diagnose the fault."

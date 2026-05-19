@@ -1,0 +1,44 @@
+dtc: P2135-FA
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Pedal Position Sensor Circuit. Plausibility Fault Between Circuit 1 and 2.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p2135-fa
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Pedal Position Sensor Circuit. Plausibility Fault Between Circuit 1 and 2.
+  description: Pedal Position Sensor Circuit. Plausibility Fault Between Circuit 1 and 2.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Engine speed cannot be regulated.
+    Idling speed set to 1400 rpm.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Engine speed cannot be regulated.
+    
+    Idling speed set to 1400 rpm.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    NONE of the following DTCs must be detected:
+    
+    P0652, P0653
+    
+    P0698, P0699
+  fault_criteria: "Differential voltage more than 1.0V at max pedal position between pedal position sensors 1 and 2 (pedal position sensor 2: voltage x 2) for more than 0.5 seconds."
+  system_reaction: "Limp Home, engine speed limitation."
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Pedal Position Sensor 1
+    
+    Pedal Position Sensor 2
+    
+    (See also description of readings/activations in diagnostic tool)

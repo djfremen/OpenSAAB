@@ -1,0 +1,33 @@
+dtc: C0800-07
+module: TCS
+module_long_name: Traction Control System
+description: Supply voltage Too High
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcs/c0800-07
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Supply voltage Too High
+  description: Supply voltage Too High
+  symptom: |
+    Symptom: ABS warning lamp on
+    TCS/ESP warning lamp comes on.
+    Message appears in display.
+    Steering column lock not working.
+  fault_symptom: |
+    ABS warning lamp on
+    
+    TCS/ESP warning lamp comes on.
+    
+    Message appears in display.
+    
+    Steering column lock not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Battery voltage exceeds 18.5 V for 0.5 s.
+  system_reaction: |
+    No ABS function
+    
+    No TCS/ESP function
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: "The DTC can be generated if a 24V battery charger is used to charge the battery or if another vehicle with 24V battery, e.g. a truck, has been used to help start the car."

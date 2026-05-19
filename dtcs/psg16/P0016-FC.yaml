@@ -1,0 +1,44 @@
+dtc: P0016-FC
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Engine Speed Sensor Plausibility Fault with Pump Camshaft Sensor.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0016-fc
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Engine Speed Sensor Plausibility Fault with Pump Camshaft Sensor.
+  description: Engine Speed Sensor Plausibility Fault with Pump Camshaft Sensor.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Engine stops.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Engine stops.
+  type_of_diagnosis: |
+    Continuous
+    
+    NONE of the following DTCs must be detected:
+    
+    P0219
+    
+    P0335, P0336, P0337
+    
+    P0340, P0342, P0343
+  enable_criteria: Engine speed higher than 800 rpm
+  fault_criteria: Signals from both sensors differ more than 800 rpm from each other.
+  system_reaction: |
+    The control module uses pump rpm x2 as a substitute value.
+    
+    Engine Turn Off
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Jiggle the wiring harness at several points to detect intermittent breaks or short circuits. Check also the connector for oxidation or loose pins.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Engine RPM
+    
+    Camshaft RPM

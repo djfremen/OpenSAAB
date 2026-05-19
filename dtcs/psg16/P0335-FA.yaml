@@ -1,0 +1,53 @@
+dtc: P0335-FA
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Engine Speed Sensor. No Signal During Engine Running.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0335-fa
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Engine Speed Sensor. No Signal During Engine Running.
+  description: Engine Speed Sensor. No Signal During Engine Running.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+    A/C not working, no cooling.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+    
+    A/C not working, no cooling.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Engine speed more than 850 rpm.
+    
+    NONE of the following DTCs must be detected:
+    
+    P0016
+    
+    P0219
+    
+    P0337
+    
+    P0340, P0342, P0343
+  fault_criteria: Time between two crankshaft signals more than 40 ms 16 times running.
+  system_reaction: |
+    Limp Home, fuel limitation.
+    
+    Output to the A/C relay is switched off.
+    
+    The control module uses pump rpm x2 as a substitute value.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Engine RPM
+    
+    (See also description of readings/activations in diagnostic tool)

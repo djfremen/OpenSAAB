@@ -1,0 +1,17 @@
+dtc: P0602-44
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0602-44
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Internal control module fault. Security function switched off.
+  diagnostic_help: Discard the control module in the proper manner.

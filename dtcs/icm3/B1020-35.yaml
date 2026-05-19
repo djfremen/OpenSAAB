@@ -1,0 +1,19 @@
+dtc: B1020-35
+module: ICM3
+module_long_name: Infotainment Control Module 3
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/icm3/b1020-35
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  type_of_diagnosis: Diagnostics performed when control module goes to standby.
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module on-board diagnostics has detected a ROM error.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the control module.
+    
+    See "Procedure for control module replacement"

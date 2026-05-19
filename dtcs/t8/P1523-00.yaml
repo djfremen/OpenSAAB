@@ -1,0 +1,79 @@
+dtc: P1523-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Throttle Mechanical, Throttle Default Position Fault"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p1523-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Throttle Mechanical, Throttle Default Position Fault"
+  description: "Throttle Mechanical, Throttle Default Position Fault"
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Cruise control not working.
+    Limp home
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Cruise control not working.
+    
+    Limp home
+  type_of_diagnosis: Continually
+  enable_criteria: |
+    When the ECM is awake, diagnosis is active (even with the ignition off).
+    
+    Test 1
+    
+    •Engine is not running.
+    
+    •Throttle position requested in rest position to conserve current.
+    
+    Test 2
+    
+    •Engine running.
+    
+    •Throttle position requested in rest position due to system reaction to another DTC.
+  fault_criteria: |
+    Test 1
+    
+    •The throttle has a > 41% variation from rest position for 0.6 s.
+    
+    Test 2
+    
+    •There is no signal from the throttle position sensors and the air mass flow rate is > 23g/s for 0.15 s.
+    
+    Each time the voltage across the throttle motor is disengaged, the throttle returns to its starting position.
+  system_reaction: |
+    Test 1
+    
+    •Correction of mass air flow/combustion for fuel calculation is blocked.
+    
+    •Limited acceleration and idle function.
+    
+    •Cruise control blocked.
+    
+    •Secondary air injection function is disengaged if the secondary air injection pump is fitted.
+    
+    Test 2
+    
+    •Engine shut off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Electrical fault in connecting leads or component.
+    
+    Mechanically binding/affected throttle.
+    
+    P1523 is generated if the throttle is moved (e.g. with a screwdriver) when in the rest position, even when the ignition is off.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Throttle Position Sensor 1
+    
+    •Throttle Position Sensor 2
+    
+    Activation:
+    
+    •Throttle Position Test
+    
+    (See also description of readings/activations in diagnostic tool)

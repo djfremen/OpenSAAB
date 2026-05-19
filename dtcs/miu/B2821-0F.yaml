@@ -1,0 +1,18 @@
+dtc: B2821-0F
+module: MIU
+module_long_name: Main Instrument Unit
+description: "Trip Odometer Switch Curcuit, Erratic signal"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/miu/b2821-0f
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Trip Odometer Switch Curcuit, Erratic signal"
+  description: "Trip Odometer Switch Curcuit, Erratic signal"
+  symptom: "Symptom: Trip odometer cannot be reset."
+  fault_symptom: Trip odometer cannot be reset.
+  type_of_diagnosis: Diagnostics runs when the Reset button is depressed.
+  enable_criteria: Ignition ON.
+  fault_criteria: Incorrect signal from Reset button.
+  system_reaction: "In the event of a fault, the control unit switches off trip odometer display 120 s after the ignition is switched off."
+  diagnosis_regards: Mechanical fault (button stuck) or internal fault in MIU.

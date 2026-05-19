@@ -1,0 +1,27 @@
+dtc: B3946-00
+module: CIM
+module_long_name: Column Integration Module
+description: SCL Not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3946-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: SCL Not Added
+  description: SCL Not Added
+  symptom: |
+    Symptom: Error message is shown on the display.
+    Cannot turn key.
+    Engine does not start.
+  fault_symptom: |
+    Error message is shown on the display.
+    
+    Cannot turn key.
+    
+    Engine does not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics run when key is inserted and removed.
+  fault_criteria: SCL Not Added
+  system_reaction: The control module does not allow starter motor cranking.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"After fitting a control module\" under fault diagnosis, general."

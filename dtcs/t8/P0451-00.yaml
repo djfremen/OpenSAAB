@@ -1,0 +1,43 @@
+dtc: P0451-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Tank pressure sensor malfunction.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0451-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Tank pressure sensor malfunction.
+  description: Tank pressure sensor malfunction.
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Battery voltage must be between 11 - 16 V.
+    
+    Engine running.
+    
+    Coolant temperature over 4°C.
+    
+    Intake air temperature over 4°C.
+    
+    NONE of the following DTCs must be detected:
+    
+    •P0444, P0445
+    
+    •P0452, P0453
+    
+    •P0498, P0499
+  fault_criteria: Tank pressure alternates more quickly than that which can be caused by sloshing of the petrol. More than 15 pressure changes of more than 25 Pa for 5 s.
+  system_reaction: The control module uses a substitute value of 0 kPa.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Electrical fault in connecting leads or component.
+    
+    Fault in connector H42-2 is often a cause of this DTC.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Tank Pressure
+    
+    (See also description of readings/activations in diagnostic tool)

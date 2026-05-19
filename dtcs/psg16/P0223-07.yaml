@@ -1,0 +1,49 @@
+dtc: P0223-07
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Pedal Position Sensor Circuit 2. Short to B+.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0223-07
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Pedal Position Sensor Circuit 2. Short to B+.
+  description: Pedal Position Sensor Circuit 2. Short to B+.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Idling speed set to 1400 rpm.
+    Engine speed cannot be regulated.
+    Cruise control not working.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Idling speed set to 1400 rpm.
+    
+    Engine speed cannot be regulated.
+    
+    Cruise control not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Following diagnostics must NOT have reported a fault:
+    
+    P0652, P0653
+    
+    P0698, P0699
+  fault_criteria: Input voltage is higher than 2.5 V for more than 0.3 s.
+  system_reaction: |
+    Limp Home, engine speed limitation.
+    
+    Cruise control switched off.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnosis_regards: •IMPORTANT
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Pedal Position Sensor 2
+    
+    (See also description of readings/activations in diagnostic tool)

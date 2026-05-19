@@ -1,0 +1,39 @@
+dtc: P0017-FA
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: "Uneven Pump Rotation, Worn Chain"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0017-fa
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Uneven Pump Rotation, Worn Chain"
+  description: "Uneven Pump Rotation, Worn Chain"
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+    A/C function switched off.
+    Cruise control not working.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+    
+    A/C function switched off.
+    
+    Cruise control not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Engine speed more than 2000 rpm.
+  fault_criteria: Difference between present injection duration from camshaft (pump) sensor and previous injection duration is too large.
+  system_reaction: |
+    Limp Home, fuel limitation.
+    
+    Cruise control switched off.
+  diagnosis_regards: Mechanical faults.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Camshaft RPM
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: "DTC can be generated if the timing chain is worn, there is air in the pump or if the fuel filter is blocked."

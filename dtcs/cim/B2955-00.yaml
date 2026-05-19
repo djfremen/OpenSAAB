@@ -1,0 +1,18 @@
+dtc: B2955-00
+module: CIM
+module_long_name: Column Integration Module
+description: "ISM, Internal Fault"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b2955-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "ISM, Internal Fault"
+  description: "ISM, Internal Fault"
+  symptom: "Symptom: Engine does not start."
+  fault_symptom: Engine does not start.
+  type_of_diagnosis: Diagnostics is carried out each time the key is inserted in the ignition switch.
+  enable_criteria: Key in ignition switch.
+  fault_criteria: "No antenna unit, immobilizer detected."
+  system_reaction: None
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""

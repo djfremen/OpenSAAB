@@ -1,0 +1,17 @@
+dtc: P0219-2A
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Engine speed has been too High.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0219-2a
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Engine speed has been too High.
+  description: Engine speed has been too High.
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: Engine running.
+  fault_criteria: Engine speed has exceeded 6200 rpm for more than 0.1 second.
+  system_reaction: Fuel shut-off takes place at 5000 rpm.

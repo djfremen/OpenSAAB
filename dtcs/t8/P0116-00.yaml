@@ -1,0 +1,49 @@
+dtc: P0116-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Cooling system malfunction
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0116-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Cooling system malfunction
+  description: Cooling system malfunction
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Incorrect temperature gauge reading.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Incorrect temperature gauge reading.
+  type_of_diagnosis: Once per driving cycle.
+  enable_criteria: |
+    Battery voltage must be between 11 - 16 V.
+    
+    None of the following DTCs must be detected: P0115, P0117, P0118 and P0119.
+    
+    Engine running.
+    
+    Atmospheric pressure higher than 725 kPa (105 psi).
+    
+    Intake air temperature must exceed -6°C (21°F).
+    
+    Coolant temperature higher than -6°C (21°F).
+    
+    Coolant temperature lower than 65°C (149°F).
+    
+    If vehicle speed exceeds 140 km/h (87 mph), diagnostics will be cancelled and not restart until next driving cycle.
+  fault_criteria: When the difference between the calculated engine temperature and the average temperature sensor value is outside the interval -7°C and 30°C. The average value is calculated after 200 s.
+  system_reaction: None
+  diagnosis_regards: |
+    Fault in the cooling system (coolant level/thermostat).
+    
+    ____________________________________
+    
+    During a cold start, the warming of the engine is calculated according to load and engine speed. The measured value is compared with the calculated value. If the variation is too large, the cooling system is deemed to have a reduced function.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Engine Temperature
+    
+    (See also description of readings/activations in diagnostic tool)

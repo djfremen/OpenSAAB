@@ -1,0 +1,21 @@
+dtc: U0002-00
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: PSG16 was Missing on Bus
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/u0002-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: PSG16 was Missing on Bus
+  description: PSG16 was Missing on Bus
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: P-bus short circuit for more than 0.l s.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Jiggle the wiring harness at several points to detect intermittent breaks or short circuits. Check also the connector for oxidation or loose pins.
+  diagnostic_help: "In order to read DTC from PSG16, communication with CIM is required. If the DTC is stored and read with the diagnostic instrument, it indicates intermittent bus lead fault."

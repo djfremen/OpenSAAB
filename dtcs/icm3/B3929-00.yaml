@@ -1,0 +1,14 @@
+dtc: B3929-00
+module: ICM3
+module_long_name: Infotainment Control Module 3
+description: AMP 1 or ICM Not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/icm3/b3929-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: AMP 1 or ICM Not Added
+  description: AMP 1 or ICM Not Added
+  enable_criteria: Ignition ON.
+  fault_criteria: Incorrect immobilizer code received from AMP 1.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""

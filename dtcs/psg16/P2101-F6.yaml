@@ -1,0 +1,32 @@
+dtc: P2101-F6
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: "Throttle Valve Actuator Circuit , Short to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p2101-f6
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Throttle Valve Actuator Circuit , Short to B+"
+  description: "Throttle Valve Actuator Circuit , Short to B+"
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Output short circuit to B+ for more than 0.6 s.
+  system_reaction: |
+    Control module uses 100% PWM signal as substitute value for EGR control.
+    
+    Shut-off damper, motor not working.
+    
+    The control module uses 0% PWM signal as substitute value for the shut-off flap control valve.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Jiggle the wiring harness at several points to detect intermittent breaks or short circuits. Check also the connector for oxidation or loose pins.
+  diagnostic_help: EGR turned off in case of fault.

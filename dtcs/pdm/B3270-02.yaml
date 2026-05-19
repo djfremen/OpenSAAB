@@ -1,0 +1,24 @@
+dtc: B3270-02
+module: PDM
+module_long_name: Passenger Door Module
+description: "Central Locking Switch Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/pdm/b3270-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Central Locking Switch Circuit, Short to Ground"
+  description: "Central Locking Switch Circuit, Short to Ground"
+  symptom: "Symptom: Central locking system cannot be operated with the central locking system button."
+  fault_symptom: Central locking system cannot be operated with the central locking system button.
+  enable_criteria: When the car is locked/unlocked.
+  fault_criteria: Control module signal invalid.
+  system_reaction: None
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Passenger Door Lock Switch
+    
+    (See also description of readings/activations in diagnostic tool)

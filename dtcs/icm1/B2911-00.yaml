@@ -1,0 +1,17 @@
+dtc: B2911-00
+module: ICM1
+module_long_name: Infotainment Control Module 1
+description: AMP 2 or ICM Not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/icm1/b2911-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: AMP 2 or ICM Not Added
+  description: AMP 2 or ICM Not Added
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Incorrect immobilizer code received from AMP 1.
+    
+    Ignition ON.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""

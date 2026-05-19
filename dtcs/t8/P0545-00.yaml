@@ -1,0 +1,19 @@
+dtc: P0545-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Exhaust Gas Temperature Sensor Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0545-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Exhaust Gas Temperature Sensor Circuit, Short to Ground"
+  description: "Exhaust Gas Temperature Sensor Circuit, Short to Ground"
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  diagnostic_help: |
+    Update control module software.
+    
+    Carry out SPS programming.
+    
+    The later software replaces the physical sensor by using a mathematical model to calculate the exhaust temperature.

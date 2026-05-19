@@ -1,0 +1,41 @@
+dtc: P0616-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Starter Relay Circuit, Open/Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0616-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Starter Relay Circuit, Open/Short to Ground"
+  description: "Starter Relay Circuit, Open/Short to Ground"
+  symptom: |
+    Symptom: Starter motor cannot be started.
+    The starter motor may function independently.
+  fault_symptom: |
+    Starter motor cannot be started.
+    
+    The starter motor may function independently.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    US/CA Manual gearbox: Clutch pedal depressed.
+    
+    Automatic transmission: P or N engaged.
+    
+    Relay output inactive.
+  fault_criteria: When voltage on the output is below 2.0 V for more than 1 s.
+  system_reaction: None
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Starting
+    
+    Activation:
+    
+    •Starter Relay Status
+    
+    (See also description of readings/activations in diagnostic tool)

@@ -1,0 +1,43 @@
+dtc: P1626-F6
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: CIM was Missing on Bus
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p1626-f6
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: CIM was Missing on Bus
+  description: CIM was Missing on Bus
+  symptom: |
+    Symptom: Engine may not start.
+    Cruise control not working.
+  fault_symptom: |
+    Engine may not start.
+    
+    Cruise control not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    P0532, P0533
+    
+    P0602 46
+    
+    P0652, P0653
+    
+    U0002
+    
+    U0073
+  fault_criteria: No communication with CIM for more than 5 s.
+  system_reaction: Cruise control switched off.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_help: |
+    Fault diagnosis for CIM should be carried out.
+    
+    See bus fault diagnosis.

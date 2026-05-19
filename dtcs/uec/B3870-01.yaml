@@ -1,0 +1,22 @@
+dtc: B3870-01
+module: UEC
+module_long_name: User Equipment Center
+description: "Extra Lights Relay Circuit, Open/Short to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/uec/b3870-01
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Extra Lights Relay Circuit, Open/Short to B+"
+  description: "Extra Lights Relay Circuit, Open/Short to B+"
+  symptom: "Symptom: Auxiliary lamp not working."
+  fault_symptom: Auxiliary lamp not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Voltage on the control module output exceeds 6 V when auxiliary lamp is on.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Activation:
+    
+    Extra Lights Relay

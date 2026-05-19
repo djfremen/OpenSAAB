@@ -1,0 +1,21 @@
+dtc: B1000-32
+module: MIU
+module_long_name: Main Instrument Unit
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/miu/b1000-32
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: "Symptom: Main instrument unit not working or working improperly."
+  fault_symptom: Main instrument unit not working or working improperly.
+  type_of_diagnosis: "Diagnostics run each time control module \"wakes\"."
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module on-board diagnostics has detected a memory fault.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the control module.
+    
+    See "Procedure for control module replacement"

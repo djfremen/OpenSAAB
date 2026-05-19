@@ -1,0 +1,23 @@
+dtc: P1168-FB
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: "Fuel Temperature out of Limits, Pump Protection Activated"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p1168-fb
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Fuel Temperature out of Limits, Pump Protection Activated"
+  description: "Fuel Temperature out of Limits, Pump Protection Activated"
+  symptom: "Symptom: Performance loss."
+  fault_symptom: Performance loss.
+  type_of_diagnosis: Continuous
+  enable_criteria: Engine speed above 2500 rpm or 1800 rpm respectively.
+  fault_criteria: The fuel temperature drops below 15 degrees Celsius or exceeds 100 degrees Celsius for more than 10 seconds.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Fuel Temperature
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: Check function of fuel filter pre-heater to see it is applied.

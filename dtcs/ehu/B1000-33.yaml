@@ -1,0 +1,32 @@
+dtc: B1000-33
+module: EHU
+module_long_name: Entertainment Head Unit
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ehu/b1000-33
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: |
+    Symptom: Malfunction in one of the following systems:
+    EHU@Entertainment Head Unit
+  fault_symptom: |
+    Malfunction in one of the following systems:
+    
+    EHU@Entertainment Head Unit
+  enable_criteria: |
+    Ignition OFF.
+    
+    Ignition ON.
+    
+    O-bus active.
+  fault_criteria: Internal control module fault
+  system_reaction: Faulty radio functions.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the control module.
+    
+    See "Procedure for control module replacement"

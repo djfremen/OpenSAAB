@@ -1,0 +1,27 @@
+dtc: B1325-03
+module: AHL
+module_long_name: Automatic Headlamp Levelling
+description: "Control Module, Supply Voltage Low"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ahl/b1325-03
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Control Module, Supply Voltage Low"
+  description: "Control Module, Supply Voltage Low"
+  symptom: |
+    Symptom: Message appears in display.
+    Headlamp beam adjustment not working.
+  fault_symptom: |
+    Message appears in display.
+    
+    Headlamp beam adjustment not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Input voltage below 9 V for more than 0.12 s.
+  system_reaction: Headlamp beam adjustment is switched off.
+  checking_wiring: Jiggle the wiring harness at several points to detect intermittent breaks or short circuits. Check also the connector for oxidation or loose pins.
+  diagnostic_help: |
+    IMPORTANT
+    
+    See "Safety and handling directions, xenon headlamps".

@@ -1,0 +1,26 @@
+dtc: B0997-38
+module: CIM
+module_long_name: Column Integration Module
+description: "ISM, Internal Fault"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b0997-38
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "ISM, Internal Fault"
+  description: "ISM, Internal Fault"
+  symptom: |
+    Symptom: Message appears in display.
+    Steering column lock not working.
+    No starter motor cranking.
+  fault_symptom: |
+    Message appears in display.
+    
+    Steering column lock not working.
+    
+    No starter motor cranking.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics run when key is inserted and removed.
+  fault_criteria: Control module has detected an internal fault.
+  system_reaction: Steering column lock deactivated.
+  diagnosis_regards: Internal fault in ISM.

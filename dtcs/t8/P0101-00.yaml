@@ -1,0 +1,84 @@
+dtc: P0101-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Mass air flow sensor malfunction (variation from calculated air mass)
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0101-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Mass air flow sensor malfunction (variation from calculated air mass)
+  description: Mass air flow sensor malfunction (variation from calculated air mass)
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Cruise control not working.
+    Limp home
+    Possible driveability problem.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Cruise control not working.
+    
+    Limp home
+    
+    Possible driveability problem.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Battery voltage must be between 11 - 16 V.
+    
+    Vehicle speed above 30 km/h for more than 60 s accumulated time.
+    
+    Coolant temperature between 71°C and 115°C.
+    
+    Engine speed between 1400 and 4000 rpm.
+    
+    No fuel shut-off.
+    
+    Air mass 7 - 20 g/s.
+  fault_criteria: |
+    Conditions for test 1, 2, 3 or 4 are fulfilled.
+    
+    Test 1
+    
+    •The mass air flow sensor shows a value 12% lower than the calculated one while multiplicative adaptation is greater than 17%.
+    
+    Test 2
+    
+    •The mass air flow sensor shows a value 12% higher than the calculated one while multiplicative adaptation is less than -17%.
+    
+    Test 3
+    
+    •The mass air flow sensor shows a value 30% lower than the calculated one.
+    
+    Test 4
+    
+    •The mass air flow sensor shows a value 30% higher than the calculated one.
+  system_reaction: |
+    The system continues to function with a calculated air mass instead of the value from the mass air flow sensor.
+    
+    Boost pressure adaption is blocked and reset.
+    
+    Limited acceleration and idle function.
+    
+    Cruise control blocked.
+    
+    Secondary air pump not active, if fitted.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    The DTC indicates that the value from the mass air flow sensor has been deemed unreliable after comparison with a calculated value. This could be due to an air leak or a faulty mass air flow sensor.
+    
+    The air mass signal is compared to a calculated value under light, normal and continuous engine loads. The calculated value is derived from the pressures given by the pressure sensors in the intake system.
+    
+    First check the integrity of the intake system. Then continue with fault diagnosis.
+    
+    If DTC P0171 or P0172 is stored, it is cleared by P0101.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Air Mass
+    
+    •Airmass / Combustion
+    
+    •Airmass / Combustion Calculated
+    
+    (See also description of readings/activations in diagnostic tool)

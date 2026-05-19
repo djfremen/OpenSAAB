@@ -1,0 +1,15 @@
+dtc: U2103-00
+module: DSM
+module_long_name: Driver Seat Module
+description: DSM not on the bus
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/dsm/u2103-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: DSM not on the bus
+  description: DSM not on the bus
+  type_of_diagnosis: Continuous
+  enable_criteria: When seat operation is permitted.
+  fault_criteria: No bus communication
+  diagnostic_help: "Communication must be OK to read out DTCs from the control module. If the DTC is stored and read out with the diagnostic tool, it is a sign that the problem was an intermittent bus lead/power supply or ground lead fault."

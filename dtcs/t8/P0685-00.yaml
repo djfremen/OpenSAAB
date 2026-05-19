@@ -1,0 +1,49 @@
+dtc: P0685-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Main Relay Circuit, Performance Problem"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0685-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Main Relay Circuit, Performance Problem"
+  description: "Main Relay Circuit, Performance Problem"
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Engine stops.
+    Engine does not start.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Engine stops.
+    
+    Engine does not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Crankshaft rotating.
+    
+    Engine running.
+    
+    Output active.
+  fault_criteria: |
+    When diagnostics detects fault in the following functions simultaneously:
+    
+    •Boost pressure valve
+    
+    •Canister Purge Valve
+    
+    •Combustion signals
+    
+    •Injectors
+    
+    For a duration of 0.5 s.
+  system_reaction: None
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Activation:
+    
+    •Main Relay
+    
+    (See also description of readings/activations in diagnostic tool)

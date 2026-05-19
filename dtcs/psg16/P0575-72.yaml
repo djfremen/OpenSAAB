@@ -1,0 +1,34 @@
+dtc: P0575-72
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: "Cruise Control, Invalid Information"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0575-72
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Cruise Control, Invalid Information"
+  description: "Cruise Control, Invalid Information"
+  symptom: "Symptom: Cruise control malfunction."
+  fault_symptom: Cruise control malfunction.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition on for at least 3 s.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    P0602 46
+    
+    U0002
+    
+    U0073
+  fault_criteria: Incorrect cruise control information from CIM.
+  diagnosis_regards: Communication error between cruise control and PSG16.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Cruise Control Last Cut Out
+    
+    Cruise Control Disabled Status
+    
+    (See also description of readings/activations in diagnostic tool)

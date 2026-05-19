@@ -1,0 +1,25 @@
+dtc: B3270-61
+module: DDM
+module_long_name: Driver Door Module
+description: Central Locking Switch Stuck
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ddm/b3270-61
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Central Locking Switch Stuck
+  description: Central Locking Switch Stuck
+  symptom: "Symptom: Central locking system cannot be operated with the central locking system button."
+  fault_symptom: Central locking system cannot be operated with the central locking system button.
+  type_of_diagnosis: Each time the control module checks if the button is depressed or not.
+  enable_criteria: When the car is unlocked with the central locking button.
+  fault_criteria: Voltage too low.
+  system_reaction: The control module determines that the button has not been pressed until it has returned to an inactive position and is depressed again.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Driver Door Lock Switch
+    
+    (See also description of readings/activations in diagnostic tool)

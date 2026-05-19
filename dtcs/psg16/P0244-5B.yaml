@@ -1,0 +1,80 @@
+dtc: P0244-5B
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Boost Pressure too Low. Mechanical Fault.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0244-5b
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Boost Pressure too Low. Mechanical Fault.
+  description: Boost Pressure too Low. Mechanical Fault.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+    Cruise control not working.
+    No A/C function.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+    
+    Cruise control not working.
+    
+    No A/C function.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Engine speed between 2250 and 2750 and more than 40 mg fuel/combustion.
+    
+    Engine speed between 2751 and 4750 and more than 20 mg fuel/combustion.
+    
+    NONE of the following DTCs must be detected:
+    
+    P0101
+    
+    P0244 F6, P0245, P0246
+    
+    P0400, P0403, P0404
+    
+    P1403, P1404
+    
+    P2102
+    
+    P2413
+  fault_criteria: |
+    Current boost pressure below requested boost pressure.
+    
+    DTC limit between 25-50 kPa depending on fuel quantity and rpm.
+  system_reaction: |
+    Limp Home, engine torque limitation.
+    
+    Output to the A/C relay is switched off.
+    
+    EGR turned off in case of fault.
+  diagnosis_regards: Mechanical fault in the turbo unit or air leak in the system.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Swirl Control Valve
+    
+    Charge Air Control Valve
+    
+    Control valve, shut-off damper
+    
+    Activate:
+    
+    Swirl Control Valve
+    
+    Charge Air Control Valve
+    
+    Control valve, shut-off damper
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: |
+    Diagnostics compares requested and current boost pressure. A DTC is generated if the current boost pressure is lower than the requested boost pressure.
+    
+    DTC indicates mechanical fault in the turbo, an air leak between the turbo and intake, vacuum system air leak or a damaged control valve.
+    
+    The DTC can also be generated if the exhaust system is clogged, coked up catalytic converter for example.

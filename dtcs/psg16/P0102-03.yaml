@@ -1,0 +1,33 @@
+dtc: P0102-03
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0102-03
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)Performance loss."
+  description: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Engine speed less than 5000 rpm.
+  fault_criteria: Signal on control module sensor input less than -20 kg/h for more than 0.6 seconds.
+  system_reaction: |
+    Limp Home, engine torque limitation.
+    
+    EGR turned off in case of fault.
+    
+    The control module uses 800 kg/h as a substitute value.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Mass Air Flow Sensor
+    
+    (See also description of readings/activations in diagnostic tool)

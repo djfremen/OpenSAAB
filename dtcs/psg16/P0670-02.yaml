@@ -1,0 +1,25 @@
+dtc: P0670-02
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Glow Control Unit. Short to Ground.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0670-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Glow Control Unit. Short to Ground.
+  description: Glow Control Unit. Short to Ground.
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Output NOT activated.
+  fault_criteria: Output short circuit to ground for more than 0.6 s.
+  system_reaction: None
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_help: Data link from glow plug control module should switch high/low inversely to activation lead from PSG 16 to glow plug control module.

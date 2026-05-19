@@ -1,0 +1,33 @@
+dtc: C0551-45
+module: TCS
+module_long_name: Traction Control System
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcs/c0551-45
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  symptom: |
+    Symptom: ABS warning lamp on
+    TCS/ESP warning lamp comes on.
+    Message appears in display.
+    Steering column lock not working.
+  fault_symptom: |
+    ABS warning lamp on
+    
+    TCS/ESP warning lamp comes on.
+    
+    Message appears in display.
+    
+    Steering column lock not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Control Module not Added
+  system_reaction: |
+    No ABS function
+    
+    No TCS/ESP function
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"After fitting a control module\" under fault diagnosis, general."

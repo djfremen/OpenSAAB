@@ -1,0 +1,28 @@
+dtc: P0611-0B
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Internal Control Module Malfunction
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0611-0b
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Internal Control Module Malfunction
+  description: Internal Control Module Malfunction
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Engine stops.
+    The engine may not start.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Engine stops.
+    
+    The engine may not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: Engine running.
+  fault_criteria: Continuous power supply to the internal control valve.
+  system_reaction: Fuel Cut
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"Before changing a control module\" and \"After fitting a control module\" under Fault diagnosis, general."

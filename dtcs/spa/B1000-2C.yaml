@@ -1,0 +1,25 @@
+dtc: B1000-2C
+module: SPA
+module_long_name: Single Parking Assist
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/spa/b1000-2c
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: |
+    Symptom: Parking assistance not working.
+    Message appears in display.
+  fault_symptom: |
+    Parking assistance not working.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module on-board diagnostics has detected an internal fault.
+  system_reaction: Parking assistance is switched off.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"Before changing a control module\" and \"After fitting a control module\" under Fault diagnosis, general."

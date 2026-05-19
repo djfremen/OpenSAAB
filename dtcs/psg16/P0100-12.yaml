@@ -1,0 +1,40 @@
+dtc: P0100-12
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Mass Air Circuit Malfunction
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0100-12
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Mass Air Circuit Malfunction
+  description: Mass Air Circuit Malfunction
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Engine not running.
+    
+    Engine not overheated.
+  fault_criteria: Signal at 0 rpm below 0.8V for more than 15 seconds.
+  system_reaction: |
+    Limp Home, engine torque limitation.
+    
+    EGR turned off in case of fault.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Air Mass Sensor
+    
+    (See also description of readings/activations in diagnostic tool)

@@ -1,0 +1,18 @@
+dtc: C0750-03
+module: TPMM
+module_long_name: Tyre Pressure Monitor Module
+description: "Air Valve Left Front, Battery Low"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tpmm/c0750-03
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Air Valve Left Front, Battery Low"
+  description: "Air Valve Left Front, Battery Low"
+  symptom: "Symptom: None"
+  fault_symptom: None
+  type_of_diagnosis: Continuous
+  enable_criteria: Vehicle speed above 30 km/h for more than 30 seconds.
+  fault_criteria: Low battery voltage in pressure sensor.
+  system_reaction: None
+  diagnosis_regards: Checking battery condition

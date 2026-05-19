@@ -1,0 +1,23 @@
+dtc: C0253-00
+module: CIM
+module_long_name: Column Integration Module
+description: "Steering Angle Sensor, Not Calibrated"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/c0253-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Steering Angle Sensor, Not Calibrated"
+  description: "Steering Angle Sensor, Not Calibrated"
+  symptom: "Symptom: ESP warning lamp on."
+  fault_symptom: ESP warning lamp on.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Non-calibrated steering wheel angle sensor.
+  system_reaction: No ESP function
+  diagnostic_tool_functions: |
+    Adjustment
+    
+    Steering Angle Sensor Calibration
+    
+    (See also description of readings/activations in diagnostic tool)

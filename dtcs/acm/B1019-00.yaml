@@ -1,0 +1,26 @@
+dtc: B1019-00
+module: ACM
+module_long_name: Airbag Control Module
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acm/b1019-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  symptom: "Symptom: Airbag warning lamp is lit"
+  fault_symptom: Airbag warning lamp is lit
+  type_of_diagnosis: Diagnostics is carried out once each time the ignition is switched on.
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module is incorrectly configured.
+  system_reaction: Airbag warning lamp is lit
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    •The control module has detected faults on one or more components during programming.
+    
+    •Perform fault diagnosis for the other DTCs in the system
+    
+    Control module was not added.
+    
+    See "Procedure after fitting the control module"

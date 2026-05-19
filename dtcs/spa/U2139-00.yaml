@@ -1,0 +1,33 @@
+dtc: U2139-00
+module: SPA
+module_long_name: Single Parking Assist
+description: CIM Missing on Bus
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/spa/u2139-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: CIM Missing on Bus
+  description: CIM Missing on Bus
+  symptom: "Symptom: Message appears in display."
+  fault_symptom: Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    •Ignition ON.
+    
+    •Battery voltage greater than 9 V.
+  fault_criteria: |
+    No signal from CIM.
+    
+    CIM control module not on the bus.
+  system_reaction: |
+    •Parking assistance is switched off.
+    
+    •Control module receives no vehicle speed signal from CIM or no park/neutral position obtained.
+  diagnosis_regards: Electrical fault on bus leads or in the component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Bus Off Counter, I-Bus
+    
+    (See also description of readings/activations in diagnostic tool)

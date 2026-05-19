@@ -1,0 +1,28 @@
+dtc: C0460-42
+module: ESP
+module_long_name: Electronic Stability Program
+description: "Steering Angle Sensor, Not Calibrated"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/c0460-42
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Steering Angle Sensor, Not Calibrated"
+  description: "Steering Angle Sensor, Not Calibrated"
+  symptom: |
+    Symptom: ESP warning lamp on.
+    Message appears in display.
+  fault_symptom: |
+    ESP warning lamp on.
+    
+    Message appears in display.
+  type_of_diagnosis: Upon start-up.
+  enable_criteria: Ignition ON.
+  fault_criteria: Steering wheel angle sensor is not calibrated
+  system_reaction: No ESP function
+  diagnostic_tool_functions: |
+    Adjustment
+    
+    Steering Angle Sensor Calibration
+    
+    (See also description of readings/activations in diagnostic tool)

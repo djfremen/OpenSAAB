@@ -1,0 +1,47 @@
+dtc: B1440-0F
+module: CIM
+module_long_name: Column Integration Module
+description: "+15 Circuit from ISM, Open"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b1440-0f
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "+15 Circuit from ISM, Open"
+  description: "+15 Circuit from ISM, Open"
+  symptom: |
+    Symptom: Error message is shown on the display.
+    Engine does not start.
+    Ignition cannot be switched off or key cannot be removed from ignition switch.
+    Steering column lock not working.
+  fault_symptom: |
+    Error message is shown on the display.
+    
+    Engine does not start.
+    
+    Ignition cannot be switched off or key cannot be removed from ignition switch.
+    
+    Steering column lock not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: |
+    •Open-circuit on power supply from ISM.
+    
+    •Signal from the key does not match key position.
+  system_reaction: |
+    The control module does not allow starter motor cranking.
+    
+    Steering column lock deactivated.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Diagnostic trouble code can be generated with low battery voltage.
+    
+    Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Ignition Key Position +B, Wire from ISM
+    
+    Ignition Switch +B, K-Line from ISM
+    
+    (See also description of readings/activations in diagnostic tool)

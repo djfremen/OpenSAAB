@@ -1,0 +1,39 @@
+dtc: P2195-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Short Term Fuel Trim.  Max Value, Air/Fuel too Lean."
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p2195-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Short Term Fuel Trim.  Max Value, Air/Fuel too Lean."
+  description: "Short Term Fuel Trim.  Max Value, Air/Fuel too Lean."
+  symptom: "Symptom: Possible engine stop after starting, seizing, misfiring or running at high idle speed."
+  fault_symptom: "Possible engine stop after starting, seizing, misfiring or running at high idle speed."
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    The engine has started and lambda control is active.
+    
+    A multiplicative adaptation has been done.
+    
+    No status change for brake light switch.
+  fault_criteria: "Closed loop has bottomed at +25% for 20 seconds."
+  system_reaction: None
+  diagnosis_regards: "Checking air/fuel ratio. With this DTC, the engine will be getting too much air or too little fuel."
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •O2S 1
+    
+    •Short Term Fuel Trim
+    
+    •Multiplicative Adaptation
+    
+    •Additive Adaptation
+    
+    •Purge adaptation
+    
+    •Airmass Deviation from Calculated
+    
+    (See also description of readings/activations in diagnostic tool)

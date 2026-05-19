@@ -1,0 +1,26 @@
+dtc: B3981-00
+module: CIM
+module_long_name: Column Integration Module
+description: PDM Missing on Bus or Not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3981-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: PDM Missing on Bus or Not Added
+  description: PDM Missing on Bus or Not Added
+  symptom: |
+    Symptom: Message appears in display.
+    Engine may not start.
+  fault_symptom: |
+    Message appears in display.
+    
+    Engine may not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics runs when key is inserted.
+  fault_criteria: Immobilizer code from PDM absent.
+  diagnosis_regards: |
+    The fault code may be set if the +30 supply to the PDM has been broken and restored when the ignition key was in the ignition lock.
+    
+    See "After fitting a control module" under fault diagnosis, general.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""

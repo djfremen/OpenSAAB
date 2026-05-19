@@ -1,0 +1,30 @@
+dtc: B1770-0B
+module: DSM
+module_long_name: Driver Seat Module
+description: "Slide Motor Circuit, Current Too High"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/dsm/b1770-0b
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Slide Motor Circuit, Current Too High"
+  description: "Slide Motor Circuit, Current Too High"
+  symptom: "Symptom: Memory functions not working"
+  fault_symptom: Memory functions not working
+  type_of_diagnosis: Continually when the engine is run.
+  enable_criteria: When seat operation is permitted.
+  fault_criteria: Current consumption is more than 40A +/- 6A.
+  system_reaction: |
+    No memory functions work
+    
+    Output is switched off, tries however to activate the engine once each time the ignition is switched on.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Mechanical check of motor
+  diagnostic_tool_functions: |
+    Activate:
+    
+    Motor, Slide Rearward
+    
+    Motor, Slide Forward
+    
+    (See also description of readings/activations in diagnostic tool)

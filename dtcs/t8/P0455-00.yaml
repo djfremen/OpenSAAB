@@ -1,0 +1,75 @@
+dtc: P0455-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: EVAP. Serious Leakage in System.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0455-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: EVAP. Serious Leakage in System.
+  description: EVAP. Serious Leakage in System.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Possible smell of petrol.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Possible smell of petrol.
+  type_of_diagnosis: Once per driving cycle. Stopped when fault criteria are fulfilled or OK reported.
+  enable_criteria: |
+    Phase 1:
+    
+    •The diagnosis is performed by closing the shut-off valve and opening the evap canister purge valve while the tank pressure is being registered. The pressure should then drop.
+    
+    Phase 2:
+    
+    •Bleeder valve closed; pressure increase in Pa/s calculated. Pressure must not rise too much.
+    
+    Diagnostics can be carried out under 4 different operating conditions:
+    
+    •After cold start while stationary.
+    
+    •After cold start while driving.
+    
+    •After warm start while stationary.
+    
+    •After warm start while driving.
+    
+    NONE of the following DTCs must be detected:
+    
+    •P0117, P0118
+    
+    •P0444, P0445
+    
+    •P0451, P0452, P0453
+    
+    •P0498, P0499
+    
+    •P0501
+    
+    •P0685, P0686, P0687
+    
+    Diagnostics uses different calibration data for various operating conditions. Starting from cold implies an intake and radiator temperature below 40°C during start. Criteria for starting from cold are valid during 15 minutes after start. The fuel level must be between 9 and 53 litres and purge adaptation should not be too low. Several conditions can interrupt diagnostics. After starting from cold, diagnostics restarts immediately if the vehicle speed exceeds 0 km/h. After warm start, a speed of over 44km/h is required for a specific period of time before diagnostics restarts.
+    
+    DTC is set if the pressure does not drop sufficiently.
+  fault_criteria: Pressure reduction of sufficient size could not be registered during phase 1. This indicates a large leak; a hole with a diameter larger than 2.5 mm.
+  system_reaction: None
+  diagnosis_regards: |
+    Large leak over 2.5mm.
+    
+    Blockage in suction line to evap canister purge valve or a detached hose can cause this DTC.
+    
+    IMPORTANT
+    
+    An improperly screwed fuel cap is often the reason this diagnostic trouble code is generated. Before beginning fault diagnosis, check that the tank cap is properly fitted.
+  diagnostic_tool_functions: |
+    Activation:
+    
+    •Canister Purge Valve
+    
+    •Canist. Close Valve
+    
+    •Initiate EVAP Diagnosis
+    
+    (See also description of readings/activations in diagnostic tool)

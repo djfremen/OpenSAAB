@@ -1,0 +1,23 @@
+dtc: U2103-00
+module: ESP
+module_long_name: Electronic Stability Program
+description: TCS/ESP was Missing on Bus
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/u2103-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: TCS/ESP was Missing on Bus
+  description: TCS/ESP was Missing on Bus
+  symptom: |
+    Symptom: TCS warning lamp on.
+    Message appears in display.
+  fault_symptom: |
+    TCS warning lamp on.
+    
+    Message appears in display.
+  enable_criteria: Ignition ON.
+  fault_criteria: No communication with CIM for 1.25 s.
+  system_reaction: No TCS/ESP function
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: "In order to read DTC from TCS/ESP, communication with CIM is required. If the DTC is stored and read with the diagnostic instrument, it indicates intermittent bus lead fault."

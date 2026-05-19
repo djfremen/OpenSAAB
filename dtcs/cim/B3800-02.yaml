@@ -1,0 +1,24 @@
+dtc: B3800-02
+module: CIM
+module_long_name: Column Integration Module
+description: "Stalk Switch Turn Indicators Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3800-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Stalk Switch Turn Indicators Circuit, Short to Ground"
+  description: "Stalk Switch Turn Indicators Circuit, Short to Ground"
+  symptom: "Symptom: Direction indicators not working."
+  fault_symptom: Direction indicators not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: The control module receives a faulty signal. Right and left-hand direction indicators are activated.
+  system_reaction: None
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    See Reading:
+    
+    Stalk Switch Turn Indicators
+    
+    (See also description of readings/activations in diagnostic tool)

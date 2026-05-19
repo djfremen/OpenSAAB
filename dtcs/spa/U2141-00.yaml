@@ -1,0 +1,31 @@
+dtc: U2141-00
+module: SPA
+module_long_name: Single Parking Assist
+description: REC Missing on Bus
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/spa/u2141-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: REC Missing on Bus
+  description: REC Missing on Bus
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    •Ignition ON.
+    
+    •Battery voltage greater than 9 V.
+  fault_criteria: |
+    No signal from REC.
+    
+    REC control module not on the bus.
+  system_reaction: |
+    •Parking assistance is switched off.
+    
+    •No bus communication.
+  diagnosis_regards: Electrical fault on bus leads or in the component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Bus Off Counter, I-Bus
+    
+    (See also description of readings/activations in diagnostic tool)

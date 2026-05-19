@@ -1,0 +1,26 @@
+dtc: P0607-34
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Control Module. Internal fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0607-34
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal fault
+  description: Control Module. Internal fault
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Engine stops.
+    Engine does not start.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Engine stops.
+    
+    Engine does not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module on-board diagnostics has detected a RAM error.
+  system_reaction: Engine shut off.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.

@@ -1,0 +1,50 @@
+dtc: B1440-71
+module: CIM
+module_long_name: Column Integration Module
+description: Invalid Key Position
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b1440-71
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Invalid Key Position
+  description: Invalid Key Position
+  symptom: |
+    Symptom: Error message is shown on the display.
+    Steering column lock not working.
+    Engine does not start.
+  fault_symptom: |
+    Error message is shown on the display.
+    
+    Steering column lock not working.
+    
+    Engine does not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: |
+    •The control module receives a faulty key position (signal) from ISM.
+    
+    •Signal from the key does not match key position.
+  system_reaction: |
+    The control module does not allow starter motor cranking.
+    
+    Steering column lock deactivated.
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Ignition Key Postition
+    
+    Ignition Switch +50, K-Line from ISM
+    
+    Ignition Switch +15, K-Line from ISM
+    
+    Ignition Switch +X, K-Line from ISM
+    
+    Ignition Switch +B, K-Line from ISM
+    
+    Ignition Key Position +15, Wire from ISM
+    
+    Ignition Key Position +B, Wire from ISM
+    
+    (See also description of readings/activations in diagnostic tool)

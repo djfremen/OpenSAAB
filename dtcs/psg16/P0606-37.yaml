@@ -1,0 +1,17 @@
+dtc: P0606-37
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Internal Control Module Malfunction
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0606-37
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Internal Control Module Malfunction
+  description: Internal Control Module Malfunction
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_criteria: "Control module on-board diagnostics has detected a \"Timeout\" fault."
+  system_reaction: Engine shut off.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_help: The DTC can be generated when adjusting with the diagnostic instrument.

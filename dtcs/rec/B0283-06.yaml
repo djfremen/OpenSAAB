@@ -1,0 +1,19 @@
+dtc: B0283-06
+module: REC
+module_long_name: Rear Electronic Centre
+description: "Rear Demist Relay Circuit, Open/Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/rec/b0283-06
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Rear Demist Relay Circuit, Open/Short to Ground"
+  description: "Rear Demist Relay Circuit, Open/Short to Ground"
+  symptom: "Symptom: Heated rear window, faulty function."
+  fault_symptom: "Heated rear window, faulty function."
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Voltage on the control module output is below 6 V.
+  system_reaction: None
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: "If there is a short-circuit to ground, the electrically operated rear window is constantly activated; if there is an open circuit, the rear window cannot be activated."

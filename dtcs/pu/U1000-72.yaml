@@ -1,0 +1,22 @@
+dtc: U1000-72
+module: PU
+module_long_name: PU
+description: GPS Communication Error
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/pu/u1000-72
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: GPS Communication Error
+  description: GPS Communication Error
+  symptom: "Symptom: Navigation system out of order."
+  fault_symptom: Navigation system out of order.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: A communication error has occurred in the GPS module.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the control module.
+    
+    See "Before changing a control module".

@@ -1,0 +1,35 @@
+dtc: B3420-08
+module: AHL
+module_long_name: Automatic Headlamp Levelling
+description: "Rear Axle Sensor Circuit, Not Plausible"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ahl/b3420-08
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Rear Axle Sensor Circuit, Not Plausible"
+  description: "Rear Axle Sensor Circuit, Not Plausible"
+  symptom: |
+    Symptom: Message appears in display.
+    Headlamp beam adjustment not working.
+  fault_symptom: |
+    Message appears in display.
+    
+    Headlamp beam adjustment not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Car speed over 10 km/hr for more than 5 s.
+    
+    Xenon lights on.
+  fault_criteria: Voltage on control module input is continually outside limit value.
+  system_reaction: |
+    Headlamp beam adjustment is switched off.
+    
+    Headlamp reflectors adjusted to a lower position.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: |
+    Before fault diagnosis begins, read the document "Safety and handling directions, xenon lights" under Technical description.
+    
+    DTC can be generated if any of the height sensors are incorrectly fitted.
+    
+    Height sensor lower limit value is 205 steps and upper limit value is 3890 steps.

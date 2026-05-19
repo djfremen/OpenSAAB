@@ -1,0 +1,18 @@
+dtc: P0607-07
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0607-07
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: "Symptom: Possible loss of performance."
+  fault_symptom: Possible loss of performance.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Internal control module fault
+  system_reaction: "Possible Limp Home, engine torque limitation."
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.

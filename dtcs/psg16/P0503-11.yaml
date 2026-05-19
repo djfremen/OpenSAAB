@@ -1,0 +1,37 @@
+dtc: P0503-11
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Velocity Abowe Maximum Limit
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0503-11
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Velocity Abowe Maximum Limit
+  description: Velocity Abowe Maximum Limit
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Cruise control not working.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Cruise control not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    P0500
+  fault_criteria: Speed (from TCS/ESP via P-bus) exceeds 250 km/h for more than 0.6 s.
+  system_reaction: |
+    The control module uses a substitute value of 0 km/h.
+    
+    Cruise control switched off.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Speedometer
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: Vehicle speed signal sent via Bus to PSG16.

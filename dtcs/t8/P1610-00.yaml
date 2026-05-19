@@ -1,0 +1,17 @@
+dtc: P1610-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: ECU Internal Fault. Security Function Disable
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p1610-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: ECU Internal Fault. Security Function Disable
+  description: ECU Internal Fault. Security Function Disable
+  symptom: "Symptom: None"
+  fault_symptom: None
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Internal control module fault. Security function switched off.
+  diagnostic_help: Discard the control module in the proper manner.

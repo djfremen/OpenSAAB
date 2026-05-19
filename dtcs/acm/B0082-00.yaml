@@ -1,0 +1,24 @@
+dtc: B0082-00
+module: ACM
+module_long_name: Airbag Control Module
+description: "Passenger Side B-pillar Sensor, Internal Fault in Sensor"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acm/b0082-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Passenger Side B-pillar Sensor, Internal Fault in Sensor"
+  description: "Passenger Side B-pillar Sensor, Internal Fault in Sensor"
+  symptom: "Symptom: Airbag warning lamp is lit"
+  fault_symptom: Airbag warning lamp is lit
+  type_of_diagnosis: Asynchronous
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module receives faulty signals from the sensor
+  system_reaction: |
+    •The control module ignores the activation command from the sensor as long as a fault is active.
+    
+    •Airbag warning lamp is lit
+  diagnostic_help: |
+    IMPORTANT
+    
+    •Read "Before starting fault diagnosis" under Fault diagnosis, general before beginning fault diagnosis.

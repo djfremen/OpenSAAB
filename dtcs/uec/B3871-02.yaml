@@ -1,0 +1,28 @@
+dtc: B3871-02
+module: UEC
+module_long_name: User Equipment Center
+description: "Side Marker Left Front Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/uec/b3871-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Side Marker Left Front Circuit, Short to Ground"
+  description: "Side Marker Left Front Circuit, Short to Ground"
+  symptom: |
+    Symptom: Message appears in display.
+    Front left side marker lights, malfunction.
+  fault_symptom: |
+    Message appears in display.
+    
+    Front left side marker lights, malfunction.
+  type_of_diagnosis: Continuous
+  enable_criteria: Parking lights on.
+  fault_criteria: Current consumption is over 3.5 A for more than 10 ms.
+  system_reaction: Control module output is switched off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Activation:
+    
+    Side Marker Left Front

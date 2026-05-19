@@ -1,0 +1,39 @@
+dtc: C0060-02
+module: ESP
+module_long_name: Electronic Stability Program
+description: "Left Front Outlet Valve Driver Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/c0060-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Left Front Outlet Valve Driver Circuit, Short to Ground"
+  description: "Left Front Outlet Valve Driver Circuit, Short to Ground"
+  symptom: |
+    Symptom: ABS warning lamp on
+    Message appears in display.
+    Steering column lock not working.
+  fault_symptom: |
+    ABS warning lamp on
+    
+    Message appears in display.
+    
+    Steering column lock not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: •When voltage on output is below 2 V.
+  system_reaction: |
+    No ABS function
+    
+    No TCS/ESP function
+  diagnosis_regards: Electrical fault in the component.
+  diagnostic_tool_functions: |
+    See Reading:
+    
+    Outlet Valve LF
+    
+    Activate:
+    
+    Outlet Valve LF
+    
+    (See also description of readings/activations in diagnostic tool)

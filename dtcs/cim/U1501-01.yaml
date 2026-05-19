@@ -1,0 +1,45 @@
+dtc: U1501-01
+module: CIM
+module_long_name: Column Integration Module
+description: "K-line CIM-ISM, Short to Ground/B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/u1501-01
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "K-line CIM-ISM, Short to Ground/B+"
+  description: "K-line CIM-ISM, Short to Ground/B+"
+  symptom: |
+    Symptom: Message appears in display.
+    Cannot turn key.
+    Steering column lock not working.
+    Engine does not start.
+  fault_symptom: |
+    Message appears in display.
+    
+    Cannot turn key.
+    
+    Steering column lock not working.
+    
+    Engine does not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics runs when key is inserted.
+  fault_criteria: No information from CIM can be sent to the ISM.
+  system_reaction: |
+    K lead restart.
+    
+    Steering column lock deactivated.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Ignition Switch +50, K-Line from ISM
+    
+    Ignition Switch +B, K-Line from ISM
+    
+    Ignition Switch +X, K-Line from ISM
+    
+    Ignition Switch +15, K-Line from ISM
+    
+    (See also description of readings/activations in diagnostic tool)

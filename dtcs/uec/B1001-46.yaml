@@ -1,0 +1,20 @@
+dtc: B1001-46
+module: UEC
+module_long_name: User Equipment Center
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/uec/b1001-46
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  type_of_diagnosis: Diagnostics runs each time the control module becomes active and when chassis programming has been carried out.
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module not programmed.
+  system_reaction: None
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Control module was not added.
+    
+    See "Procedure after fitting the control module"

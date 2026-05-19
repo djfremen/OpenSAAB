@@ -1,0 +1,54 @@
+dtc: P0461-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Fuel Level Sensor Circuit, Performance Problem"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0461-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Fuel Level Sensor Circuit, Performance Problem"
+  description: "Fuel Level Sensor Circuit, Performance Problem"
+  symptom: "Symptom: D.T.E out or order."
+  fault_symptom: D.T.E out or order.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    General conditions for this DTC
+    
+    •Battery voltage must be between 11 - 16 V.
+    
+    •Engine running.
+    
+    NONE of the following DTCs must be detected:
+    
+    •P0462, P0463
+    
+    Test 1
+    
+    •Fuel level below 55 litres.
+    
+    Test 2
+    
+    •Fuel level over 55 litres.
+  fault_criteria: |
+    Test 1
+    
+    •The diagnosis calculates the fuel consumption over a distance of 35 km. A DTC is generated if 5 measurements in succession differ more than 0.5 litres from each other.
+    
+    Test 2
+    
+    •The diagnosis calculates the fuel consumption over a distance of 70 km. A DTC is generated if 5 measurements in succession differ more than 0.5 litres from each other.
+  system_reaction: The control module uses a substitute value of 40 litres when fault is detected.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Electrical fault in connecting leads or component.
+    
+    Sensor sticking mechanically.
+    
+    Fault in connector H42-2 is often a cause of this DTC.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Fuel Level
+    
+    (See also description of readings/activations in diagnostic tool)

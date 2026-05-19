@@ -1,0 +1,27 @@
+dtc: B1000-36
+module: AHM-PHM
+module_long_name: Additional/Park Heater Module
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ahm-phm/b1000-36
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: |
+    Symptom: Poor cabin heating
+    Heater does not start.
+  fault_symptom: |
+    Poor cabin heating
+    
+    Heater does not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Heater not in rest mode.
+  fault_criteria: Control module on-board diagnostics has detected a EEPROM error.
+  system_reaction: Heater is switched off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: "See \"Before changing a control module\" and \"After fitting a control module\" under Fault diagnosis, general."

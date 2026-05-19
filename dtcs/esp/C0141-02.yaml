@@ -1,0 +1,37 @@
+dtc: C0141-02
+module: ESP
+module_long_name: Electronic Stability Program
+description: "TCS/ESP Feed Valve Left Front/Right Rear Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/c0141-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "TCS/ESP Feed Valve Left Front/Right Rear Circuit, Short to Ground"
+  description: "TCS/ESP Feed Valve Left Front/Right Rear Circuit, Short to Ground"
+  symptom: |
+    Symptom: Warning lamp lights.
+    Message appears in display.
+  fault_symptom: |
+    Warning lamp lights.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: When voltage on output is below 2 V.
+  system_reaction: |
+    No ABS function
+    
+    No TCS/ESP function
+  diagnosis_regards: Electrical fault in the component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    TC/ESP Feed Valve LF / RR
+    
+    Activate:
+    
+    TC/ESP Feed Valve LF / RR
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: "See \"Before changing a control module\" and \"After fitting a control module\" under Fault diagnosis, general."

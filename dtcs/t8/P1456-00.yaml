@@ -1,0 +1,76 @@
+dtc: P1456-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "EVAP System, Fuel Level Sesor Failure and Very Small Leak Detected"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p1456-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "EVAP System, Fuel Level Sesor Failure and Very Small Leak Detected"
+  description: "EVAP System, Fuel Level Sesor Failure and Very Small Leak Detected"
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Once per driving cycle. Stopped when fault criteria are fulfilled or OK reported.
+  enable_criteria: |
+    Phase 1:
+    
+    •The diagnosis is performed by closing the shut-off valve and opening the evap canister purge valve while the tank pressure is being registered. The pressure should then drop.
+    
+    Phase 2:
+    
+    •Bleeder valve closed; pressure increase in Pa/s calculated. Pressure must not rise too much.
+    
+    Diagnostics can be carried out under 4 different operating conditions:
+    
+    •After cold start while stationary.
+    
+    •After cold start while driving.
+    
+    •After warm start while stationary.
+    
+    •After warm start while driving.
+    
+    NONE of the following DTCs must be detected:
+    
+    •P0117, P0118
+    
+    •P0444, P0445
+    
+    •P0451, P0452, P0453
+    
+    •P0498, P0499
+    
+    •P0501
+    
+    •P0685, P0686, P0687
+    
+    Diagnostics uses different calibration data for various operating conditions. Several conditions can interrupt diagnostics. After starting from cold, diagnostics restarts immediately if the vehicle speed exceeds 0 km/h. After warm start, a speed of over 44 km/h is required for a specific period of time before diagnostics restart.
+    
+    Normally, the diagnosis takes 5 minutes with the engine idling if the intake temperature is above +15°C.
+  fault_criteria: |
+    Pressure increase during phase 2 has been calculated and compared with fuel level in the tank. The pressure increase indicates a small leak; a hole with a diameter of 0.5 - 1.0 mm.
+    
+    A fuel level sensor fault has been detected at the same time, which makes the EVAP diagnosis unreliable.
+  system_reaction: None
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Faulty fuel level sensor.
+    
+    Checking EVAP system integrity.
+    
+    In case of a fault in the sensor, the diagnosis will take 40 litres as a substitute value. When the EVAP diagnosis result has normalised above the fuel level, a fault may result even though there is no leak. Diagnose the fuel level sensor first and then check the EVAP system.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Fuel Level
+    
+    Activation:
+    
+    •Canister Purge Valve
+    
+    •Canist. Close Valve
+    
+    •Initiate EVAP Diagnosis
+    
+    (See also description of readings/activations in diagnostic tool)

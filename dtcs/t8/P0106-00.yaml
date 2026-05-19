@@ -1,0 +1,103 @@
+dtc: P0106-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Manifold Absolute Pressure Sensor Circuit. Performance Problem.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0106-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Manifold Absolute Pressure Sensor Circuit. Performance Problem.
+  description: Manifold Absolute Pressure Sensor Circuit. Performance Problem.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Cruise control not working.
+    Limp home
+    The engine speed drops more slowly than usual when the accelerator is released.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Cruise control not working.
+    
+    Limp home
+    
+    The engine speed drops more slowly than usual when the accelerator is released.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    General conditions for this DTC
+    
+    •Battery voltage must be between 11 - 16 V.
+    
+    Test 1
+    
+    •Ignition ON.
+    
+    •Vehicle speed 0 km/h.
+    
+    •Engine speed 0 rpm.
+    
+    •NONE of the following DTCs must be detected: P0107, P0108, P0237, P0238, P2228 and P2229.
+    
+    •The conditions above must be fulfilled for more than 3 s, after which the engine must be running for the diagnosis to finally run.
+    
+    Test 2
+    
+    •Accelerator pedal released
+    
+    •Engine speed higher than 1300 rpm then down to idling speed.
+    
+    •Engine load lower than 110 mg/c.
+    
+    •NONE of the following DTCs must be detected: P0107, P0108.
+  fault_criteria: |
+    Test 1
+    
+    •Absolute pressure sensor value differs more than 12 kPa from atmospheric pressure sensor and charge air absolute pressure sensor.
+    
+    Test 2
+    
+    •Absolute pressure sensor value exceeds 50 kPa.
+  system_reaction: |
+    Torque limited to max. 170Nm.
+    
+    Purge blocked.
+    
+    Boost pressure adaption is blocked and reset.
+    
+    Correction of mass air flow/combustion for fuel calculation is blocked.
+    
+    Limited acceleration and idle function.
+    
+    Cruise control blocked.
+    
+    Secondary air pump not active, if fitted.
+  diagnosis_regards: |
+    Electrical fault in the component.
+    
+    Air leak between the throttle and inlet valves or an incorrectly adjusted intake cam.
+    
+    ____________________________________
+    
+    IMPORTANT
+    
+    •The DTC may also be generated if the camshafts are incorrectly adjusted.
+    
+    ____________________________________
+    
+    Test 1
+    
+    The signal is compared with the other pressure sensors when the ignition is on and the engine not started. The value must be close to the other values.
+    
+    Test 2
+    
+    In the event of a rapid release of the accelerator pedal, the intake pressure is checked to ensure that it is below 50 kPa.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Absolute pressure sensor, charge air
+    
+    •Manifold absolute pressure sensor
+    
+    •Atmosphere Absoslute Pressure
+    
+    (See also description of readings/activations in diagnostic tool)

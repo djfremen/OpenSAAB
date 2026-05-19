@@ -1,0 +1,30 @@
+dtc: C0548-06
+module: CIM
+module_long_name: Column Integration Module
+description: SCL Internal Failure
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/c0548-06
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: SCL Internal Failure
+  description: SCL Internal Failure
+  symptom: |
+    Symptom: Message appears in display.
+    Steering column lock not working.
+    Cannot turn key.
+  fault_symptom: |
+    Message appears in display.
+    
+    Steering column lock not working.
+    
+    Cannot turn key.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics runs when key is inserted.
+  fault_criteria: "Hall sensor, locked. Open circuit or short circuit to ground."
+  system_reaction: |
+    Steering column lock deactivated.
+    
+    DTC B3948 generated in CIM.
+  diagnosis_regards: Electrical fault in the component.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""

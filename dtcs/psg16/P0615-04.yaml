@@ -1,0 +1,28 @@
+dtc: P0615-04
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: "Starter Relay Actuator Circuit, Open"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0615-04
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Starter Relay Actuator Circuit, Open"
+  description: "Starter Relay Actuator Circuit, Open"
+  symptom: "Symptom: Starter motor cannot be started."
+  fault_symptom: Starter motor cannot be started.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: No voltage on the control module output for more than 0.6 s
+  system_reaction: None
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnosis_regards: •IMPORTANT
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Starter Relay
+    
+    (See also description of readings/activations in diagnostic tool)

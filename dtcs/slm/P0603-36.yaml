@@ -1,0 +1,19 @@
+dtc: P0603-36
+module: SLM
+module_long_name: Steering Lock Module
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/slm/p0603-36
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  type_of_diagnosis: Diagnostics is carried each time data is recorded in the memory.
+  enable_criteria: Turn Ignition On
+  fault_criteria: Control module on-board diagnostics has detected a EEPROM error.
+  diagnosis_regards: |
+    Internal control module fault
+    
+    Change the control module.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""

@@ -1,0 +1,28 @@
+dtc: B1640-02
+module: PDM
+module_long_name: Passenger Door Module
+description: "Mirror Heating Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/pdm/b1640-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Mirror Heating Circuit, Short to Ground"
+  description: "Mirror Heating Circuit, Short to Ground"
+  symptom: "Symptom: Mirror heating, out of order."
+  fault_symptom: "Mirror heating, out of order."
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    During electric mirror heating activation.
+  fault_criteria: Current too high.
+  system_reaction: The door module attempts to activate electric mirror heating during each new driving cycle.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Mirror Heating Passenger Door
+    
+    (See also description of readings/activations in diagnostic tool)

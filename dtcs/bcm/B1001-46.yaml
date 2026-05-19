@@ -1,0 +1,19 @@
+dtc: B1001-46
+module: BCM
+module_long_name: Body Control Module
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/bcm/b1001-46
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  symptom: "Symptom: Message appears in display."
+  fault_symptom: Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics run when ignition is ON.
+  fault_criteria: Control module not configured.
+  system_reaction: "The control module sends out the bus message that it is not programmed. Depending on whether or not the control module has a PIN code programmed, immobilizer-related functions are switched off."
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"After fitting a control module\" under fault diagnosis, general."

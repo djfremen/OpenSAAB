@@ -1,0 +1,23 @@
+dtc: P0605-F2
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Internal Control Module Malfunction
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0605-f2
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Internal Control Module Malfunction
+  description: Internal Control Module Malfunction
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module on-board diagnostics has detected a ROM error.
+  system_reaction: "Limp Home, engine torque limitation."
+  diagnostic_help: The DTC can be generated when adjusting with the diagnostic instrument.

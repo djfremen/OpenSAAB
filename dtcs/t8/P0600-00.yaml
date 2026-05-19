@@ -1,0 +1,41 @@
+dtc: P0600-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: T8 was Missing on Bus
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0600-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: T8 was Missing on Bus
+  description: T8 was Missing on Bus
+  symptom: |
+    Symptom: Engine does not start.
+    Message in SID regarding TCM and TCS/ESP.
+    All values in MIU are frozen.
+    No communication with the engine management system.
+    Cruise control not working.
+  fault_symptom: |
+    Engine does not start.
+    
+    Message in SID regarding TCM and TCS/ESP.
+    
+    All values in MIU are frozen.
+    
+    No communication with the engine management system.
+    
+    Cruise control not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition on for at least 3 s.
+    
+    Battery voltage must be between 6 - 18 V.
+  fault_criteria: No communication with CIM and TCS/ESP for 1.4 s.
+  system_reaction: |
+    Cruise control blocked.
+    
+    The control module uses substitute value +20°C for outside temperature.
+    
+    The control module deactivates the output to the A/C relay.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: "In order to read DTC from Trionic 8, communication with CIM is required. If the DTC is stored and read with the diagnostic instrument, it indicates intermittent bus-lead fault."

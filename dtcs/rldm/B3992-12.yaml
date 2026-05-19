@@ -1,0 +1,27 @@
+dtc: B3992-12
+module: RLDM
+module_long_name: Rear Left Door Module
+description: Window Travel Less Than Expected
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/rldm/b3992-12
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Window Travel Less Than Expected
+  description: Window Travel Less Than Expected
+  symptom: |
+    Symptom: Express up not working.
+    Pinch protection not working.
+  fault_symptom: |
+    Express up not working.
+    
+    Pinch protection not working.
+  type_of_diagnosis: Each time the window reaches the upper or lower end position.
+  enable_criteria: Ignition ON.
+  fault_criteria: Measured stroke under the limit value.
+  system_reaction: |
+    Express up not working.
+    
+    Pinch protection not working.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.

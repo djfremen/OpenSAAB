@@ -1,0 +1,28 @@
+dtc: B3210-02
+module: RLDM
+module_long_name: Rear Left Door Module
+description: "Window Motor Up Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/rldm/b3210-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Window Motor Up Circuit, Short to Ground"
+  description: "Window Motor Up Circuit, Short to Ground"
+  symptom: "Symptom: Side window cannot be closed."
+  fault_symptom: Side window cannot be closed.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Diagnostics run when power window is operated.
+  fault_criteria: Current through the engine is greater than the permitted calibrated value.
+  system_reaction: The motor attempts to raise the window during each new driving cycle.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Window Motor Left Rear.
+    
+    (See also description of readings/activations in diagnostic tool)

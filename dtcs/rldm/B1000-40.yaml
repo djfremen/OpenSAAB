@@ -1,0 +1,23 @@
+dtc: B1000-40
+module: RLDM
+module_long_name: Rear Left Door Module
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/rldm/b1000-40
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: "Symptom: Electric window lift cannot be operated."
+  fault_symptom: Electric window lift cannot be operated.
+  type_of_diagnosis: "Diagnostics run each time control module \"wakes\"."
+  enable_criteria: Ignition ON.
+  fault_criteria: Internal control module fault
+  system_reaction: Electric window lift cannot be operated.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the control module.
+    
+    See "Procedure for control module replacement"

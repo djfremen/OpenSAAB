@@ -1,0 +1,37 @@
+dtc: B1440-58
+module: CIM
+module_long_name: Column Integration Module
+description: Invalid Key Position
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b1440-58
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Invalid Key Position
+  description: Invalid Key Position
+  symptom: |
+    Symptom: Steering column lock not working.
+    Message appears in display.
+  fault_symptom: |
+    Steering column lock not working.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: "\"Key removed\" signal and \"key inserted\" signal reported simultaneously from ISM 15 times."
+  system_reaction: Steering column lock deactivated.
+  diagnosis_regards: Electrical fault in the component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    LOCK
+    
+    OFF-BUTTON
+    
+    ON
+    
+    ST
+    
+    INVALID.
+    
+    (See also description of readings/activations in diagnostic tool)

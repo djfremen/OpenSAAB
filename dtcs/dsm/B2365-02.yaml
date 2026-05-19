@@ -1,0 +1,26 @@
+dtc: B2365-02
+module: DSM
+module_long_name: Driver Seat Module
+description: "Position Sensor Power Supply Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/dsm/b2365-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Position Sensor Power Supply Circuit, Short to Ground"
+  description: "Position Sensor Power Supply Circuit, Short to Ground"
+  symptom: |
+    Symptom: No memory functions work
+    Seat can jerk during start and stop.
+  fault_symptom: |
+    No memory functions work
+    
+    Seat can jerk during start and stop.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Output voltage is less than  1.2 ± 0.2V.
+  system_reaction: |
+    Memory functions not working
+    
+    The control module loses end position calibration for the motor in question.
+  diagnosis_regards: Electrical fault in connecting leads or component.

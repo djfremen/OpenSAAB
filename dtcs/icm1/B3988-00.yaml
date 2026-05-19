@@ -1,0 +1,16 @@
+dtc: B3988-00
+module: ICM1
+module_long_name: Infotainment Control Module 1
+description: "CDCR, Internal Failure"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/icm1/b3988-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "CDCR, Internal Failure"
+  description: "CDCR, Internal Failure"
+  symptom: "Symptom: Message appears in display."
+  fault_symptom: Message appears in display.
+  enable_criteria: Ignition ON.
+  fault_criteria: Immobilizer code cannot be programmed in CDCR.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""

@@ -1,0 +1,35 @@
+dtc: B0448-02
+module: AHM-PHM
+module_long_name: Additional/Park Heater Module
+description: "Blower Fan Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ahm-phm/b0448-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Blower Fan Circuit, Short to Ground"
+  description: "Blower Fan Circuit, Short to Ground"
+  symptom: |
+    Symptom: Poor cabin heating
+    Heater does not start.
+  fault_symptom: |
+    Poor cabin heating
+    
+    Heater does not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Combustion air fan active
+    
+    Heater not in rest mode.
+  fault_criteria: "Combustion air fan, shorted to ground for more than 2.5 s."
+  system_reaction: Heater is switched off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Activate:
+    
+    Fan After Cooling
+    
+    (See also description of readings/activations in diagnostic tool)

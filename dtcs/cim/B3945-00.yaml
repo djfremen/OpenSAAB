@@ -1,0 +1,26 @@
+dtc: B3945-00
+module: CIM
+module_long_name: Column Integration Module
+description: "K-line SCL-CIM, Signal Faulty"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3945-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "K-line SCL-CIM, Signal Faulty"
+  description: "K-line SCL-CIM, Signal Faulty"
+  symptom: |
+    Symptom: Cannot turn key.
+    Message appears in display.
+    Engine does not start.
+  fault_symptom: |
+    Cannot turn key.
+    
+    Message appears in display.
+    
+    Engine does not start.
+  type_of_diagnosis: Diagnostics carried out when the steering column lock is activated.
+  enable_criteria: Diagnostics runs when key is inserted.
+  fault_criteria: Received message is not a command.
+  system_reaction: The control module does not allow starter motor cranking.
+  diagnosis_regards: Electrical fault in connecting leads or component.

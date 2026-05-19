@@ -1,0 +1,21 @@
+dtc: B1019-09
+module: ICM2
+module_long_name: Infotainment Control Module 2
+description: "SID, internal fault"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/icm2/b1019-09
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "SID, internal fault"
+  description: "SID, internal fault"
+  symptom: "Symptom: Faulty display illumination (dark or light)."
+  fault_symptom: Faulty display illumination (dark or light).
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  system_reaction: None
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the SID unit.
+    
+    See "Procedure for control module replacement"

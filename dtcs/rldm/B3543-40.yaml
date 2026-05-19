@@ -1,0 +1,24 @@
+dtc: B3543-40
+module: RLDM
+module_long_name: Rear Left Door Module
+description: "Window Motor Hall Sensor 1 and 2, Motion in Reverse Order Detected"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/rldm/b3543-40
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Window Motor Hall Sensor 1 and 2, Motion in Reverse Order Detected"
+  description: "Window Motor Hall Sensor 1 and 2, Motion in Reverse Order Detected"
+  symptom: "Symptom: No express function."
+  fault_symptom: No express function.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    NONE of the following DTCs must be detected:
+    
+    B3542
+    
+    B3933
+  fault_criteria: Hall sensor signal inverted for 150 ms.
+  system_reaction: No express function.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.

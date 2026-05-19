@@ -1,0 +1,25 @@
+dtc: B0010-00
+module: UEC
+module_long_name: User Equipment Center
+description: "Reverse Gear Switch, Malfunction"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/uec/b0010-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Reverse Gear Switch, Malfunction"
+  description: "Reverse Gear Switch, Malfunction"
+  symptom: "Symptom: Reversing lights, malfunction."
+  fault_symptom: "Reversing lights, malfunction."
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: "Vehicle speed exceeds 60 km/h at the same time the control module receives a signal regarding reverse gear engagement, i.e. control module input is grounded."
+  system_reaction: Reversing lights switched off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Reverse Gear, Manual Transaxle
+    
+    (See also description of readings/activations in diagnostic tool)

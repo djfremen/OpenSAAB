@@ -1,0 +1,30 @@
+dtc: B0472-00
+module: AHM-PHM
+module_long_name: Additional/Park Heater Module
+description: "Coolant Pump Circuit, Open"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ahm-phm/b0472-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Coolant Pump Circuit, Open"
+  description: "Coolant Pump Circuit, Open"
+  symptom: "Symptom: Poor cabin heating"
+  fault_symptom: Poor cabin heating
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Heater not in rest mode.
+    
+    Circulation pump active.
+  fault_criteria: Break in the circuit of heater coolant pump.
+  system_reaction: Heater is switched off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Activate:
+    
+    Circulation Pump
+    
+    (See also description of readings/activations in diagnostic tool)

@@ -1,0 +1,59 @@
+dtc: P0638-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Throttle Mechanical, Throttle Position Deviation from Demanded"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0638-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Throttle Mechanical, Throttle Position Deviation from Demanded"
+  description: "Throttle Mechanical, Throttle Position Deviation from Demanded"
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Limp home
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Limp home
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Turn Ignition On
+    
+    Throttle position not requested in rest position (position regulated by Trionic 8).
+  fault_criteria: "When current throttle position deviates 10% from the requested position."
+  system_reaction: |
+    Correction of mass air flow/combustion for fuel calculation is blocked.
+    
+    Limited acceleration and idle function.
+    
+    Cruise control blocked.
+    
+    Secondary air switched off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Electrical fault in connecting leads or component.
+    
+    Mechanically binding/affected throttle.
+    
+    ____________________________________
+    
+    IMPORTANT
+    
+    •The DTC can be generated due to faults in connector H42-2 (pins 13, 14, 17, 18, 19 and 20).
+    
+    ____________________________________
+    
+    Approximately 3 to 5 seconds after Ignition on and non-actuated accelerator pedal, the throttle resumes rest position to conserve current.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Throttle Position Sensor 1
+    
+    •Throttle Position Sensor 2
+    
+    Activation:
+    
+    •Throttle Position Test
+    
+    (See also description of readings/activations in diagnostic tool)

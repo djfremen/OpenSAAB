@@ -1,0 +1,24 @@
+dtc: B0051-00
+module: ACM
+module_long_name: Airbag Control Module
+description: Deployment Commanded.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acm/b0051-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Deployment Commanded.
+  description: Deployment Commanded.
+  symptom: "Symptom: Airbag warning lamp is lit"
+  fault_symptom: Airbag warning lamp is lit
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: The control module has activated a detonation circuit (airbag or seat-belt tensioner)
+  system_reaction: |
+    •If the front airbags are deployed, the DTC is permanent and cannot be cleared.
+    
+    •If only the side airbags/seat-belt tensioners have been deployed, the activation counter increases for each activation until the counter reaches 3. Trouble code B0051 is then permanently set and cannot be cleared.
+  diagnostic_help: |
+    IMPORTANT
+    
+    •Read "Before starting fault diagnosis" under Fault diagnosis, general before beginning fault diagnosis.

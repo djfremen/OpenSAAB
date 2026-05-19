@@ -1,0 +1,19 @@
+dtc: B3817-05
+module: DDM
+module_long_name: Driver Door Module
+description: "Lock/Unlock Sensor Circuit, Short to B+ or Open"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ddm/b3817-05
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Lock/Unlock Sensor Circuit, Short to B+ or Open"
+  description: "Lock/Unlock Sensor Circuit, Short to B+ or Open"
+  symptom: "Symptom: Central locking, out of order."
+  fault_symptom: "Central locking, out of order."
+  type_of_diagnosis: Continuous
+  enable_criteria: When the car is locked/unlocked.
+  fault_criteria: Control module signal invalid.
+  system_reaction: "Bus message indicating sensor position is set to \"invalid\"."
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.

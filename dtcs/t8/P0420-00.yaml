@@ -1,0 +1,45 @@
+dtc: P0420-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Three Way Catalytic Converter. Malfunction.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0420-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Three Way Catalytic Converter. Malfunction.
+  description: Three Way Catalytic Converter. Malfunction.
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Once per driving cycle. Stopped when fault criteria are fulfilled or OK reported.
+  enable_criteria: |
+    Motor running for more than 230 s.
+    
+    Accelerator pedal released.
+    
+    Exhaust temperature between 400 and 750°C.
+    
+    Vehicle speed < 25 km/h.
+    
+    No DTC detected for oxygen sensors 1 and 2.
+    
+    No DTC detected for the mass air flow sensor.
+    
+    No DTCs detected for exhaust temperature sensor (applies if sensor is fitted and earlier software, MY 03).
+    
+    Idling speed increased, idling speed stabilised through ignition reduction.
+    
+    Closed loop delayed in rich mode until O2S2 shows rich.
+    
+    Closed loop delayed in lean mode and time is measured until O2S2 shows lean.
+  fault_criteria: "Too short time to O2S2 shows lean, indicating that the catalytic converter's oxygen storing ability is poor."
+  system_reaction: None
+  diagnosis_regards: Faulty catalytic converter.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •O2S 1
+    
+    •O2S 2
+    
+    •Catalytic converter temperature.

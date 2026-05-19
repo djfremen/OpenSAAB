@@ -1,0 +1,35 @@
+dtc: B3938-0B
+module: BCM
+module_long_name: Body Control Module
+description: "Tank Hatch Solenoid Circuit, Short"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/bcm/b3938-0b
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Tank Hatch Solenoid Circuit, Short"
+  description: "Tank Hatch Solenoid Circuit, Short"
+  symptom: "Symptom: Tank hatch lock not working."
+  fault_symptom: Tank hatch lock not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    When solenoid is activated.
+  fault_criteria: When current strength exceeds 6A +/- 0.8A.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Fuel Lid Lock
+    
+    Fuel Lid Unlock
+    
+    Activate:
+    
+    Fuel Lid Lock
+    
+    Fuel Lid Unlock
+    
+    (See also description of readings/activations in diagnostic tool)

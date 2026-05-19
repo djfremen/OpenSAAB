@@ -1,0 +1,24 @@
+dtc: P0298-FC
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: "Overheat Protection Activated, Oil Temperature."
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0298-fc
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Overheat Protection Activated, Oil Temperature."
+  description: "Overheat Protection Activated, Oil Temperature."
+  symptom: "Symptom: Performance loss."
+  fault_symptom: Performance loss.
+  type_of_diagnosis: Continuous
+  enable_criteria: Engine running.
+  fault_criteria: Oil temperature has exceeded 134°C for more than 10 seconds.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Gearbox Fluid Temperature
+    
+    Oil Temperature Sensor
+    
+    (See also description of readings/activations in diagnostic tool)

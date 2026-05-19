@@ -1,0 +1,35 @@
+dtc: P0533-01
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: "A/C Pressure Sensor, Short to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0533-01
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "A/C Pressure Sensor, Short to B+"
+  description: "A/C Pressure Sensor, Short to B+"
+  symptom: "Symptom: No cooling."
+  fault_symptom: No cooling.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    P0652, P0653
+  fault_criteria: Input voltage is higher than 4.9V for more than 0.6 s.
+  system_reaction: |
+    The control module uses a substitute value of 101 kPa.
+    
+    The control module deactivates the output to the A/C relay.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    A/C Pressure
+    
+    (See also description of readings/activations in diagnostic tool)

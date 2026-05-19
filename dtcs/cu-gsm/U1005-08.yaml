@@ -1,0 +1,18 @@
+dtc: U1005-08
+module: CU-GSM
+module_long_name: Control Unit GSM
+description: "GPS antenna circuit, open/short circuit"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cu-gsm/u1005-08
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "GPS antenna circuit, open/short circuit"
+  description: "GPS antenna circuit, open/short circuit"
+  symptom: "Symptom: Navigation system out of order."
+  fault_symptom: Navigation system out of order.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Aerial circuit current consumption is less than 7 mA or greater than 40 mA.
+  checking_wiring: Jiggle the wiring harness at several points to detect intermittent breaks or short circuits. Check also the connector for oxidation or loose pins.
+  diagnosis_regards: Electrical fault in connecting leads or component.

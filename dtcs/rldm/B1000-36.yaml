@@ -1,0 +1,23 @@
+dtc: B1000-36
+module: RLDM
+module_long_name: Rear Left Door Module
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/rldm/b1000-36
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: "Symptom: Incorrect end position (electric window lift)."
+  fault_symptom: Incorrect end position (electric window lift).
+  type_of_diagnosis: "Diagnostics run each time control module \"wakes\"."
+  enable_criteria: When new data written to memory.
+  fault_criteria: Control module on-board diagnostics has detected a EEPROM error.
+  system_reaction: Basic value from ROM used.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the control module.
+    
+    See "Procedure for control module replacement"

@@ -1,0 +1,54 @@
+dtc: P1743-64
+module: TCM
+module_long_name: Transmission Control Module
+description: Lock-up. Mechanical Fault.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcm/p1743-64
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Lock-up. Mechanical Fault.
+  description: Lock-up. Mechanical Fault.
+  symptom: "Symptom: Message appears in display."
+  fault_symptom: Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running and not in limp home mode.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    Gearbox Input RPM
+    
+    Output speed.
+    
+    Gear selector position sensor 
+    
+    Gearbox Fluid Temperature Sensor
+    
+    Battery Voltage. Too High.
+    
+    Solenoid SLT
+    
+    Engine RPM
+    
+    Wheel speed fault
+    
+    Pedal Position Sensor
+    
+    Engine Torque
+    
+    Solenoid S1
+    
+    Solenoid S2
+    
+    Solenoid S3
+    
+    Solenoid S4
+    
+    Solenoid S5
+  fault_criteria: TCM registers rapid speed changes on the output shaft or TCM registers a difference greater than 100 rpm between input shaft speed and engine rpm.
+  system_reaction: |
+    Excluded Lock-Up function.
+    
+    Poor shifting quality.
+  diagnosis_regards: Locating a mechanical fault.

@@ -1,0 +1,26 @@
+dtc: B3900-48
+module: CDCR
+module_long_name: CDCR Rear CD Changer
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cdcr/b3900-48
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  symptom: |
+    Symptom: Message appears in display.
+    Car does not start.
+  fault_symptom: |
+    Message appears in display.
+    
+    Car does not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics run when ignition is ON.
+  system_reaction: The immobilizer-related functions are switched off.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Control module was not added.
+    
+    See "Procedure after fitting the control module"

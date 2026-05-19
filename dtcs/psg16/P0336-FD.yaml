@@ -1,0 +1,49 @@
+dtc: P0336-FD
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Engine Speed Sensor. No Signal During Cranking.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0336-fd
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Engine Speed Sensor. No Signal During Cranking.
+  description: Engine Speed Sensor. No Signal During Cranking.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    A/C not working, no cooling.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    A/C not working, no cooling.
+  enable_criteria: |
+    Starter motor cranking.
+    
+    NONE of the following DTCs must be detected:
+    
+    P0016
+    
+    P0335
+    
+    P0340, P0342, P0343
+  fault_criteria: Control module reads 0 rpm from crankshaft position sensor but reads more than 25 (x2) rpm from pump camshaft sensor.
+  system_reaction: |
+    Limp Home, fuel limitation.
+    
+    The control module uses pump rpm x2 as a substitute value.
+    
+    Output to the A/C relay is switched off.
+    
+    EGR turned off in case of fault.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Jiggle the wiring harness at several points to detect intermittent breaks or short circuits. Check also the connector for oxidation or loose pins.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Engine RPM
+    
+    Camshaft RPM
+    
+    (See also description of readings/activations in diagnostic tool)

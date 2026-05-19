@@ -119,7 +119,7 @@ observed_responses:
       dtcs:
         - { raw: "99 28 05", code: "B1928-05", status: 0x5F, desc: "Seat Temperature Sensor Left Circuit, Open/Short to B+", trailing: "ff ff ff" }
         - { raw: "A4 29 06", code: "B2429-06", status: 0x5F, desc: "Seat Heating Left Circuit, Open", trailing: "ff ff ff" }
-        - { raw: "82 60 06", code: "B0260-06", status: 0x5F, desc: "(not in z90 9-3 2009 catalog — possibly seat-related, B0260 family)", trailing: "ff ff ff" }
+        - { raw: "82 60 06", code: "B0260-06", status: 0x5F, desc: "Vent Door Motor Left Circuit, Open/Short to Ground (HVAC actuator — per WIS /dtcs/ 2026-05-18; NOT seat-related as the z90-gap guess suggested)", trailing: "ff ff ff" }
       terminator: "81 00 00 00 DF 00 03 FF"
     $024F/$054F:   # UEC (User Equipment Center) — front lighting controller
       dtcs:

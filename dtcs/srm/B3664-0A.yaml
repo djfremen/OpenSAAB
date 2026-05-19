@@ -1,0 +1,25 @@
+dtc: B3664-0A
+module: SRM
+module_long_name: Steering Wheel Module
+description: "Sunroof Button, Malfunction"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/srm/b3664-0a
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Sunroof Button, Malfunction"
+  description: "Sunroof Button, Malfunction"
+  symptom: "Symptom: Sunroof cannot be operated."
+  fault_symptom: Sunroof cannot be operated.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: When control module input has registered position of one button for more than 30 s.
+  system_reaction: "In case of a fault, the control module will ignore button presses."
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Sunroof Switch
+    
+    (See also description of readings/activations in diagnostic tool)

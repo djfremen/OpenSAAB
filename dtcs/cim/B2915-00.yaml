@@ -1,0 +1,19 @@
+dtc: B2915-00
+module: CIM
+module_long_name: Column Integration Module
+description: ICM Missing on Bus or Not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b2915-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: ICM Missing on Bus or Not Added
+  description: ICM Missing on Bus or Not Added
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics run when ignition is ON.
+  fault_criteria: No immobilisation code received from ICM.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Diagnostic trouble code can be generated if there is no voltage to ICM.
+    
+    See "After fitting a control module" under fault diagnosis, general.

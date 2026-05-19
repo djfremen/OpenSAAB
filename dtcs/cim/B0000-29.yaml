@@ -1,0 +1,43 @@
+dtc: B0000-29
+module: CIM
+module_long_name: Column Integration Module
+description: "Wheel Speed RR,  Wire from TCS/ESP, Short/Open"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b0000-29
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Wheel Speed RR,  Wire from TCS/ESP, Short/Open"
+  description: "Wheel Speed RR,  Wire from TCS/ESP, Short/Open"
+  symptom: |
+    Symptom: Message appears in display.
+    Steering column lock not working.
+    The ignition timing can be de-activated at any speed at all.
+  fault_symptom: |
+    Message appears in display.
+    
+    Steering column lock not working.
+    
+    The ignition timing can be de-activated at any speed at all.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Car speed over 7 km/h
+  fault_criteria: Incorrect information from TCS/ESP.
+  system_reaction: Steering column lock deactivated.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    •Diagnostic trouble code can be generated if one wheel has a rotation speed which is much higher than the others, such as when the handbrake is applied on ice. Carry out SPS programming if the software is older than: 12800185
+    
+    •Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Key Capture. Speed Signal OK
+    
+    •Key Capture. Speed OK
+    
+    •Wheel Speed RR, Wire from ABS
+    
+    (See also description of readings/activations in diagnostic tool)

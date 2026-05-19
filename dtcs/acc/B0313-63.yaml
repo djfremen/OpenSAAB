@@ -1,0 +1,21 @@
+dtc: B0313-63
+module: ACC
+module_long_name: Automatic Climate Control
+description: ACC Panel Button Stuck
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acc/b0313-63
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: ACC Panel Button Stuck
+  description: ACC Panel Button Stuck
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: A button on the ACC panel is depressed for more than 12 s.
+  system_reaction: None
+  diagnosis_regards: Electrical fault in the component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Button Pushed
+  diagnostic_help: Symptoms can vary depending on where the fault is located.

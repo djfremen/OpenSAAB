@@ -1,0 +1,49 @@
+dtc: P0131-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: O2S Circuit. Low Voltage. Sensor 1.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0131-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: O2S Circuit. Low Voltage. Sensor 1.
+  description: O2S Circuit. Low Voltage. Sensor 1.
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Battery voltage must be between 11 - 16 V.
+    
+    Engine running.
+    
+    No fuel shut-off.
+    
+    Secondary air pump not active, if fitted.
+    
+    EVAP, leak diagnosis not active, if OBDII.
+    
+    Preheating active for more than 4 s.
+    
+    Lambda control active for more then 5 s.
+    
+    NONE of the following DTCs must be detected:
+    
+    P0101, P0102, P0103
+  fault_criteria: When voltage across oxygen sensor 1 is less than 100 mV while voltage across oxygen sensor 2 is more than 700 mV for more than 30 s.
+  system_reaction: |
+    Closed loop is blocked.
+    
+    Preheating of oxygen sensors 1 and 2 is stopped.
+    
+    Fuel adaptation is reset and switched off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •O2S 1
+    
+    •Closed Loop
+    
+    (See also description of readings/activations in diagnostic tool)

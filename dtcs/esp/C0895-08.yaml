@@ -1,0 +1,24 @@
+dtc: C0895-08
+module: ESP
+module_long_name: Electronic Stability Program
+description: "Yaw Rate Sensor, Supply Voltage Out of Range"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/c0895-08
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Yaw Rate Sensor, Supply Voltage Out of Range"
+  description: "Yaw Rate Sensor, Supply Voltage Out of Range"
+  symptom: |
+    Symptom: ESP warning lamp on.
+    Message appears in display.
+  fault_symptom: |
+    ESP warning lamp on.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Voltage to yaw rate sensor below 7.8 V for 10 seconds with ignition on.
+  system_reaction: No ESP function
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: The sensor is a combined yaw angle sensor and lateral acceleration sensor.

@@ -1,0 +1,39 @@
+dtc: C0121-01
+module: TCS
+module_long_name: Traction Control System
+description: Valve Relay Does Not Open
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcs/c0121-01
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Valve Relay Does Not Open
+  description: Valve Relay Does Not Open
+  symptom: |
+    Symptom: ABS warning lamp on
+    Message appears in display.
+    Steering column lock not working.
+  fault_symptom: |
+    ABS warning lamp on
+    
+    Message appears in display.
+    
+    Steering column lock not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics run when ignition is ON.
+  fault_criteria: When voltage on output exceeds 2V.
+  system_reaction: |
+    No ABS function
+    
+    No TCS/ESP function
+  diagnosis_regards: Electrical fault in the component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Valve Feed
+    
+    Activation:
+    
+    Valve Feed
+    
+    (See also description of readings/activations in diagnostic tool)

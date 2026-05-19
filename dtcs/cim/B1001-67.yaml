@@ -1,0 +1,19 @@
+dtc: B1001-67
+module: CIM
+module_long_name: Column Integration Module
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b1001-67
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  symptom: "Symptom: Message appears in display."
+  fault_symptom: Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics runs when key is inserted.
+  fault_criteria: "The vehicle is equipped with a wiper blade intended for use with a rain sensor, but is not programmed for this."
+  system_reaction: None
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"After fitting a control module\" under fault diagnosis, general."

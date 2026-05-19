@@ -1,0 +1,16 @@
+dtc: B1023-63
+module: ICM3
+module_long_name: Infotainment Control Module 3
+description: "SID, button stuck"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/icm3/b1023-63
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "SID, button stuck"
+  description: "SID, button stuck"
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  system_reaction: None
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.

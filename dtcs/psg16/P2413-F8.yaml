@@ -1,0 +1,42 @@
+dtc: P2413-F8
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: EGR Valve Actuator Defect. Internal Fault EGR.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p2413-f8
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: EGR Valve Actuator Defect. Internal Fault EGR.
+  description: EGR Valve Actuator Defect. Internal Fault EGR.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+    Cruise control not working.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+    
+    Cruise control not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: "Feedback signal from EGR valve is 80% PWM."
+  system_reaction: |
+    Limp Home, engine torque limitation.
+    
+    EGR and boost pressure control turned off in case of fault.
+    
+    Cruise control switched off.
+  diagnosis_regards: Component function.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    EGR Feedback Signal
+    
+    Activate:
+    
+    EGR Solenoid
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: "Feedback signal should normally lie between 85-95% PWM."

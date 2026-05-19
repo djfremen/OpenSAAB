@@ -1,0 +1,27 @@
+dtc: B3899-48
+module: PDM
+module_long_name: Passenger Door Module
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/pdm/b3899-48
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  symptom: |
+    Symptom: Message appears in display.
+    Car does not start.
+  fault_symptom: |
+    Message appears in display.
+    
+    Car does not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics run when ignition is ON.
+  fault_criteria: Control Module not Added
+  system_reaction: The immobilizer-related functions are switched off.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Control module was not added.
+    
+    See "Procedure after fitting the control module"

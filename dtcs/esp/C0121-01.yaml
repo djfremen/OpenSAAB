@@ -1,0 +1,39 @@
+dtc: C0121-01
+module: ESP
+module_long_name: Electronic Stability Program
+description: Valve Relay Does Not Open
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/c0121-01
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Valve Relay Does Not Open
+  description: Valve Relay Does Not Open
+  symptom: |
+    Symptom: ABS warning lamp on
+    Message appears in display.
+    Steering column lock not working.
+  fault_symptom: |
+    ABS warning lamp on
+    
+    Message appears in display.
+    
+    Steering column lock not working.
+  type_of_diagnosis: Upon start-up.
+  enable_criteria: Ignition ON.
+  fault_criteria: When voltage on output exceeds 2V.
+  system_reaction: |
+    No ABS function
+    
+    No TCS/ESP function
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Valve Feed
+    
+    Activation:
+    
+    Valve Feed
+    
+    (See also description of readings/activations in diagnostic tool)

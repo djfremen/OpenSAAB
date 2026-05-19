@@ -1,0 +1,19 @@
+dtc: B1019-08
+module: ICM2
+module_long_name: Infotainment Control Module 2
+description: "SID, internal fault"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/icm2/b1019-08
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "SID, internal fault"
+  description: "SID, internal fault"
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module on-board diagnostics has detected a EEPROM error.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the SID unit.
+    
+    See "Procedure for control module replacement"

@@ -1,0 +1,23 @@
+dtc: B3265-02
+module: REC
+module_long_name: Rear Electronic Centre
+description: "Trunk Unlock Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/rec/b3265-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Trunk Unlock Circuit, Short to Ground"
+  description: "Trunk Unlock Circuit, Short to Ground"
+  symptom: "Symptom: Boot lid/tailgate cannot be opened."
+  fault_symptom: Boot lid/tailgate cannot be opened.
+  type_of_diagnosis: Continuous
+  enable_criteria: When boot lid/tailgate is unlocked.
+  fault_criteria: Current consumption greater than 6 A for more than 6 ms
+  system_reaction: None
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Activation:
+    
+    Trunk Unlock

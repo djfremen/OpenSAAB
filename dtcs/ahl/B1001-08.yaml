@@ -1,0 +1,33 @@
+dtc: B1001-08
+module: AHL
+module_long_name: Automatic Headlamp Levelling
+description: "Control Module, Sensors Out of Range at Calibration"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ahl/b1001-08
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Control Module, Sensors Out of Range at Calibration"
+  description: "Control Module, Sensors Out of Range at Calibration"
+  symptom: |
+    Symptom: Message appears in display.
+    Headlamp beam adjustment not working.
+  fault_symptom: |
+    Message appears in display.
+    
+    Headlamp beam adjustment not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnosis is performed with the diagnostic instrument during calibration.
+  fault_criteria: Front or rear load angle sensor is outside calibration range during calibration.
+  system_reaction: |
+    Stepping motors switched off in calibration mode.
+    
+    Headlamp beam adjustment is switched off.
+  diagnostic_help: |
+    IMPORTANT
+    
+    •See "Safety and handling directions, xenon headlamps".
+    
+    •Refer to document, "Calibration of AHL control modules".
+    
+    •DTC can be generated if any of the height sensors are incorrectly fitted.

@@ -1,0 +1,30 @@
+dtc: B3797-02
+module: DDM
+module_long_name: Driver Door Module
+description: "TSL Motor Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ddm/b3797-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "TSL Motor Circuit, Short to Ground"
+  description: "TSL Motor Circuit, Short to Ground"
+  symptom: "Symptom: TSL out of order."
+  fault_symptom: TSL out of order.
+  type_of_diagnosis: When request for TSL activation issued.
+  enable_criteria: |
+    When the car is locked/unlocked.
+    
+    The following DTCs are generated at the same time as this DTC:
+    
+    B3963
+  fault_criteria: Control module input short circuit to ground.
+  system_reaction: "When the fault is not active, the locking motor attempts to lock."
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Lock Motor Driver Door TSL-Locked
+    
+    (See also description of readings/activations in diagnostic tool)

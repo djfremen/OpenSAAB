@@ -1,0 +1,22 @@
+dtc: U1000-08
+module: PU
+module_long_name: PU
+description: GPS Signal Error
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/pu/u1000-08
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: GPS Signal Error
+  description: GPS Signal Error
+  symptom: "Symptom: Navigation system out of order."
+  fault_symptom: Navigation system out of order.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: A memory error has occurred in the GPS module.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the control module.
+    
+    See "Before changing a control module".

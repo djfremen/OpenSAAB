@@ -1,0 +1,54 @@
+dtc: P0339-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Crankshaft Position Sensor Circuit. Incorrect Signal.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0339-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Crankshaft Position Sensor Circuit. Incorrect Signal.
+  description: Crankshaft Position Sensor Circuit. Incorrect Signal.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Jerky movements.
+    Message in SID regarding TCM and TCS/ESP.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Jerky movements.
+    
+    Message in SID regarding TCM and TCS/ESP.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Test 1
+    
+    •Start engine revving.
+    
+    •Crankshaft signal detected.
+    
+    Test 2
+    
+    •Fault criterion for test 1 is not fulfilled.
+    
+    •Engine running at least 3 seconds.
+    
+    •Vehicle speed over 30 km/h
+    
+    •Brake pedal NOT depressed.
+  fault_criteria: |
+    Test 1
+    
+    •No crankshaft signal more than 8 times in 10 ms for a 3 s period.
+    
+    Test 2
+    
+    •Crankshaft signal missing more than 3 times in 10 ms during the entire driving cycle.
+  system_reaction: None
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Engine RPM
+    
+    (See also description of readings/activations in diagnostic tool)

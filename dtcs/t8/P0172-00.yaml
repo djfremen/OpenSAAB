@@ -1,0 +1,44 @@
+dtc: P0172-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Long Term Fuel Trim Multiplicative. Min Value, Air/Fuel too Rich."
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0172-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Long Term Fuel Trim Multiplicative. Min Value, Air/Fuel too Rich."
+  description: "Long Term Fuel Trim Multiplicative. Min Value, Air/Fuel too Rich."
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    The engine may stop after starting, run unevenly and misfire.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    The engine may stop after starting, run unevenly and misfire.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    The engine has started and lambda control is active.
+    
+    A multiplicative adaptation is carried out.
+    
+    NONE of the following DTCs must be detected:
+    
+    P0444, P0445
+  fault_criteria: "Multiplicative adaptation has bottomed at -25%."
+  system_reaction: None
+  diagnosis_regards: "Checking air/fuel ratio. With this DTC, the engine will be getting too little air (leak) or too much fuel."
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •O2S 1
+    
+    •Multiplicative Adaptation
+    
+    •Short Term Fuel Trim
+    
+    •Purge Adaptation
+    
+    •Airmass Deviation from Calculated
+    
+    (See also description of readings/activations in diagnostic tool)

@@ -1,0 +1,28 @@
+dtc: P0340-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Ignition synchronisation malfunction
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0340-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Ignition synchronisation malfunction
+  description: Ignition synchronisation malfunction
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: Engine running.
+  fault_criteria: Combustion detected from several cylinders simultaneously. The camshaft position could not be synchronized with the crankshaft position. The engine firing order could not be established.
+  system_reaction: None
+  diagnosis_regards: Soot deposits on the spark plugs and electrical faults.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Combustion Signal cyl 1+3
+    
+    •Combustion Signal cyl 2+4
+    
+    •Camshaft Position Syncronized
+    
+    (See also description of readings/activations in diagnostic tool)

@@ -1,0 +1,22 @@
+dtc: B0071-01
+module: ACM
+module_long_name: Airbag Control Module
+description: "Passenger Side Curtain Circuit, Short to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acm/b0071-01
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Passenger Side Curtain Circuit, Short to B+"
+  description: "Passenger Side Curtain Circuit, Short to B+"
+  symptom: "Symptom: Airbag warning lamp is lit"
+  fault_symptom: Airbag warning lamp is lit
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Voltage applied to control module pin 29 is higher than 6 V for 1 s.
+  system_reaction: Airbag warning lamp is lit
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: |
+    IMPORTANT
+    
+    •Read "Before starting fault diagnosis" under Fault diagnosis, general before beginning fault diagnosis.

@@ -1,0 +1,31 @@
+dtc: P2501-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Generator L Terminal Control Circuit, Short to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p2501-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Generator L Terminal Control Circuit, Short to B+"
+  description: "Generator L Terminal Control Circuit, Short to B+"
+  symptom: "Symptom: Higher idling speed."
+  fault_symptom: Higher idling speed.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: The lead between control module pin B16 and generator pin 1 (D+) is short-circuited to B+ for more than 1 s.
+  system_reaction: Control module continues working with the higher idling function.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Alternator L Terminal
+    
+    •Alternator F Terminal
+    
+    Activation:
+    
+    •Alternator L Terminal Load Dump
+    
+    (See also description of readings/activations in diagnostic tool)

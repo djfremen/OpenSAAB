@@ -1,0 +1,22 @@
+dtc: P1609-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "CIM or I Bus ECU's Not Added"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p1609-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "CIM or I Bus ECU's Not Added"
+  description: "CIM or I Bus ECU's Not Added"
+  symptom: "Symptom: The car will not start."
+  fault_symptom: The car will not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: CIM or other ECU on the I-bus not programmed.
+  system_reaction: Starter motor cannot be started.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    See "After fitting a control module" under fault diagnosis, general.
+    
+    See which DTC are stored in the other systems and read their diagnostics information.

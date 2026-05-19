@@ -1,0 +1,22 @@
+dtc: B2485-04
+module: CU-GSM
+module_long_name: Control Unit GSM
+description: "Bluetooth Antenna, Open Circuit"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cu-gsm/b2485-04
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Bluetooth Antenna, Open Circuit"
+  description: "Bluetooth Antenna, Open Circuit"
+  symptom: "Symptom: No Bluetooth function."
+  fault_symptom: No Bluetooth function.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Battery voltage must be between 9 - 16 V.
+    
+    No starter motor cranking.
+  fault_criteria: Aerial circuit resistance is greater than 3 ohm.
+  diagnosis_regards: Aerial.

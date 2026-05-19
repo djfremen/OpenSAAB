@@ -1,0 +1,25 @@
+dtc: B0028-0E
+module: ACM
+module_long_name: Airbag Control Module
+description: "Front airbag, passenger, low resistance"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acm/b0028-0e
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Front airbag, passenger, low resistance"
+  description: "Front airbag, passenger, low resistance"
+  symptom: "Symptom: Airbag warning lamp is lit"
+  fault_symptom: Airbag warning lamp is lit
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Resistance measured by the control module is below 1.3 Ohm for 1 s.
+  system_reaction: Airbag warning lamp is lit
+  checking_wiring: |
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+    
+    •Make sure the separators for the short-circuit jumpers are intact.
+  diagnostic_help: |
+    IMPORTANT
+    
+    •Read "Before starting fault diagnosis" under Fault diagnosis, general before beginning fault diagnosis.

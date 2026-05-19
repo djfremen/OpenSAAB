@@ -1,0 +1,35 @@
+dtc: B1785-61
+module: DSM
+module_long_name: Driver Seat Module
+description: "Backrest Motor Output Circuit, Relay Stuck to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/dsm/b1785-61
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Backrest Motor Output Circuit, Relay Stuck to Ground"
+  description: "Backrest Motor Output Circuit, Relay Stuck to Ground"
+  symptom: |
+    Symptom: Memory functions not working
+    Output is switched off, tries however to activate the engine once each time the ignition is switched on.
+  fault_symptom: |
+    Memory functions not working
+    
+    Output is switched off, tries however to activate the engine once each time the ignition is switched on.
+  type_of_diagnosis: Immediately after a soft start is completed.
+  enable_criteria: When seat operation is permitted.
+  fault_criteria: Voltage on the control module output is below 6 ±0.2V.
+  system_reaction: |
+    No memory functions work
+    
+    Output is switched off, tries however to activate the engine once each time the ignition is switched on.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Activate:
+    
+    Motor, Seat Back Rearward
+    
+    Motor, Seat Back Forward
+    
+    (See also description of readings/activations in diagnostic tool)

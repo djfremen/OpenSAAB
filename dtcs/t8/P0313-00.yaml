@@ -1,0 +1,100 @@
+dtc: P0313-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Misfire Detected at Low Fuel Level
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0313-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Misfire Detected at Low Fuel Level
+  description: Misfire Detected at Low Fuel Level
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    (Check Engine lamp flashes if diagnostics has detected a misfire that is harmful to the catalytic converter).
+    Uneven running and misfiring.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    (Check Engine lamp flashes if diagnostics has detected a misfire that is harmful to the catalytic converter).
+    
+    Uneven running and misfiring.
+  type_of_diagnosis: |
+    Continuous
+    
+    Each misfire is registered and evaluated two different ways depending on the type of misfire.
+    
+    Test 1
+    
+    •Affects emissions.
+    
+    Test 2
+    
+    •Harmful to the catalytic converter.
+  enable_criteria: |
+    General conditions for this DTC
+    
+    •Positive engine torque (negative torque = engine braking).
+    
+    •Combustion signals from CDM are registered.
+    
+    •Fuel level below 5 litres.
+    
+    Test 1
+    
+    •Total number of combustion signals registered.
+    
+    Test 2
+    
+    •The number of times no combustion signal is sent is tallied per cylinder every 200 engine revolutions. The total number of permissible misfires per 200 revolutions is indicated in a load and rpm-dependent matrix.
+  fault_criteria: |
+    Test 1
+    
+    •Total number of missing combustion signals more than 3%.
+    
+    Test 2
+    
+    •The number of times no combustion signal was sent exceeds the number of permissible misfires. More than one cylinder has misfired.
+  system_reaction: None
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: "Fuel/air mixture too rich or too lean, insufficient compression, poor spark plugs causing incomplete combustion."
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Misfire Cyl 1
+    
+    •Misfire Cyl 2
+    
+    •Misfire Cyl 3
+    
+    •Misfire Cyl 4
+    
+    •Airmass Deviation from Calculated
+    
+    •Additive Adaptation
+    
+    •Multiplicative Adaption
+    
+    Activation:
+    
+    •Reset Misfire Counters
+    
+    •Injector 1
+    
+    •Injector 2
+    
+    •Injector 3
+    
+    •Injector 4
+    
+    •Ignition coil 1
+    
+    •Ignition coil 2
+    
+    •Ignition coil 3
+    
+    •Ignition coil 4
+    
+    •Fuel Pump
+    
+    (See also description of readings/activations in diagnostic tool)

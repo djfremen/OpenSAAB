@@ -1,0 +1,40 @@
+dtc: P0704-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Clutch Switch Input Circuit Malfunction
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0704-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Clutch Switch Input Circuit Malfunction
+  description: Clutch Switch Input Circuit Malfunction
+  symptom: "Symptom: Cruise control not working."
+  fault_symptom: Cruise control not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Battery voltage must be between 11 - 16 V.
+    
+    Manual gearbox.
+  fault_criteria: |
+    No status change for the clutch switch when vehicle speed has increased from 3 - 50 km/h (2 - 31 mph).
+    
+    A DTC is generated if this occurs 4 consecutive times.
+  system_reaction: Cruise control switched off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Electrical fault in connecting leads or component.
+    
+    ____________________________________
+    
+    IMPORTANT
+    
+    Fault in connector H42-2 is often a cause of this DTC.
+    
+    ____________________________________
+  diagnostic_tool_functions: |
+    •Test value:
+    
+    Clutch Switch
+    
+    (See also description of readings/activations in diagnostic tool)

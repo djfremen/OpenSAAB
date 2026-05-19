@@ -1,0 +1,24 @@
+dtc: B3947-00
+module: CIM
+module_long_name: Column Integration Module
+description: CIM or SCL Not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3947-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: CIM or SCL Not Added
+  description: CIM or SCL Not Added
+  symptom: |
+    Symptom: Cannot turn key.
+    Error message is shown on the display.
+  fault_symptom: |
+    Cannot turn key.
+    
+    Error message is shown on the display.
+  type_of_diagnosis: Diagnostics carried out with each signal received from CIM to the steering column lock.
+  enable_criteria: Diagnostics runs when key is inserted.
+  fault_criteria: Incorrect response from CIM.
+  system_reaction: Steering column lock not working.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"After fitting a control module\" under fault diagnosis, general."

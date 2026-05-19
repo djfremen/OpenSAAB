@@ -1,0 +1,25 @@
+dtc: U0129-71
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: "Vehicle Speed Signal, not Valid"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/u0129-71
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Vehicle Speed Signal, not Valid"
+  description: "Vehicle Speed Signal, not Valid"
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    P0602 46
+    
+    U0002
+  fault_criteria: Missing/incorrect speed signal from TCS/ESP for more than 5 s.
+  checking_wiring: "•Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force."
+  diagnostic_help: Vehicle speed signal sent via Bus to PSG16.

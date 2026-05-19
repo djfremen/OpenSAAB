@@ -1,0 +1,34 @@
+dtc: P0463-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Fuel Level Sensor Circuit, Open/Short to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0463-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Fuel Level Sensor Circuit, Open/Short to B+"
+  description: "Fuel Level Sensor Circuit, Open/Short to B+"
+  symptom: "Symptom: Incorrect display of fuel level"
+  fault_symptom: Incorrect display of fuel level
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Battery voltage must be between 11 - 16 V.
+    
+    Engine running.
+  fault_criteria: |
+    When input voltage is higher than 2.5 V for more than 1 s.
+    
+    (Value is 100 L in case of a fault)
+  system_reaction: The control module uses a substitute value of 40 litres when fault is detected.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Electrical fault in connecting leads or component.
+    
+    Fault in connector H42-2 is often a cause of this DTC.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Fuel Level
+    
+    (See also description of readings/activations in diagnostic tool)

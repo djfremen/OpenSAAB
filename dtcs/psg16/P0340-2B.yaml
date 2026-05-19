@@ -1,0 +1,34 @@
+dtc: P0340-2B
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Crankshaft Syncropulse For Dieselpump Defective
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0340-2b
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Crankshaft Syncropulse For Dieselpump Defective
+  description: Crankshaft Syncropulse For Dieselpump Defective
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Engine stops.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Engine stops.
+  type_of_diagnosis: Continuous
+  enable_criteria: Engine running.
+  fault_criteria: Synchronisation missing for more than 30 ms.
+  system_reaction: |
+    Engine Turn Off
+    
+    The control module uses the rpm from the crankshaft position sensor /2 as a substitute value.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Engine RPM
+    
+    Camshaft RPM
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: "If another DTC is present in PSG16, start fault diagnosis with that DTC. When the pump control module detects that the synchronising pulse from the crankshaft is missing, it may be due to a fault in the crankshaft position sensor."

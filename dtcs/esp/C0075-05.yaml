@@ -1,0 +1,40 @@
+dtc: C0075-05
+module: ESP
+module_long_name: Electronic Stability Program
+description: "Front right inlet valve, open/short circuit to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/c0075-05
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Front right inlet valve, open/short circuit to B+"
+  description: "Front right inlet valve, open/short circuit to B+"
+  symptom: |
+    Symptom: ABS warning lamp on
+    Message appears in display.
+    Steering column lock not working.
+  fault_symptom: |
+    ABS warning lamp on
+    
+    Message appears in display.
+    
+    Steering column lock not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: When voltage on output exceeds 2V.
+  system_reaction: |
+    No ABS function
+    
+    No TCS/ESP function
+  diagnosis_regards: Electrical fault in the component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Inlet Valve RF
+    
+    Activate:
+    
+    Inlet Valve RF
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: "See \"Before changing a control module\" and \"After fitting a control module\" under Fault diagnosis, general."

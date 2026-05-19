@@ -1,0 +1,55 @@
+dtc: P0134-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: O2S Circuit. No Activity Detected. Sensor 1.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0134-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: O2S Circuit. No Activity Detected. Sensor 1.
+  description: O2S Circuit. No Activity Detected. Sensor 1.
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    •Battery voltage must be between 11 - 16 V.
+    
+    •Engine running.
+    
+    •Lambda status 0.15 or 16.
+    
+    •Secondary air injection pump inactive (SAI).
+    
+    •EVAP, leakage diagnostics inactive.
+    
+    •Preheating active for more than:
+    
+    (depending on start temperature, the lowest of coolant and intake air temperature is selected)
+    
+    -9°C 570s.
+    
+    -8°C 270s.
+    
+    +8°C 270s.
+    
+    +9°C 80s.
+    
+    •NONE of the following DTCs must be detected:
+    
+    P0112, P0113
+  fault_criteria: When voltage across the sensor has not been outside of the range 0.30-0.60 V for 10 s.
+  system_reaction: |
+    Closed loop is blocked.
+    
+    Preheating of oxygen sensors 1 and 2 is stopped.
+    
+    Fuel adaptation is reset and switched off.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •O2S 1
+    
+    (See also description of readings/activations in diagnostic tool)

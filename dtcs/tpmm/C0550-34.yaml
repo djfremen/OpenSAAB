@@ -1,0 +1,19 @@
+dtc: C0550-34
+module: TPMM
+module_long_name: Tyre Pressure Monitor Module
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tpmm/c0550-34
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: "Symptom: Message appears in display."
+  fault_symptom: Message appears in display.
+  type_of_diagnosis: Upon start-up.
+  enable_criteria: Vehicle speed above 30 km/h for more than 30 seconds.
+  fault_criteria: Control module on-board diagnostics has detected a RAM error.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"Before changing a control module\" and \"After fitting a control module\" under Fault diagnosis, general."

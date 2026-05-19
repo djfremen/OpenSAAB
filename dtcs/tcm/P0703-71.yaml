@@ -1,0 +1,12 @@
+dtc: P0703-71
+module: TCM
+module_long_name: Transmission Control Module
+description: Brake Light Switch. Bus Data Unreliable
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcm/p0703-71
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Brake Light Switch. Bus Data Unreliable
+  description: Brake Light Switch. Bus Data Unreliable
+  diagnostic_help: See diagnostic trouble codes in Trionic 8

@@ -1,0 +1,29 @@
+dtc: B3109-00
+module: CIM
+module_long_name: Column Integration Module
+description: "Remote Control 1, Low Battery"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3109-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Remote Control 1, Low Battery"
+  description: "Remote Control 1, Low Battery"
+  symptom: |
+    Symptom: Remote control indicates weak battery.
+    Message appears in display.
+  fault_symptom: |
+    Remote control indicates weak battery.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics runs when key is inserted.
+  fault_criteria: Message appears in display.
+  system_reaction: None
+  diagnosis_regards: Battery
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Remote Battery Status
+    
+    (See also description of readings/activations in diagnostic tool)

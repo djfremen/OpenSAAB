@@ -1,0 +1,19 @@
+dtc: P0602-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Control Module Not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0602-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module Not Added
+  description: Control Module Not Added
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition on for at least 3 s.
+  fault_criteria: Control Module not Added
+  system_reaction: None
+  diagnosis_regards: "See \"After fitting a control module\" under fault diagnosis, general."
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""

@@ -1,0 +1,54 @@
+dtc: C0550-00
+module: ESP
+module_long_name: Electronic Stability Program
+description: "Wheel Speed Sensors, Supply Voltage, Intermittent Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/c0550-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Wheel Speed Sensors, Supply Voltage, Intermittent Short to Ground"
+  description: "Wheel Speed Sensors, Supply Voltage, Intermittent Short to Ground"
+  symptom: |
+    Symptom: ABS/TCS/ESP warning lamp on.
+    Message appears in display.
+    Steering column lock not working.
+  fault_symptom: |
+    ABS/TCS/ESP warning lamp on.
+    
+    Message appears in display.
+    
+    Steering column lock not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    •C0035
+    
+    •C0040
+    
+    •C0045
+    
+    •C0050
+  fault_criteria: The control module internal power supply circuit to the sensors detects a short-circuit to ground.
+  system_reaction: |
+    No ABS function
+    
+    No TCS/ESP function
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Electrical fault in connecting leads or faulty sensor.
+    
+    ____________________________________
+    
+    The DTC can be generated due to:
+    
+    •The power supply to one of the sensors is intermittently short-circuited to ground.
+    
+    •One of the sensors if faulty.
+    
+    •Internal control module fault
+    
+    •The DTC can be generated if standard sensor diagnosis does not detect the fault.

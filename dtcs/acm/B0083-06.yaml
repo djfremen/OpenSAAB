@@ -1,0 +1,27 @@
+dtc: B0083-06
+module: ACM
+module_long_name: Airbag Control Module
+description: "Front Passenger Seat Position Sensor Circuit, Open/Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acm/b0083-06
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Front Passenger Seat Position Sensor Circuit, Open/Short to Ground"
+  description: "Front Passenger Seat Position Sensor Circuit, Open/Short to Ground"
+  symptom: "Symptom: Airbag warning lamp is lit"
+  fault_symptom: Airbag warning lamp is lit
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Current in the sensor circuit is below 4mA for approx. 0.5 s.
+  system_reaction: |
+    •Control module uses the threshold value during the event of a collision.
+    
+    •Airbag warning lamp is lit
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: |
+    •The DTC can be generated if a control module with the wrong part number is fitted in the vehicle.
+    
+    IMPORTANT
+    
+    •Read "Before starting fault diagnosis" under Fault diagnosis, general before beginning fault diagnosis.

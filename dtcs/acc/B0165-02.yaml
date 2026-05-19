@@ -1,0 +1,23 @@
+dtc: B0165-02
+module: ACC
+module_long_name: Automatic Climate Control
+description: Indoor Temperature Sensor. Short to Ground
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/acc/b0165-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Indoor Temperature Sensor. Short to Ground
+  description: Indoor Temperature Sensor. Short to Ground
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Voltage on control module sensor input is below 0.2 V.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Compartment Temperature Sensor
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: "In case of a fault, the control module will use the mixed air temperature."

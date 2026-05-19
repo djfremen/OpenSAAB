@@ -1,0 +1,27 @@
+dtc: P0601-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0601-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Engine shut off.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Engine shut off.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module on-board diagnostics has detected a ROM error.
+  system_reaction: Motor switches off.
+  diagnosis_regards: |
+    To locate electrical faults in the control module internal electronics.
+    
+    See "Before changing a control module" and "After fitting a control module" under Fault diagnosis, general.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""

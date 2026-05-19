@@ -1,0 +1,20 @@
+dtc: B3662-01
+module: SRM
+module_long_name: Steering Wheel Module
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/srm/b3662-01
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: "Symptom: Sunroof cannot be operated."
+  fault_symptom: Sunroof cannot be operated.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics runs when sunroof operated.
+  fault_criteria: Motor circuit short-circuited to B+.
+  system_reaction: Sunroof cannot be operated.
+  diagnosis_regards: To locate electrical faults in the sunroof internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"Procedure for control module replacement\""

@@ -1,0 +1,30 @@
+dtc: B2755-61
+module: DSM
+module_long_name: Driver Seat Module
+description: "Memory 1 Button, Stuck"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/dsm/b2755-61
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Memory 1 Button, Stuck"
+  description: "Memory 1 Button, Stuck"
+  symptom: |
+    Symptom: Memory button 1, faulty function.
+    No memory functions work
+  fault_symptom: |
+    Memory button 1, faulty function.
+    
+    No memory functions work
+  type_of_diagnosis: Continuous
+  enable_criteria: When seat operation is permitted.
+  fault_criteria: Memory button 1 depressed for more than 60s.
+  system_reaction: The button is considered inactive until it is released and activated again.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Memory Button 1
+    
+    (See also description of readings/activations in diagnostic tool)

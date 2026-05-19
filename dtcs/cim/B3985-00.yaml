@@ -1,0 +1,17 @@
+dtc: B3985-00
+module: CIM
+module_long_name: Column Integration Module
+description: "BCM, Internal Failure"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3985-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "BCM, Internal Failure"
+  description: "BCM, Internal Failure"
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics runs when key is inserted.
+  fault_criteria: Immobilizer code cannot be programmed in BCM
+  system_reaction: None
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"Before changing a control module\" and \"After fitting a control module\" under Fault diagnosis, general."

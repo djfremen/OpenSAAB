@@ -1,0 +1,53 @@
+dtc: P1802-02
+module: SLM
+module_long_name: Steering Lock Module
+description: "Sentronic Circuit, Short to Ground."
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/slm/p1802-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Sentronic Circuit, Short to Ground."
+  description: "Sentronic Circuit, Short to Ground."
+  symptom: |
+    Symptom: No Sentronic function.
+    Selector lever locked in position P or N.
+  fault_symptom: |
+    No Sentronic function.
+    
+    Selector lever locked in position P or N.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module output voltage exceeds 0.2 V.
+  system_reaction: Manual shifting not permitted.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Electrical fault in lead connected between SLM and TCM.
+    
+    ____________________________________
+    
+    IMPORTANT
+    
+    This diagnostic trouble code is also generated when the TCM's bus communication was/is faulty.
+    
+    ____________________________________
+    
+    If the selector lever is moved to position M, SLM transmits a bus message. TCM is then open to up or downshifting. If the driver shifts manually, voltage is sent from pin 7 on SLM to pin 8 (A) on TCM. This is done through an analogue voltage signal sent by SLM on its own lead directly to TCM in accordance with the following:
+    
+    •Hold Gear voltage between 0.5 V - 1.4 V
+    
+    •Shift Gear -UP, (+) voltage between 1.4 V - 1.79 V
+    
+    •Shift Gear-DOWN (-) voltage between 2.7 V - 3.5 V
+    
+    (These voltage levels can be measured when all contacts are engaged.)
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Selector Position Sentronic
+    
+    •Selector Position Sentronic Up
+    
+    •Selector Position Sentronic Down
+    
+    •Shift Lever Sentronic

@@ -1,0 +1,21 @@
+dtc: B2657-00
+module: CIM
+module_long_name: Column Integration Module
+description: "Illumination Steering Wheel Control circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b2657-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Illumination Steering Wheel Control circuit, Short to Ground"
+  description: "Illumination Steering Wheel Control circuit, Short to Ground"
+  symptom: "Symptom: No illumination of steering wheel controls."
+  fault_symptom: No illumination of steering wheel controls.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Dipped beam on
+  fault_criteria: Control module output short-circuit to ground.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.

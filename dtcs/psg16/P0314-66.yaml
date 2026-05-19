@@ -1,0 +1,80 @@
+dtc: P0314-66
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Misfire at Medium RPM
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0314-66
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Misfire at Medium RPM
+  description: Misfire at Medium RPM
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+    A/C not working, no cooling.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+    
+    A/C not working, no cooling.
+  enable_criteria: |
+    Engine running.
+    
+    Engine speed between 1100 and 2300 rpm.
+    
+    More than 8 mg fuel/combustion.
+    
+    NONE of the following DTCs must be detected:
+    
+    P0016
+    
+    P0017
+    
+    P0116, P0117, P0118
+    
+    P0149, P1149
+    
+    P0335, P0337
+    
+    P0400, P0403, P0404
+    
+    P1403, P1404
+    
+    P2102
+  fault_criteria: Sufficient number of misfires detected.
+  system_reaction: |
+    Limp Home, fuel limitation.
+    
+    Output to the A/C relay is switched off.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Misfire Cyl
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: |
+    All causes for misfiring can cause DTC generation, e.g. combustion deviation in one of the cylinders.
+    
+    This may be due to:
+    
+    •Clogged nozzles.
+    
+    •Leaking high-pressure lines.
+    
+    •Damaged piston, cylinder or valve.
+    
+    •Mechanical fault in the engine.
+    
+    •Blocked or leaking fuel bridges.
+    
+    •Fuel filter clogged.
+    
+    •Poor fuel quality.
+    
+    •Refuelled with petrol.
+    
+    •Air in fuel system.
+    
+    •Damaged sealing washers to injectors.

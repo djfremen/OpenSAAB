@@ -1,0 +1,27 @@
+dtc: U1501-57
+module: CU-GSM
+module_long_name: Control Unit GSM
+description: CU Internal Error. Initiation of Bluetooth failed
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cu-gsm/u1501-57
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: CU Internal Error. Initiation of Bluetooth failed
+  description: CU Internal Error. Initiation of Bluetooth failed
+  symptom: "Symptom: No Bluetooth function."
+  fault_symptom: No Bluetooth function.
+  type_of_diagnosis: "Once per \"wake-up\"."
+  enable_criteria: |
+    Ignition ON.
+    
+    Battery voltage must be between 9 - 16 V.
+    
+    No starter motor cranking.
+  fault_criteria: Bluetooth initiation failed.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the control module.
+    
+    See "Before changing a control module".

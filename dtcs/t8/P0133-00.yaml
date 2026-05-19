@@ -1,0 +1,59 @@
+dtc: P0133-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: O2S Circuit. Slow Response. Sensor 1.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0133-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: O2S Circuit. Slow Response. Sensor 1.
+  description: O2S Circuit. Slow Response. Sensor 1.
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Once per driving cycle.
+  enable_criteria: |
+    Battery voltage must be between 11 - 16 V.
+    
+    Coolant temperature greater than 70°C.
+    
+    Motor running more than 180 s.
+    
+    Engine speed between 1500 - 3000 rpm.
+    
+    Air mass between 200 - 500 mg/C.
+    
+    Lambda status 0.
+    
+    Lambda integrator between 0 - 15 %.
+    
+    Bleeding adaptation more than -10%.
+    
+    Diagnostics for the following components/systems must NOT have reported a fault:
+    
+    •Mass air flow sensor
+    
+    •Crankshaft position sensor
+    
+    •EVAP Valve
+    
+    •Shut-off valve, EVAP canister.
+    
+    •Secondary air injection system (SAI).
+    
+    •Tank integrity system (EVAP).
+  fault_criteria: |
+    When all conditions are fulfilled, the number of combustion is counted during 4 lambda transitions.
+    
+    Number of combustions exceeds 250.
+  system_reaction: None
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Worn/sluggish/contaminated oxygen sensor.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •O2S 1
+    
+    •Short Term Fuel Trim
+    
+    (See also description of readings/activations in diagnostic tool)

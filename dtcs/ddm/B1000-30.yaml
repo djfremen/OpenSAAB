@@ -1,0 +1,36 @@
+dtc: B1000-30
+module: DDM
+module_long_name: Driver Door Module
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/ddm/b1000-30
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  symptom: |
+    Symptom: Diagnostic communication works.
+    Control module outputs switched off.
+    Central locking, window lifts and door mirrors out of order.
+  fault_symptom: |
+    Diagnostic communication works.
+    
+    Control module outputs switched off.
+    
+    Central locking, window lifts and door mirrors out of order.
+  type_of_diagnosis: "Diagnostics run each time control module \"wakes\"."
+  enable_criteria: Ignition ON.
+  fault_criteria: Internal control module fault
+  system_reaction: |
+    Diagnostic communication works.
+    
+    Control module outputs switched off.
+    
+    Central locking, window lifts and door mirrors out of order.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Change the control module.
+    
+    See "Procedure for control module replacement"

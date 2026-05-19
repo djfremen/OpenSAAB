@@ -1,0 +1,19 @@
+dtc: B1001-46
+module: REC
+module_long_name: Rear Electronic Centre
+description: Controle Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/rec/b1001-46
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Controle Module not Added
+  description: Controle Module not Added
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module not configured.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Control module was not added.
+    
+    See "Procedure after fitting the control module"

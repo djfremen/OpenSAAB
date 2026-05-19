@@ -1,0 +1,29 @@
+dtc: C0131-02
+module: ESP
+module_long_name: Electronic Stability Program
+description: "Pressure Sensor Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/c0131-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Pressure Sensor Circuit, Short to Ground"
+  description: "Pressure Sensor Circuit, Short to Ground"
+  symptom: |
+    Symptom: Warning lamp lights.
+    Message appears in display.
+  fault_symptom: |
+    Warning lamp lights.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Voltage from the pressure sensor is below 0.25V.
+  system_reaction: No TCS/ESP function
+  diagnosis_regards: Electrical fault in the component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Pedal Pressure
+    
+    (See also description of readings/activations in diagnostic tool)

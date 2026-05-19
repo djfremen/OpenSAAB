@@ -1,0 +1,37 @@
+dtc: P0444-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: EVAP Purge Valve Circuit. Open / Short to Ground
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0444-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: EVAP Purge Valve Circuit. Open / Short to Ground
+  description: EVAP Purge Valve Circuit. Open / Short to Ground
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Battery voltage must be between 11 - 16 V.
+    
+    Tank purge active.
+    
+    NONE of the following DTCs must be detected:
+    
+    •P0685, P0686, P0687
+  fault_criteria: Output voltage below 2 V during the portion of the PWM period when the control module is not grounding. The condition exists for more than 2 s.
+  system_reaction: |
+    No fuel shut-off.
+    
+    Fuel adaption is blocked and reset.
+    
+    EVAP canister purge valve deactivated.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Activation:
+    
+    •Canister Purge Valve
+    
+    (See also description of readings/activations in diagnostic tool)

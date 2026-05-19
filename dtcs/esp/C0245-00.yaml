@@ -1,0 +1,36 @@
+dtc: C0245-00
+module: ESP
+module_long_name: Electronic Stability Program
+description: Wheel Speed Mismatch
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/c0245-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Wheel Speed Mismatch
+  description: Wheel Speed Mismatch
+  symptom: |
+    Symptom: ABS warning lamp on
+    TCS/ESP warning lamp comes on.
+    Message appears in display.
+    Steering column lock not working.
+  fault_symptom: |
+    ABS warning lamp on
+    
+    TCS/ESP warning lamp comes on.
+    
+    Message appears in display.
+    
+    Steering column lock not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Car rolling faster than 15 km/h without turning, braking or tyres spinning.
+  fault_criteria: "Wheel speed between one wheel and the others differs by more than 25 %"
+  system_reaction: |
+    No ABS function
+    
+    No TCS/ESP function
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: The DTC can be generated if a wheel with a different circumference than the others is fitted.

@@ -1,0 +1,35 @@
+dtc: C0550-38
+module: ESP
+module_long_name: Electronic Stability Program
+description: Control module - ECU fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/c0550-38
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control module - ECU fault
+  description: Control module - ECU fault
+  symptom: |
+    Symptom: ABS/TCS/ESP warning lamp on.
+    Message appears in display.
+    Steering column lock not working.
+  fault_symptom: |
+    ABS/TCS/ESP warning lamp on.
+    
+    Message appears in display.
+    
+    Steering column lock not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module on-board diagnostics has detected an internal fault.
+  system_reaction: |
+    No ABS function
+    
+    No TCS/ESP function
+  diagnosis_regards: |
+    To locate electrical faults in the control module internal electronics.
+    
+    ____________________________________
+    
+    See "Before changing a control module" and "After fitting a control module" under Fault diagnosis, general.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""

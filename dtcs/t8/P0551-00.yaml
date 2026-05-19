@@ -1,0 +1,33 @@
+dtc: P0551-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Power Steering Pressure Switch Performance Problem
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0551-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Power Steering Pressure Switch Performance Problem
+  description: Power Steering Pressure Switch Performance Problem
+  symptom: |
+    Symptom: No load compensation for power steering.
+    Higher idling speed.
+  fault_symptom: |
+    No load compensation for power steering.
+    
+    Higher idling speed.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Battery voltage must be between 11 - 16 V.
+    
+    Engine running.
+  fault_criteria: Status change for the power steering pressure switch has occurred for a duration of 600 s when vehicle speed has been higher than 50 km/h (31 mph).
+  system_reaction: Control module continues working with the higher idling function.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Power Steering Pressure Switch
+    
+    (See also description of readings/activations in diagnostic tool)

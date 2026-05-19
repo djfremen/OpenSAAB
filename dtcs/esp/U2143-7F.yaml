@@ -1,0 +1,24 @@
+dtc: U2143-7F
+module: ESP
+module_long_name: Electronic Stability Program
+description: Steering Angle Sensor Missing on Bus
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/u2143-7f
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Steering Angle Sensor Missing on Bus
+  description: Steering Angle Sensor Missing on Bus
+  symptom: |
+    Symptom: ESP warning lamp on.
+    Message appears in display.
+  fault_symptom: |
+    ESP warning lamp on.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Incorrect information from CIM.
+  system_reaction: No ESP function
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: "DTC is not generated if CAN is in \"bus off\" mode or the control module receives insufficient power supply."

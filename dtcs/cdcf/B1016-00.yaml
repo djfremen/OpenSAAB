@@ -1,0 +1,20 @@
+dtc: B1016-00
+module: CDCF
+module_long_name: CDCF Front CD Changer
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cdcf/b1016-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  symptom: "Symptom: Error message is shown on the display."
+  fault_symptom: Error message is shown on the display.
+  type_of_diagnosis: Diagnostics runs each time the control module is active and when programming has been carried out.
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module not configured.
+  diagnostic_help: |
+    Control module was not added.
+    
+    See "Procedure after fitting the control module"

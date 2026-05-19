@@ -1,0 +1,26 @@
+dtc: B3925-00
+module: CIM
+module_long_name: Column Integration Module
+description: BCM or CIM Not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3925-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: BCM or CIM Not Added
+  description: BCM or CIM Not Added
+  symptom: |
+    Symptom: Message appears in display.
+    The engine may not start.
+  fault_symptom: |
+    Message appears in display.
+    
+    The engine may not start.
+  type_of_diagnosis: |
+    Continuous
+    
+    Diagnostics carried out according to valid fix code from the transponder.
+  enable_criteria: Diagnostics runs when key is inserted.
+  fault_criteria: Incorrect immobilizer code received from BCM.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"After fitting a control module\" under fault diagnosis, general."

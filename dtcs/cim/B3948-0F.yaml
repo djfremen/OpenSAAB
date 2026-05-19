@@ -1,0 +1,27 @@
+dtc: B3948-0F
+module: CIM
+module_long_name: Column Integration Module
+description: "Information DTC: Steering Lock System, Non Safety Critical Failure"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3948-0f
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Information DTC: Steering Lock System, Non Safety Critical Failure"
+  description: "Information DTC: Steering Lock System, Non Safety Critical Failure"
+  symptom: |
+    Symptom: The engine may not start.
+    Possible message on the display
+  fault_symptom: |
+    The engine may not start.
+    
+    Possible message on the display
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Diagnostics run when key is inserted and removed.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    U1500
+  fault_criteria: The expected position of the lock bolt does not match the actual position of the lock bolt.
+  diagnosis_regards: The DTC can be generated if SCL is in failsafe position (lock bolt position was moved).

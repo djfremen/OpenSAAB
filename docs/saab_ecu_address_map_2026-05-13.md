@@ -1,92 +1,83 @@
 # SAAB CAN-ID → ECU function map
 
-**Date:** 2026-05-13
+**Date:** 2026-05-13 (last update: 2026-05-15)
 **Sources:**
 - Bench captures from `commands/saab/check_codes_read_dtcs.yaml` (T8 bench, VIN `YS3FD49YX41012017`)
 - Bench captures from `commands/saab/engine_me96_read_codes.yaml` + `clear_codes_clear_dtcs.yaml` (ME9.6 field car, VIN prefix `YS3FH46U…`)
+- [`commands/saab/captures/2026-05-14_190004_ys3fh46u_tech2win_boot_scan.json`](../commands/saab/captures/2026-05-14_190004_ys3fh46u_tech2win_boot_scan.json) — shim-decoded boot scan of VIN `YS3FH46U68110137` (2008 9-3 SportCombi)
+- Workspace-only T8 ECM walk analysis: `saab_security_project/tech2_video_analysis/2026-05-15_ecm_walk_t8/README.md` — Collector uploads around 2026-05-15 08:47 HST; Tech2Win `$1A 97` Module Description DIDs for VIN `YS3FD49YX41012017`
+- Workspace-only ME9.6 ECM walk analysis: `saab_security_project/tech2_video_analysis/2026-05-15_ecm_walk_me96/README.md` — Collector upload around 2026-05-15 09:15 HST; Tech2Win `$1A 97` Module Description DIDs for VIN `YS3FH46U681101367`
 - [`mattiasclaesson/Trionic`](https://github.com/mattiasclaesson/Trionic) — `Trionic8.cs:42-44` `FilterIdECU` / `FilterIdCIM`
 - [z90.pl SAAB DTC catalog](https://z90.pl/saab/dtc/) — model 9-3 9440 MY 2009 ECU index
 - [`protocol/gmlan_11bit_ids.md`](../protocol/gmlan_11bit_ids.md) — Jason Gaunt 2013 canonical labels
 
-This document **infers** the physical module sitting at each CAN-ID by
-cross-referencing observed DTCs with z90's per-ECU sections and
-Trionic's hardcoded address constants. It is not a canonical claim —
-it's the strongest hypothesis the available evidence supports for each
-address.
+This document **infers** the module/logical function reachable at each CAN-ID by
+cross-referencing observed DTCs, Tech2Win `$1A 97` Module Description
+strings, z90's per-ECU sections, and Trionic's hardcoded address constants.
+It is not a canonical claim — it's the strongest hypothesis the available
+evidence supports for each address.
+
+Important 2026-05-15 correction: the map is **not strictly one
+CAN-ID-to-one-physical-module**. Tech2Win appears to route multiple logical
+modules through the same transport address depending on menu context. Examples:
+`$0243` can report both `DRIVER DOOR ECU` and ESP (`ESP EBC430` / `ESP 430 NG`);
+`$0249` can report both `REC` and `AFL-Epsilon`. Model rows as
+`transport address + Tech2Win menu context + platform/powertrain evidence`, not
+as immutable physical ownership.
 
 ## Address-to-module table
 
 | TX | SF reply | MF reply | Inferred module | Confidence | Evidence |
 |---|---|---|---|---|---|
-| `$0241` | `$0541` | `$0641` | Engine ECM (T8) — Tech2Win manufacturer alias | High | Bench unlock w/ seed `f6 31` → key `de 40` (engine SAS); Tech2Win uses this for engine read; canonical Jason Gaunt is `TO_BCM`, but Tech2Win re-uses it as engine-diag entry |
+| `$0241` | `$0541` | `$0641` | **CIM** (Column Integration Module) | High | 2026-05-15 T8 ECM walk: `$1A 97` returns ASCII `CIM`. Earlier engine/SAS behavior is a Tech2Win service-routing alias, not the module identity. |
 | `$0242` | `$0542` | `$0642` | **BCM** (Body Control Module) | High | DTCs `B0092-05` "Passenger Seat Sensor circuit" + `B1001` "Control Module not Added" + lost-comm with multiple modules — z90 attributes both to BCM(#817) |
-| `$0243` | `$0543` | `$0643` | **Door module** (DDM/PDM/RLDM/RRDM — specific role TBD) | High | `B3832-45` "Information: Anti Pinch Not Learned" — z90 attributes only to DDM(#819), PDM(#825), RLDM(#827), RRDM(#828). Same code seen on $0243/$0248/$024A/$024B → all four are doors |
-| `$0245` | `$0545` | `$0645` | **ACC / Heated Seats / Climate** (NOT CIM as Trionic claims) | Medium-High | z90 attributes captured `B1928-05` "Seat Temperature Sensor Left" + `B2429-06` "Seat Heating Left" to ACC(#814). **Conflicts** with Trionic's `FilterIdCIM = { 0x245 }` — see ambiguity note below |
-| `$0246` | `$0546` | `$0646` | **TO_SIC** (Steering Integration Control — canonical) | Medium | 2026-05-14 1367 capture: 6 DIDs respond on $0646 (02, 03, 90, 9A, B9, BA). Real populated ECU. DID 9A=`04 09`, BA=`7C CF 35 50` (calibration). No DTCs yet to cross-reference vs z90 |
-| `$0247` | `$0547` | `$0647` | TO_SDC (canonical) — bench evidence pending | Low | Jason Gaunt label only |
-| `$0248` | `$0548` | `$0648` | **Door module** (DDM/PDM/RLDM/RRDM) | High | Same `B3832-45` as $0243; z90 door-module exclusive |
-| `$0249` | `$0549` | `$0649` | **TCS/ESP** (Anti-Skid / Electronic Stability) | Medium | DTCs `U2105-00` "ECM Missing on Bus", `U2143-00` "Steering Angle Sensor Missing", `U2108-00` "TCS/ESP Missing" — z90 attributes to TCS/ESP(#831) more often than other candidates |
-| `$024A` | `$054A` | `$064A` | **Door module** (DDM/PDM/RLDM/RRDM) | High | `B3832-45` shared |
-| `$024B` | `$054B` | `$064B` | **Door module** (DDM/PDM/RLDM/RRDM) | High | `B3832-45` + `B3205-06` "Power Window Down" + `B3210-06` "Power Window Up" — z90 attributes window codes to DDM/PDM/RLDM |
-| `$024D` | `$054D` | `$064D` | unknown — empty DTC list this run | None | No DTCs returned (terminator only) |
+| `$0243` | `$0543` | `$0643` | **Driver Door ECU** + ESP logical route | High | T8 and ME9.6 walks both show `$1A 97` `DRIVER DOOR ECU`; DTC evidence (`B3832-45`) supports door. T8 also shows `ESP EBC430`; ME9.6 shows `ESP 430 NG` at the same transport address, so this is context/proxy-routed. |
+| `$0244` | `$0544` | `$0644` | **DSM** (Driver Seat Module) | High | 2026-05-15 T8 ECM walk: `$1A 97` returns ASCII `DSM`. |
+| `$0245` | `$0545` | `$0645` | **ACC** (climate / heated seats) | High | 2026-05-15 T8 ECM walk: `$1A 97` returns ASCII `ACC`; prior seat-heater DTC evidence also pointed to ACC. This resolves the old Trionic CIM-address conflict for 9-3 9440. |
+| `$0246` | `$0546` | `$0646` | **IPC** (Instrument Panel Cluster) | High | 2026-05-15 T8 ECM walk: `$1A 97` returns ASCII `IPC`; prior DIDs 02/03/90/9A/B9/BA are IPC identity/calibration reads. |
+| `$0247` | `$0547` | `$0647` | **ICM 2** | High | 2026-05-15 T8 ECM walk: `$1A 97` returns ASCII `ICM 2`. |
+| `$0248` | `$0548` | `$0648` | **Passenger Door ECU** | High | 2026-05-15 T8 ECM walk: `$1A 97` returns `PASSENGER DOOR ECU`; `$1A 01: C9 34` matches `$0243` as the front-door pair. |
+| `$0249` | `$0549` | `$0649` | **REC** + AFL logical route | High | T8 and ME9.6 walks show `$1A 97` `REC`; ME9.6 also shows `AFL-Epsilon` at `$0249`, so this transport address is context/proxy-routed. Prior TCS/ESP inference from DTC attribution is superseded for this address. |
+| `$024A` | `$054A` | `$064A` | **Rear Left Door ECU** | High | 2026-05-15 T8 ECM walk: `$1A 97` returns `REAR LEFT DOOR ECU`; shares door DTC evidence. |
+| `$024B` | `$054B` | `$064B` | **Rear Right Door ECU** | High | 2026-05-15 T8 ECM walk: `$1A 97` returns `REAR RIGHT DOOR ECU`; shares door/window DTC evidence. |
+| `$024D` | `$054D` | `$064D` | **SRM** | High | 2026-05-15 T8 ECM walk: `$1A 97` returns ASCII `SRM`. |
 | `$024F` | `$054F` | `$064F` | **UEC** (User Equipment Center / front lighting controller) | High | All 5 unique DTCs (`B2575/B2698/B2699/B2525` low-beam + fog-light circuits, `B3810-06` headlamp washer relay) z90-attributed exclusively to UEC(#832) |
-| `$0253` | `$0553` | `$0653` | unknown body module — bench evidence pending | None | Cleared in clear-codes sweep but no DTCs read |
-| `$0257` | `$0557` | `$0657` | unknown — possibly RFA (Remote Function Actuator) | Low | Jason Gaunt has TO_RFA at $0258, this is adjacent; involved in L01 SecurityAccess sweep |
-| `$025B` | `$055B` | `$065B` | unknown body module — bench evidence pending | None | |
-| `$025C` | `$055C` | `$065C` | unknown body module — bench evidence pending | None | |
-| `$025D` | `$055D` | `$065D` | **TBD — confirmed ASCII `"1A9"` signature** | Medium | 2026-05-14 1367 capture: DID 81 returns `5A 81 31 41 39` = ASCII `"1A9"` (verifies the 2026-05-13 note). Also DID B2 = `A1 00 00 00 00 00`. Needs Tech2Win Module Description screen to put a SAAB name on `"1A9"` |
-| `$025F` | `$055F` | `$065F` | unknown body module — bench evidence pending | None | |
-| `$07E0` | `$05E8` | `$07E8` | **Engine ECM (OBD-II)** — ME9.6 on the field car | High | Trionic `FilterIdECU = { 0x7E0, 0x7E8, 0x5E8 }`; all 21 captured DTCs are engine codes z90-attributed to ME9(#840) and T8(#821) |
-| `$07E1` | `$05E9` | `$07E9` | **TCM (OBD-II)** — Transmission | High | Jason Gaunt canonical `OBD-II physical to TCM`; bench L01 SecurityAccess captures show $0257/$07E1 returning 67 01 d2 dc |
+| `$0251` | `$0551` | `$0651` | **EHU** (Entertainment Head Unit) | High | 2026-05-15 T8 ECM walk: `$1A 97` returns ASCII `EHU`. |
+| `$0253` | `$0553` | `$0653` | unknown body module | Low | Present in sweeps; no `$1A 97` name captured yet. |
+| `$0257` | `$0557` | `$0657` | **SDM** (Sensing Diagnostic Module / airbag) | High | 2026-05-15 T8 ECM walk: `$1A 97` returns ASCII `SDM`. |
+| `$025B` | `$055B` | `$065B` | **PAS** (Parking Assistance System) | High | 2026-05-15 T8 ECM walk: `$1A 97` returns ASCII `PAS`. |
+| `$025C` | `$055C` | `$065C` | **SLM** | High | 2026-05-15 T8 ECM walk: `$1A 97` returns ASCII `SLM`. |
+| `$025D` | `$055D` | `$065D` | **TBD — confirmed ASCII `"1A9"` signature** | Medium | 2026-05-14 1367 capture: DID 81 returns `5A 81 31 41 39` = ASCII `"1A9"` (verifies the 2026-05-13 note). Also DID B2 = `A1 00 00 00 00 00`. **2026-05-14 YS3FH46U68110137 capture**: identical `$81 = "1A9"` and `$B2 = A1 00 00 00 00 00` — same role across two different 9440-platform cars (cross-vehicle confirmation). Still needs Tech2Win Module Description screen to put a SAAB name on `"1A9"` |
+| `$025F` | `$055F` | `$065F` | **TPMS_WAL01** on ME9.6; unnamed on T8 | Medium-High | 2026-05-15 ME9.6 walk: `$1A 97` returns `TPMS_WAL01`. T8 had `$025F` responses but no readable `$1A 97` name captured. |
+| `$07E0` | `$05E8` | `$07E8` | **Engine ECM** (`ECM` on T8, `BOSCH_ME96` on ME9.6) | High | T8 walk: `$1A 97` returns `ECM`; ME9.6 walk: `$1A 97` returns `BOSCH_ME96`; Trionic `FilterIdECU = { 0x7E0, 0x7E8, 0x5E8 }`. |
+| `$07E1` | `$05E9` | `$07E9` | **TCM** (Transmission Control Module) | High | 2026-05-15 T8 ECM walk: `$1A 97` returns ASCII `TCM`; Jason Gaunt canonical OBD-II physical-to-TCM address. |
 
-## Ambiguity: $0245 — ACC vs CIM
+## Resolved: `$0245` ACC vs CIM
 
-Trionic's `FilterIdCIM = { 0x245, 0x545, 0x645 }` says **CIM** (Column
-Integration Module) is at $0245. But our bench DTCs at $0245 are
-exclusively heated-seat related (`B1928-05` Seat Temperature Sensor
-Left, `B2429-06` Seat Heating Left, `B0260-06` likely seat-related),
-which z90 attributes to ACC(#814) — Air Conditioning Control / climate
-module.
+Earlier evidence conflicted: Trionic's `FilterIdCIM = { 0x245, 0x545,
+0x645 }` suggested **CIM** at `$0245`, while the captured DTCs were
+seat-heater/climate DTCs attributed to **ACC**.
 
-Three possible reconciliations:
+The 2026-05-15 T8 ECM walk resolves this for the 9-3 9440 platform:
+`$0245 $1A 97` returns ASCII **`ACC`**. `$0241 $1A 97` returns **`CIM`**.
+So Trionic's `$0245` CIM mapping is either older-platform-specific or a
+service-routing alias, not the module identity on this bench car.
 
-1. **Tech2Win routes both ACC and CIM through $0245.** SAAB's
-   diagnostic gateway may proxy multiple physical modules through one
-   alias. The seat heater is part of the climate package and CIM
-   handles ignition / column functions; both could land at $0245 with
-   the gateway disambiguating internally.
-2. **Trionic's CIM constant was correct for older platforms, ACC took
-   over $0245 on later models.** The 9-3 9440 platform may have
-   re-assigned addresses vs the 9-3 9400 / Trionic7-era cars Trionic
-   originally targeted.
-3. **z90 mis-attributes these DTCs to ACC** when they're actually CIM
-   or BCM codes. Less likely given z90 has per-ECU sections that match
-   Tech2Win menu structure.
+## Resolved: door module disambiguation (`$0243 / $0248 / $024A / $024B`)
 
-To disambiguate: send `$1A 9A` to $0245 and check the algorithm-tape
-prefix against known CIM vs ACC tape signatures. Also send `$1A 90`
-(VIN read) — only certain modules carry VIN.
+The same T8 ECM walk resolves the four door modules by `$1A 97`:
 
-## Door module disambiguation ($0243 / $0248 / $024A / $024B)
+| CAN-ID | Door module |
+|---|---|
+| `$0243` | Driver Door ECU |
+| `$0248` | Passenger Door ECU |
+| `$024A` | Rear Left Door ECU |
+| `$024B` | Rear Right Door ECU |
 
-All four return `B3832-45 Information: Anti Pinch Not Learned`. z90
-attributes this code identically to DDM(#819), PDM(#825), RLDM(#827),
-RRDM(#828) — one entry per door module. So all four CAN-IDs are door
-modules, but **which door is which is not yet determined from this
-data**.
-
-Likely mapping by canonical SAAB address discipline (untested):
-
-| CAN-ID | Likely door | Reasoning |
-|---|---|---|
-| `$0243` | Driver | Lowest in the door range, often master |
-| `$0248` | Passenger | Adjacent body-control range |
-| `$024A` | Rear left | Higher addresses often rear |
-| `$024B` | Rear right | Adjacent |
-
-Bench test to resolve: actuate one window at a time and observe which
-ECU's DPID stream changes. Or read DID 0x90 (VIN/identity) — each door
-module ought to identify itself.
+Caution: one split-capture context shows `ESP EBC430` on `$0243`; treat
+that as a Tech2Win context/proxy ambiguity until the two video halves are
+time-aligned against the log. The Check-Codes DTC evidence and first T8
+Module Description half both support `$0243` as Driver Door ECU.
 
 ## 2026-05-14 update — `$1A` ID sweep from 1367 ME9.6 capture
 
@@ -113,16 +104,86 @@ $025F, $0657`) need a dedicated re-query to disambiguate "no module at
 this address" vs "module present but doesn't carry $1A". Use the
 `ecu_id_sweep.yaml` workflow.
 
+
+## 2026-05-15 update — T8 ECM walk / Module Description DIDs
+
+Chris ran the intended Tech2Win **All → F1 ECU Information** walk on the
+T8 bench car (`YS3FD49YX41012017`). The useful Collector uploads are
+`cstech2win_1778870835332.log.gz` and `cstech2win_1778870836516.log.gz`;
+local analysis lives at
+`saab_security_project/tech2_video_analysis/2026-05-15_ecm_walk_t8/`.
+
+The decisive signal is `$1A 97`, which returns Tech2Win's module
+description string. This resolves most of the prior DTC-only hypotheses:
+
+- `$0241` = **CIM**
+- `$0242` = **BCM**
+- `$0243` = **Driver Door ECU** in the first T8 half, but one split-capture
+  context also shows **ESP EBC430** at `$0243`; keep this ambiguity until the
+  video split is time-aligned.
+- `$0244` = **DSM**
+- `$0245` = **ACC** (old ACC-vs-CIM conflict resolved)
+- `$0246` = **IPC**
+- `$0247` = **ICM 2**
+- `$0248` = **Passenger Door ECU**
+- `$0249` = **REC**
+- `$024A` = **Rear Left Door ECU**
+- `$024B` = **Rear Right Door ECU**
+- `$024D` = **SRM**
+- `$024F` = **UEC**
+- `$0251` = **EHU**
+- `$0257` = **SDM**
+- `$025B` = **PAS**
+- `$025C` = **SLM**
+- `$07E0` = **ECM**
+- `$07E1` = **TCM**
+
+Still unresolved: `$025D` (stable `DID 81 = "1A9"`, `DID B2 = A1 00 00 00 00 00`)
+and `$025F` (responds in sweeps, no readable `$1A 97` name captured).
+
+
+## 2026-05-15 update — ME9.6 ECM walk / Module Description DIDs
+
+Chris then ran the same walk on the ME9.6 car (`YS3FH46U681101367`). The
+primary useful Collector upload is `cstech2win_1778872510392.log.gz`; local
+analysis lives at
+`saab_security_project/tech2_video_analysis/2026-05-15_ecm_walk_me96/`.
+
+Confirmed ME9.6 `$1A 97` labels:
+
+- `$0241` = **CIM**
+- `$0242` = **BCM**
+- `$0243` = **Driver Door ECU** and **ESP 430 NG** depending context
+- `$0244` = **DSM**
+- `$0245` = **ACC**
+- `$0246` = **IPC**
+- `$0248` = **Passenger Door ECU**
+- `$0249` = **AFL-Epsilon** and **REC** depending context
+- `$024A` = **Rear Left Door ECU**
+- `$024B` = **Rear Right Door ECU**
+- `$024D` = **SRM**
+- `$024F` = **UEC**
+- `$0257` = **SDM**
+- `$025B` = **PAS**
+- `$025F` = **TPMS_WAL01**
+- `$07E0` = **BOSCH_ME96**
+
+Observed ME9.6 deltas vs T8: `$07E0` identifies specifically as
+`BOSCH_ME96`; `$025F` is now named TPMS; `$0249` exposes an AFL logical module
+route in addition to REC; `$0247`/ICM 2, `$0251`/EHU, `$025C`/SLM, and
+`$07E1`/TCM were not observed in the primary ME9.6 combined walk.
+
 ## What's NOT inferred yet
 
-- Which physical module sits at `$0247`, `$0253`, `$025B`,
-  `$025C`, `$025F` — silent on `$1A` in this capture; need targeted
-  re-query.
-- `$025D` answers ASCII `"1A9"` but the SAAB name behind that tag is
-  unknown — best resolved by reading Tech2Win's Module Description
-  screen which displays canonical names.
-- Whether `$0244` (Jason Gaunt `TO_EHU`) corresponds to the actual
-  Entertainment Head Unit on this platform — silent on `$1A` here.
+- `$025D` answers ASCII `"1A9"` and DID B2 = `A1 00 00 00 00 00`, but no
+  `$1A 97` Module Description string was captured. It remains the main
+  unnamed stable responder.
+- `$0253` still responds in sweeps but lacks a readable module description in
+  the current captures. `$025F` is named `TPMS_WAL01` on ME9.6 but remains
+  unnamed in the T8 capture.
+- The split-capture `$0243` / `ESP EBC430` ambiguity needs video time
+  alignment before we treat it as either a true alternate address context
+  or a log/video ordering artifact.
 
 ## How to grow this map
 

@@ -1,0 +1,35 @@
+dtc: P0715-08
+module: TCM
+module_long_name: Transmission Control Module
+description: "Input RPM Sensor Circuit, Faulty Signal"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcm/p0715-08
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Input RPM Sensor Circuit, Faulty Signal"
+  description: "Input RPM Sensor Circuit, Faulty Signal"
+  symptom: "Symptom: Message appears in display."
+  fault_symptom: Message appears in display.
+  enable_criteria: |
+    Engine running and not in limp home mode.
+    
+    Engine speed over 400 rpm, selector lever in D, 1, 2 or 3.
+    
+    Exceptions:
+    
+    "Lockup" not activated.
+    
+    Vehicle speed over 30 km/h
+  fault_criteria: |
+    Control module receives no voltage from the input speed sensor.
+    
+    Control module receives no value from input speed sensor but receives value from the output speed sensor.
+  system_reaction: |
+    Change value for input speed to that of output speed.
+    
+    If the DTC remains during several test cycles:
+    
+    Limp home
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.

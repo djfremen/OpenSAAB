@@ -1,0 +1,42 @@
+dtc: P0499-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Canister Close Valve Circuit.  Short to B+.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0499-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Canister Close Valve Circuit.  Short to B+.
+  description: Canister Close Valve Circuit.  Short to B+.
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Battery voltage must be between 11 - 16 V.
+    
+    Engine running.
+    
+    Shut-off valve active.
+    
+    NONE of the following DTCs must be detected:
+    
+    P0444, P0445
+    
+    P0686, P0687
+  fault_criteria: When voltage on the output exceeds 2.0 V for more than 1 s.
+  system_reaction: |
+    Fuel adaption is blocked and reset.
+    
+    Purge blocked.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Electrical fault in connecting leads or component.
+    
+    Fault in connector H42-2 is often a cause of this DTC.
+  diagnostic_tool_functions: |
+    Activation:
+    
+    •Canister Close Valve
+    
+    (See also description of readings/activations in diagnostic tool)

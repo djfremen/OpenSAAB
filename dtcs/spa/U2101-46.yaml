@@ -1,0 +1,31 @@
+dtc: U2101-46
+module: SPA
+module_long_name: Single Parking Assist
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/spa/u2101-46
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  symptom: |
+    Symptom: Parking assistance not working.
+    Message appears in display.
+  fault_symptom: |
+    Parking assistance not working.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    •Ignition ON.
+    
+    •Battery voltage greater than 9 V.
+  fault_criteria: Control module not configured.
+  system_reaction: •Parking assistance is switched off.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Control module was not added.
+    
+    See "After fitting a control module" under fault diagnosis, general.

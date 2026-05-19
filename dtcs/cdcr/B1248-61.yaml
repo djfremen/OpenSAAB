@@ -1,0 +1,16 @@
+dtc: B1248-61
+module: CDCR
+module_long_name: CDCR Rear CD Changer
+description: "CD Changer Load/Unload mechanism, Stuck"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cdcr/b1248-61
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "CD Changer Load/Unload mechanism, Stuck"
+  description: "CD Changer Load/Unload mechanism, Stuck"
+  symptom: "Symptom: Readout mechanism not functioning."
+  fault_symptom: Readout mechanism not functioning.
+  type_of_diagnosis: Each time a CD is inserted/ejected.
+  fault_criteria: Ejection not completed within 3 seconds and after 3 attempts.
+  system_reaction: Readout mechanism not functioning.

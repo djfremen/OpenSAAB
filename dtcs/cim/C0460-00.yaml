@@ -1,0 +1,19 @@
+dtc: C0460-00
+module: CIM
+module_long_name: Column Integration Module
+description: "Steering Angle Sensor, Internal Failure"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/c0460-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Steering Angle Sensor, Internal Failure"
+  description: "Steering Angle Sensor, Internal Failure"
+  symptom: "Symptom: ESP warning lamp on."
+  fault_symptom: ESP warning lamp on.
+  type_of_diagnosis: Diagnostics occurs when response from steering wheel angle sensor is received.
+  enable_criteria: Engine running.
+  fault_criteria: Fault message received from steering wheel angle sensor.
+  system_reaction: No ESP function
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"Before changing a control module\" and \"After fitting a control module\" under Fault diagnosis, general."

@@ -1,0 +1,21 @@
+dtc: B3057-48
+module: MIU
+module_long_name: Main Instrument Unit
+description: Controle Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/miu/b3057-48
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Controle Module not Added
+  description: Controle Module not Added
+  symptom: "Symptom: Car does not start."
+  fault_symptom: Car does not start.
+  type_of_diagnosis: Diagnostics run when ignition is ON.
+  enable_criteria: Ignition ON.
+  fault_criteria: Control module not programmed.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Control module was not added.
+    
+    See "Procedure after fitting the control module"

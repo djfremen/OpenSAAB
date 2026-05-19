@@ -1,0 +1,31 @@
+dtc: P0730-60
+module: TCM
+module_long_name: Transmission Control Module
+description: Gear Function. Mechanical Fault.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcm/p0730-60
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Gear Function. Mechanical Fault.
+  description: Gear Function. Mechanical Fault.
+  symptom: |
+    Symptom: Message appears in display.
+    Poor shifting quality.
+  fault_symptom: |
+    Message appears in display.
+    
+    Poor shifting quality.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running and not in limp home mode.
+    
+    Exceptions:
+    
+    Output speed < 500 rpm.
+  fault_criteria: Gears 4 and 5 not working but upshift to 3rd gear possible.
+  system_reaction: |
+    Message appears in display.
+    
+    Only gears 1 -3 working.
+  diagnosis_regards: Locating a mechanical fault.

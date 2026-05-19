@@ -1,0 +1,37 @@
+dtc: P0651-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "5V Supply  Group 2, Short to Ground/B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0651-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "5V Supply  Group 2, Short to Ground/B+"
+  description: "5V Supply  Group 2, Short to Ground/B+"
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Limp home
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Limp home
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: |
+    When the 5-volt output to the following components short circuits to ground or B+:
+    
+    •Pedal Position Sensor 1
+    
+    •Atmosphere Pressure Sensor
+    
+    •Throttle Position Sensor 2
+    
+    •Manifold absolute pressure sensor
+  system_reaction: Limp home
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Read values for the above components.
+    
+    (See also description of readings/activations in diagnostic tool)

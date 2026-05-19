@@ -1,0 +1,23 @@
+dtc: B3873-06
+module: UEC
+module_long_name: User Equipment Center
+description: "Front Washer Relay Circuit, Open/Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/uec/b3873-06
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Front Washer Relay Circuit, Open/Short to Ground"
+  description: "Front Washer Relay Circuit, Open/Short to Ground"
+  symptom: "Symptom: Windscreen washing not working/runs continuously."
+  fault_symptom: Windscreen washing not working/runs continuously.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Voltage on the control module output is below 6 V.
+  system_reaction: None
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Activation:
+    
+    Head Lamp Washer Relay

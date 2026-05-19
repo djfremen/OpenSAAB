@@ -1,0 +1,36 @@
+dtc: P0201-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Injector 1 Circuit, Open/Short"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0201-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Injector 1 Circuit, Open/Short"
+  description: "Injector 1 Circuit, Open/Short"
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Engine misfires or does not start.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Engine misfires or does not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Battery voltage must be between 11 - 16 V.
+    
+    Main relay voltage exceeds 6V.
+    
+    Starter motor cranking or engine running.
+  fault_criteria: When voltage on output is below 5.5V when inactive or exceeds 5.5V when active.
+  system_reaction: |
+    Closed loop is blocked.
+    
+    Fuel adaption is blocked.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Activation of output for injector 1.
+    
+    (See also description of readings/activations in diagnostic tool)

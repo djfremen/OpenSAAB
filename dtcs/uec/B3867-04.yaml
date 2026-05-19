@@ -1,0 +1,27 @@
+dtc: B3867-04
+module: UEC
+module_long_name: User Equipment Center
+description: "Parking Light Right Front Circuit, Open"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/uec/b3867-04
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Parking Light Right Front Circuit, Open"
+  description: "Parking Light Right Front Circuit, Open"
+  symptom: |
+    Symptom: Front right parking lights, malfunction.
+    Message appears in display.
+  fault_symptom: |
+    Front right parking lights, malfunction.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: Parking lights on.
+  fault_criteria: Current consumption is below 20 mA.
+  system_reaction: None
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Activation:
+    
+    Parking Light Right Front

@@ -1,0 +1,17 @@
+dtc: P0607-F7
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Control Module. Internal Fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0607-f7
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module. Internal Fault
+  description: Control Module. Internal Fault
+  type_of_diagnosis: Continuous
+  enable_criteria: Engine running.
+  fault_criteria: Internal control module fault
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"Before changing a control module\" and \"After fitting a control module\" under Fault diagnosis, general."

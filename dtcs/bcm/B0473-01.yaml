@@ -1,0 +1,24 @@
+dtc: B0473-01
+module: BCM
+module_long_name: Body Control Module
+description: "Parking Heater Fan Relay Circuit, Short to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/bcm/b0473-01
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Parking Heater Fan Relay Circuit, Short to B+"
+  description: "Parking Heater Fan Relay Circuit, Short to B+"
+  symptom: "Symptom: No heating in car when parking heater activated."
+  fault_symptom: No heating in car when parking heater activated.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Current exceeds 400 mA.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Parking Heater Fan Relay (MCC)
+    
+    (See also description of readings/activations in diagnostic tool)

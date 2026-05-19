@@ -1,0 +1,35 @@
+dtc: P0780-60
+module: TCM
+module_long_name: Transmission Control Module
+description: Shifting Time. Mechanical Fault.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcm/p0780-60
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Shifting Time. Mechanical Fault.
+  description: Shifting Time. Mechanical Fault.
+  symptom: "Symptom: Message appears in display."
+  fault_symptom: Message appears in display.
+  type_of_diagnosis: During shifting.
+  enable_criteria: |
+    Engine running and not in limp home mode.
+    
+    Exceptions:
+    
+    Oil temperature < 60° C
+    
+    Selector lever not in position D.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    Engine RPM
+    
+    Engine Torque
+    
+    Gearbox Input RPM
+    
+    Gearbox Fluid Temperature
+  fault_criteria: The control unit checks the shifting continuously and generates a trouble code if shift-up or shift-down is not performed correctly.
+  system_reaction: Limp home
+  diagnosis_regards: Locating a mechanical fault.

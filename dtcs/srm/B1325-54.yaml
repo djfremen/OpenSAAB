@@ -1,0 +1,19 @@
+dtc: B1325-54
+module: SRM
+module_long_name: Steering Wheel Module
+description: "Sunroof engine, Temperature too high."
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/srm/b1325-54
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Sunroof engine, Temperature too high."
+  description: "Sunroof engine, Temperature too high."
+  symptom: "Symptom: Sunroof cannot be operated."
+  fault_symptom: Sunroof cannot be operated.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: "Sunroof engine, Temperature too high."
+  system_reaction: Sunroof out of order.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnostic_help: "See \"Before changing a control module\" and \"After fitting a control module\" under Fault diagnosis, general."

@@ -1,0 +1,32 @@
+dtc: P0607-02
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Diesel Pump Temperature Sensor. Internal Fault.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0607-02
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Diesel Pump Temperature Sensor. Internal Fault.
+  description: Diesel Pump Temperature Sensor. Internal Fault.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Voltage is below 2.5 V.
+  system_reaction: |
+    Limp Home, engine torque limitation.
+    
+    The control module uses 40°C as a substitute value.
+  diagnosis_regards: To locate electrical faults in the control module internal electronics.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Fuel Temperature Sensor
+    
+    (See also description of readings/activations in diagnostic tool)

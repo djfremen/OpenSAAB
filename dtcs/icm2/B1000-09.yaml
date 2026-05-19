@@ -1,0 +1,16 @@
+dtc: B1000-09
+module: ICM2
+module_long_name: Infotainment Control Module 2
+description: Control module - ECU fault
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/icm2/b1000-09
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control module - ECU fault
+  description: Control module - ECU fault
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Internal error.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"Before changing a control module\"."

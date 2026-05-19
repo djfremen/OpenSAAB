@@ -1,0 +1,45 @@
+dtc: U2100-0F
+module: CIM
+module_long_name: Column Integration Module
+description: General Bus Fault.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/u2100-0f
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: General Bus Fault.
+  description: General Bus Fault.
+  symptom: |
+    Symptom: Intermittent actuation of the following functions:
+    Start
+    Central Locking
+    Instruments
+    Air Condition Control
+    Radio
+  fault_symptom: |
+    Intermittent actuation of the following functions:
+    
+    Start
+    
+    Central Locking
+    
+    Instruments
+    
+    Air Condition Control
+    
+    Radio
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    Voltage is over 9V but under 16V
+  fault_criteria: |
+    No bus communication
+    
+    The cause of the fault is a short circuit of the I-bus anywhere in the connecting wiring harness or internally in a connecting control module.
+  system_reaction: None
+  checking_wiring: |
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+    
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+  diagnostic_help: "If the DTC is stored and read with the diagnostic instrument, it indicates intermittent bus lead fault."

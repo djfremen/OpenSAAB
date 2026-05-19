@@ -1,0 +1,22 @@
+dtc: U2155-1F
+module: DVD
+module_long_name: DVD Player
+description: O-buss. Intermittent Open Circuit before Control Module
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/dvd/u2155-1f
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: O-buss. Intermittent Open Circuit before Control Module
+  description: O-buss. Intermittent Open Circuit before Control Module
+  symptom: |
+    Symptom: Malfunction in one of the following systems:
+    DVD@Digital Versatile Disc
+  fault_symptom: |
+    Malfunction in one of the following systems:
+    
+    DVD@Digital Versatile Disc
+  type_of_diagnosis: Continuous
+  enable_criteria: All modes except starter motor cranking
+  fault_criteria: "No contact with one, several or all O-bus systems."
+  diagnosis_regards: Electrical fault on bus leads or in the component.

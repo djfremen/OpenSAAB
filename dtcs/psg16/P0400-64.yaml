@@ -1,0 +1,34 @@
+dtc: P0400-64
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: EGR Valve Actuator. Deviation from demanded position.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0400-64
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: EGR Valve Actuator. Deviation from demanded position.
+  description: EGR Valve Actuator. Deviation from demanded position.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: "Control deviation is more than 20% from requested EGR position for 3 seconds."
+  system_reaction: "Limp Home, engine torque limitation."
+  diagnosis_regards: Component function.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    EGR Feedback Signal
+    
+    Activate:
+    
+    EGR Solenoid
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: "Feedback signal should normally lie between 85-95% PWM."

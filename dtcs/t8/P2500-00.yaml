@@ -1,0 +1,42 @@
+dtc: P2500-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Generator L Terminal Control Circuit, Short to Ground"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p2500-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Generator L Terminal Control Circuit, Short to Ground"
+  description: "Generator L Terminal Control Circuit, Short to Ground"
+  symptom: |
+    Symptom: Charging lamp on with engine running.
+    Higher idling speed.
+  fault_symptom: |
+    Charging lamp on with engine running.
+    
+    Higher idling speed.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Generator active.
+  fault_criteria: |
+    Lead between control module pin B16 and generator pin 1 (D+) short circuit to ground for more than 3 s.
+    
+    (Which can be due to either the charge regulator pulling down the L terminal voltage level, to indicate a fault in the generator, or to a short circuit in the cable.)
+  system_reaction: Control module continues working with the higher idling function.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Alternator L Terminal
+    
+    •Alternator F Terminal
+    
+    Activation:
+    
+    •Alternator L Terminal Load Dump
+    
+    (See also description of readings/activations in diagnostic tool)

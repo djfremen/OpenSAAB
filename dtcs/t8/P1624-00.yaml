@@ -1,0 +1,31 @@
+dtc: P1624-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: CIM Missing on Bus
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p1624-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: CIM Missing on Bus
+  description: CIM Missing on Bus
+  symptom: "Symptom: Engine may not start."
+  fault_symptom: Engine may not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition on for at least 3 s.
+    
+    Battery voltage must be between 6 - 18 V.
+  fault_criteria: No communication with CIM for 1.25 s.
+  system_reaction: The control module uses substitute value +20°C for outside temperature.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: |
+    Electrical fault on bus leads or in the component.
+    
+    Fault diagnosis for CIM should be carried out.
+  diagnostic_tool_functions: |
+    Response test, under "All/Bus" menu.
+    
+    Read / Reset Bus Configuration
+    
+    Read / Clear Bus Off Counter

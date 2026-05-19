@@ -1,0 +1,41 @@
+dtc: P0500-FA
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Vehicle Speed Signal not Plausible with Engine Speed
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0500-fa
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Vehicle Speed Signal not Plausible with Engine Speed
+  description: Vehicle Speed Signal not Plausible with Engine Speed
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Incorrect display of speed and fuel consumption.
+    Cruise control not working.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Incorrect display of speed and fuel consumption.
+    
+    Cruise control not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Engine speed over 2700 rpm.
+    
+    More than 30 mg fuel/combustion.
+  fault_criteria: Speed is 0 km/h at 30 mg/combustion and rpm over 2700.
+  system_reaction: |
+    The control module uses a substitute value of 0 km/h.
+    
+    Cruise control switched off.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_help: |
+    Vehicle speed signal sent via Bus to PSG16.
+    
+    See fault diagnosis for the TCS/ESP DTC in question and bus fault diagnosis.

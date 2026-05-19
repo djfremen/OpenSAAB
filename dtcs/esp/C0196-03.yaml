@@ -1,0 +1,33 @@
+dtc: C0196-03
+module: ESP
+module_long_name: Electronic Stability Program
+description: Yaw Rate Sensor Internal Failure
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/esp/c0196-03
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Yaw Rate Sensor Internal Failure
+  description: Yaw Rate Sensor Internal Failure
+  symptom: |
+    Symptom: ESP warning lamp on.
+    Message appears in display.
+  fault_symptom: |
+    ESP warning lamp on.
+    
+    Message appears in display.
+  type_of_diagnosis: Continuous
+  enable_criteria: "Ignition on, car rolling faster than 15 km/h and more than 500 m during normal driving."
+  fault_criteria: |
+    Implausible signal from yaw angle sensor.
+    
+    Variation of more than 8 degrees/second
+  system_reaction: No ESP function
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Yaw Rate
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: The sensor is a combined yaw angle sensor and lateral acceleration sensor.

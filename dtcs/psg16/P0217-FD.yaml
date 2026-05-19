@@ -1,0 +1,27 @@
+dtc: P0217-FD
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: "Overheat Protection Activated, Coolant Temperature."
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p0217-fd
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Overheat Protection Activated, Coolant Temperature."
+  description: "Overheat Protection Activated, Coolant Temperature."
+  symptom: "Symptom: Performance loss."
+  fault_symptom: Performance loss.
+  type_of_diagnosis: Continuous
+  enable_criteria: Engine running.
+  fault_criteria: Coolant temperature has exceeded 118°C for more than 10 seconds.
+  system_reaction: Fuel limited until temperature is within limit value.
+  diagnostic_tool_functions: |
+    Read value
+    
+    Coolant Temperature
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: |
+    It is normal that the overheating protection engages under very extreme driving conditions, such as outdoor temperature higher than 30°C (86°F) and driving with caravan up long and steep inclines, e.g. mountain driving.
+    
+    If the cooling system is in order, delete the DTC and inform the customer of how the overheating protection works.

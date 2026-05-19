@@ -1,0 +1,19 @@
+dtc: B1001-41
+module: DSM
+module_long_name: Driver Seat Module
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/dsm/b1001-41
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  symptom: "Symptom: No memory functions work"
+  fault_symptom: No memory functions work
+  type_of_diagnosis: Continuous
+  enable_criteria: When seat is activated
+  fault_criteria: The control module is not EOL programmed.
+  system_reaction: None
+  diagnosis_regards: "See \"After fitting a control module\" under fault diagnosis, general."
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""

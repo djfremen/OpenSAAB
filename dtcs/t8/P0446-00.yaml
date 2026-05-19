@@ -1,0 +1,49 @@
+dtc: P0446-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: "Canister Close Valve Circuit, Malfunction"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0446-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Canister Close Valve Circuit, Malfunction"
+  description: "Canister Close Valve Circuit, Malfunction"
+  symptom: "Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  fault_symptom: "Fault indicator lamp (for further information see WIS Fault diagnosis, general)"
+  type_of_diagnosis: Continuous. But ceases when fault criteria fulfilled and does not restart until next driving cycle.
+  enable_criteria: |
+    Battery voltage must be between 11 - 16 V.
+    
+    Engine running.
+    
+    Intake air temperature is higher than +4°C.
+    
+    Tank pressure lower than -0.8kPa.
+    
+    Tank purge diagnostics inactive.
+    
+    NONE of the following DTCs must be detected:
+    
+    •P0444, P0445
+    
+    •P0451, P0452, P0453
+    
+    •P0498, P0499
+    
+    •P0686, P0687
+    
+    When these conditions are met, the valve opens. Afterwards, diagnostics checks if the tank pressure has risen to the desired level within a calibrated time period.
+  fault_criteria: The tank pressure has not increased 0.4 kPa within 8 seconds after the valve has opened.
+  system_reaction: |
+    Fuel adaption is blocked and reset.
+    
+    Purge blocked.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Blockage of fresh air intake via shut-off valve to evaporative emission canister or from the evaporative emission canister to the tank.
+  diagnostic_tool_functions: |
+    Activation:
+    
+    •Canister Close Valve
+    
+    (See also description of readings/activations in diagnostic tool)

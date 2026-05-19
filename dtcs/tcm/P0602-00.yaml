@@ -1,0 +1,24 @@
+dtc: P0602-00
+module: TCM
+module_long_name: Transmission Control Module
+description: Control Module not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/tcm/p0602-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Control Module not Added
+  description: Control Module not Added
+  symptom: |
+    Symptom: Message appears in display.
+    Gearbox not shifting gear.
+  fault_symptom: |
+    Message appears in display.
+    
+    Gearbox not shifting gear.
+  type_of_diagnosis: During each initiation and after each programming
+  enable_criteria: Ignition ON.
+  fault_criteria: The control module is not EOL programmed.
+  system_reaction: Gearbox not shifting gear.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"After fitting a control module\" under fault diagnosis, general."

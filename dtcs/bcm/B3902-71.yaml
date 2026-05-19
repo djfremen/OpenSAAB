@@ -1,0 +1,24 @@
+dtc: B3902-71
+module: BCM
+module_long_name: Body Control Module
+description: BCM or CIM Not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/bcm/b3902-71
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: BCM or CIM Not Added
+  description: BCM or CIM Not Added
+  symptom: |
+    Symptom: Message appears in display.
+    Car does not start.
+  fault_symptom: |
+    Message appears in display.
+    
+    Car does not start.
+  type_of_diagnosis: Continuous
+  enable_criteria: Diagnostics run when ignition is ON.
+  fault_criteria: Incorrect immobilizer code received from CIM.
+  system_reaction: The immobilizer-related functions are switched off.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: "See \"After fitting a control module\" under fault diagnosis, general."

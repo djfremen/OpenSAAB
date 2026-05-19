@@ -1,0 +1,27 @@
+dtc: B3902-70
+module: AMP2
+module_long_name: AMP2 Amplifier 2
+description: AMP 1 or ICM Not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/amp2/b3902-70
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: AMP 1 or ICM Not Added
+  description: AMP 1 or ICM Not Added
+  symptom: |
+    Symptom: Message appears in display.
+    Audio system not functioning.
+  fault_symptom: |
+    Message appears in display.
+    
+    Audio system not functioning.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: AMP1 not joined with ICM.
+  system_reaction: The immobilizer-related functions are switched off.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""
+  diagnostic_help: |
+    Control module was not added.
+    
+    See "Procedure after fitting the control module"

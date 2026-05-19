@@ -1,0 +1,15 @@
+dtc: B2915-00
+module: ICM2
+module_long_name: Infotainment Control Module 2
+description: AMP 2 Not Added
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/icm2/b2915-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: AMP 2 Not Added
+  description: AMP 2 Not Added
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: Immobilizer code from AMP 1 absent.
+  diagnostic_tool_functions: "See menu \"All - Add/Remove\""

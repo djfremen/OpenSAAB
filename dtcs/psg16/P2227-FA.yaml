@@ -1,0 +1,47 @@
+dtc: P2227-FA
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Manifold Absolute Pressure Sensor Circuit. Plausibility Fault with Atmosphere Pressure.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p2227-fa
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Manifold Absolute Pressure Sensor Circuit. Plausibility Fault with Atmosphere Pressure.
+  description: Manifold Absolute Pressure Sensor Circuit. Plausibility Fault with Atmosphere Pressure.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Performance loss.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Performance loss.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Engine speed below 950 rpm and below 15 mg/combustion.
+    
+    NONE of the following DTCs must be detected:
+    
+    P0106, P0107, P0108
+    
+    P0642, P0643
+    
+    P0652, P0653
+  fault_criteria: Difference between boost pressure sensor and atmospheric sensor is greater than 22.5 kPa for more than 3 seconds.
+  system_reaction: The control module uses a substitute value of 70 kPa.
+  checking_wiring: |
+    •Faults in the control module female connector can be the cause of the DTC. Check the connector with respect to oxidation, depressed pins and pin clamping force.
+    
+    •Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Intake pressure sensor
+    
+    Atmospheric Pressure
+    
+    Atmosphere Pressure Sensor
+    
+    (See also description of readings/activations in diagnostic tool)

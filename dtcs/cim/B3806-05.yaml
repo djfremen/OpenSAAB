@@ -1,0 +1,27 @@
+dtc: B3806-05
+module: CIM
+module_long_name: Column Integration Module
+description: "Stalk Switch Flash to Pass Circuit, Open/Short to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/cim/b3806-05
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Stalk Switch Flash to Pass Circuit, Open/Short to B+"
+  description: "Stalk Switch Flash to Pass Circuit, Open/Short to B+"
+  symptom: "Symptom: Main beam flash not working."
+  fault_symptom: Main beam flash not working.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Ignition ON.
+    
+    The main beams should be on.
+  fault_criteria: The control module detects that the main beam switch is closed but the main beam flash switch is open.
+  system_reaction: None
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Stalk Switch Flash to Pass
+    
+    (See also description of readings/activations in diagnostic tool)

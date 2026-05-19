@@ -1,0 +1,41 @@
+dtc: P1149-5A
+module: PSG16
+module_long_name: PSG16 Diesel Pump Control
+description: Injection Timing Control Malfunction. Injection too Late.
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/psg16/p1149-5a
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Injection Timing Control Malfunction. Injection too Late.
+  description: Injection Timing Control Malfunction. Injection too Late.
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Engine does not start.
+    Engine shut off.
+    Performance loss.
+    A/C not working, no cooling.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Engine does not start.
+    
+    Engine shut off.
+    
+    Performance loss.
+    
+    A/C not working, no cooling.
+  type_of_diagnosis: Continuous
+  enable_criteria: |
+    Engine running.
+    
+    Engine speed more than 600 rpm.
+    
+    The following diagnostic trouble codes may not be generated:
+    
+    P0337 2E, P0341
+    
+    P0335, P0336
+  fault_criteria: Incorrect injector setting.
+  system_reaction: Motor switches off.
+  diagnostic_help: The DTC can be set if the car is driven with too little fuel in the tank.

@@ -1,0 +1,24 @@
+dtc: B2575-05
+module: BCM
+module_long_name: Body Control Module
+description: "Light Switch Position 2 Circuit, Open/Short to B+"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/bcm/b2575-05
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Light Switch Position 2 Circuit, Open/Short to B+"
+  description: "Light Switch Position 2 Circuit, Open/Short to B+"
+  symptom: "Symptom: Dipped beam on irrespective of position of light switch."
+  fault_symptom: Dipped beam on irrespective of position of light switch.
+  type_of_diagnosis: Continuous
+  enable_criteria: Ignition ON.
+  fault_criteria: When voltage on output exceeds 10.2V.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in connecting leads or component.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Light Switch Position 2
+    
+    (See also description of readings/activations in diagnostic tool)

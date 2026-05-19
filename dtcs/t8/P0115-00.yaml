@@ -1,0 +1,59 @@
+dtc: P0115-00
+module: T8
+module_long_name: Trionic 8 (T8) ECM
+description: Engine Coolant Temperature Circuit Problem
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/t8/p0115-00
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: Engine Coolant Temperature Circuit Problem
+  description: Engine Coolant Temperature Circuit Problem
+  symptom: |
+    Symptom: Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    Incorrect temperature gauge reading.
+    Radiator fan runs continuously.
+  fault_symptom: |
+    Fault indicator lamp (for further information see WIS Fault diagnosis, general)
+    
+    Incorrect temperature gauge reading.
+    
+    Radiator fan runs continuously.
+  type_of_diagnosis: Once per driving cycle.
+  enable_criteria: |
+    General conditions for this DTC
+    
+    •NONE of the following DTCs should be detected: P0117, P0118.
+    
+    Test 1
+    
+    •Ignition ON.
+    
+    •Engine temperature over 71°C.
+    
+    •Max 20°C difference between the exhaust temperature and intake air temperature (Which indicates a cold start).
+    
+    Test 2
+    
+    •Engine running.
+    
+    •Engine temperature under 71°C.
+  fault_criteria: |
+    Test 1
+    
+    •When the engine temperature is above +71°C.
+    
+    Test 2
+    
+    •When the temperature increase (measured from starting temperature) is below 2°C at various load ranges (150 mg/C, 270 mg/C).
+  system_reaction: The system continues to function with a calculated engine temperature.
+  checking_wiring: "Move the wiring harness at several spots and in several directions to reveal intermittent breaks and short-circuits. Check switches, connectors and crimp connections for oxidation, retracted pins and pin clamping force."
+  diagnosis_regards: Electrical fault in the component (displays constant temperature regardless of actual temperature).
+  diagnostic_tool_functions: |
+    Test value:
+    
+    •Engine Temperature
+    
+    •Intake Air Temperature
+    
+    (See also description of readings/activations in diagnostic tool)

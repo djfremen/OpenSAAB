@@ -1,0 +1,35 @@
+dtc: B1725-08
+module: DSM
+module_long_name: Driver Seat Module
+description: "Switch Height Up Circuit, Signal Invalid"
+
+wis:
+  url: https://saabwisonline.com/9-3-9440/2003/dtcs/dsm/b1725-08
+  fetched_at: 2026-05-18
+  vehicle: 9-3 (9440) 2003
+  index_description: "Switch Height Up Circuit, Signal Invalid"
+  description: "Switch Height Up Circuit, Signal Invalid"
+  symptom: |
+    Symptom: The button is considered inactive until it is released and activated again.
+    The engine can temporarily go in the opposite direction
+  fault_symptom: |
+    The button is considered inactive until it is released and activated again.
+    
+    The engine can temporarily go in the opposite direction
+  type_of_diagnosis: Continuous
+  enable_criteria: When seat operation is permitted.
+  fault_criteria: UP button is stuck or UP and DOWN buttons are active at the same time.
+  system_reaction: |
+    The button is considered inactive until it is released and activated again.
+    
+    The engine can temporarily go in the opposite direction
+  diagnosis_regards: Detecting an electrical or mechanical fault on the button.
+  diagnostic_tool_functions: |
+    Test value:
+    
+    Switch, Height Up
+    
+    Switch, Height Down
+    
+    (See also description of readings/activations in diagnostic tool)
+  diagnostic_help: A trouble code is generated also when the button is activated for more than 60 s.
