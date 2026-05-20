@@ -1,0 +1,47 @@
+menu: "OBD-II VIN identification — ReadDataByLocalIdentifier DID 0x90 on the
+        engine ECM. The standardized counterpart to the SAAB-extended
+        $1A 3F read (see vin_read_did_3f.yaml)."
+target_ecu: $07E0/$07E8
+captured_from:
+  source: bench live read, 2026-05-19
+  tools: [NoMoreGlobalPy (J2534 / Chipsoft Pro), chipsoft-android (USB-CDC)]
+  vehicle_profile: SAAB 9-3 (bench, 2017) — VIN YS3FD49YX41012017
+  transport: ISO15765 (protocol id 0x06), HS-CAN 500 kbps, OBD-II pins 6/14
+status: captured
+services:
+  - 0x1A  # ReadDataByLocalIdentifier (GMLAN)
+
+dids:
+  0x90:
+    name: vin_obdii
+    request: "1A 90"
+    iso_tp: multi_frame_FF_then_CF
+    rx_example: "5A 90 59 53 33 46 44 34 39 59 58 34 31 30 31 32 30 31 37"
+    rx_decoded: "VIN ASCII, 17 bytes — 'YS3FD49YX41012017'"
+    security_access: none
+    notes: |
+      Readable in the default session with no SecurityAccess. The ECM at
+      $07E0 is a GMLAN node: it answers $1A (ReadDataByLocalIdentifier) but
+      NOT the ISO 14229 $22 (ReadDataByIdentifier) — $22 F1 90 returns
+      NRC 0x11 (serviceNotSupported). Use $1A 90, not $22 F1 90, on this ECU.
+
+transport_notes: |
+  Must be driven in ISO15765 protocol mode, not raw CAN. In raw-CAN mode the
+  adapter does not route the $07E0/$07E8 diagnostic addressing the way the
+  ECM expects and the request draws no reply. In ISO15765 mode the adapter
+  (or its driver) performs ISO-TP framing — flow control and multi-frame
+  reassembly — so the caller sends a bare `1A 90` and receives a fully
+  reassembled `5A 90 <17 VIN bytes>`. A FLOW_CONTROL message filter pairing
+  RX 0x07E8 / TX 0x07E0 must be installed before the read.
+
+common_nrcs:
+  0x11:
+    name: serviceNotSupported
+    notes: "Returned for $22 F1 90 — this GMLAN ECM has no ISO 14229 $22 service."
+
+notes: |
+  - The same 17-byte VIN is returned by the SAAB-extended $1A 3F read on
+    $0241 (vin_read_did_3f.yaml); this DID 0x90 / $07E0 path is the
+    OBD-II-standard route and needs no gateway hop.
+  - Confirmed identical byte-for-byte across a Windows J2534 client and an
+    Android USB-CDC client once both used ISO15765 mode.
